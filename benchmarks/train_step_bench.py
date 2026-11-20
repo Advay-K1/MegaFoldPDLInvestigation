@@ -44,6 +44,10 @@ parser.add_argument("--confidence-head", action="store_true",
 parser.add_argument("--seed", type=int, default=42)
 parser.add_argument("--nvtx-step", type=int, default=-1,
                     help="if >=0, wrap this step index in cudaProfilerStart/Stop (for nsys --capture-range)")
+parser.add_argument("--compile-mode", default="default", choices=["default", "reduce-overhead", "cg-selective"],
+                    help="reduce-overhead = Inductor CUDA graphs (cudagraph trees)")
+parser.add_argument("--explain", action="store_true", help="dump torch._dynamo.explain graph-break census and exit")
+parser.add_argument("--nvtx-modules", action="store_true", help="NVTX ranges per top-level submodule forward + bwd/opt")
 parser.add_argument("--out", required=True)
 args = parser.parse_args()
 
@@ -149,11 +153,45 @@ batch = batch.cuda() if hasattr(batch, "cuda") else batch
 batch_kwargs = {k: (v.cuda() if torch.is_tensor(v) else v) for k, v in batch.dict().items()}
 num_atoms = int(batch_kwargs["molecule_atom_lens"].sum())
 
+if args.compile_mode == "reduce-overhead":
+    # CUDA graphs: the stochastic frame averaging in the diffusion module runs a 3x3 torch.linalg.eigh
+    # (cuSOLVER), which fails inside a captured CUDA graph (CUSOLVER_STATUS_INTERNAL_ERROR). Keep that tiny
+    # op out of the compiled/captured regions.
+    import frame_averaging_pytorch.frame_averaging as _fa
+    _fa.FrameAverage.forward = torch.compiler.disable(_fa.FrameAverage.forward)
+
+if args.nvtx_modules:
+    import torch.cuda.nvtx as nvtx
+    def _hook_pair(name):
+        def pre(m, a):  # must return None (a non-None return replaces the module's args)
+            nvtx.range_push(name)
+
+        def post(m, a, o):
+            nvtx.range_pop()
+
+        return pre, post
+    targets = [(n, m) for n, m in model.named_children()]
+    targets += [(f"diffusion_module.{n}", m) for n, m in model.diffusion_module.named_children()]
+    for n, m in targets:
+        pre, post = _hook_pair(n)
+        m.register_forward_pre_hook(pre)
+        m.register_forward_hook(post)
+
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 # dynamic=False: with the default automatic-dynamic shapes, Dynamo 2.10 crashes while tracing MegaFold's
 # user-defined Triton launches once a dim turns symbolic ("SymNodeVariable has no attribute value").
 # The benchmark input is fixed, so static graphs are the natural setting anyway.
-compiled = torch.compile(model, dynamic=False)
+if args.compile_mode == "cg-selective":
+    # CUDA graphs only on the heavy, static, host-sync-free submodules; loss / alignment code stays eager
+    # (it contains cuSOLVER SVD/eigh and .item() syncs that cannot be captured).
+    CG_TARGETS = [(model, "pairformer"), (model, "msa_module"), (model, "template_embedder"),
+                  (model.diffusion_module, "atom_encoder"), (model.diffusion_module, "token_transformer"),
+                  (model.diffusion_module, "atom_decoder")]
+    for parent, attr in CG_TARGETS:
+        setattr(parent, attr, torch.compile(getattr(parent, attr), dynamic=False, mode="reduce-overhead"))
+    compiled = model
+else:
+    compiled = torch.compile(model, dynamic=False, mode=None if args.compile_mode == "default" else args.compile_mode)
 
 
 def train_step(step: int):
@@ -163,17 +201,41 @@ def train_step(step: int):
         return_loss_breakdown=True,
         call_confidence_head=args.confidence_head,
     )
+    if args.nvtx_modules: torch.cuda.nvtx.range_push("backward")
     loss.backward()
+    if args.nvtx_modules: torch.cuda.nvtx.range_pop(); torch.cuda.nvtx.range_push("clip+optimizer")
     torch.nn.utils.clip_grad_norm_(model.parameters(), 10.0)
     optimizer.step()
+    if args.nvtx_modules: torch.cuda.nvtx.range_pop()
     optimizer.zero_grad(set_to_none=True)
     return loss.detach()
 
+
+if args.explain:
+    import collections
+    seed_all(args.seed)
+    ex = torch._dynamo.explain(model)(**batch_kwargs, dtype=torch.bfloat16, return_loss_breakdown=True,
+                                     call_confidence_head=args.confidence_head)
+    reasons = collections.Counter()
+    where = collections.Counter()
+    for br in ex.break_reasons:
+        reasons[str(br.reason).split("\n")[0][:160]] += 1
+        if br.user_stack:
+            fr = br.user_stack[-1]
+            where[f"{Path(fr.filename).name}:{fr.lineno} {fr.name}"] += 1
+    rep = dict(graph_count=ex.graph_count, graph_break_count=ex.graph_break_count, op_count=ex.op_count,
+               top_reasons=reasons.most_common(25), top_locations=where.most_common(25))
+    Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.out).write_text(json.dumps(rep, indent=2))
+    print(json.dumps(rep, indent=2)[:4000])
+    sys.exit(0)
 
 step_times, losses = [], []
 total = args.warmup + args.iters
 for step in range(total):
     seed_all(args.seed + step)  # identical RNG stream per step in both variants
+    if args.compile_mode in ("reduce-overhead", "cg-selective"):
+        torch.compiler.cudagraph_mark_step_begin()
     if step == args.nvtx_step:
         torch.cuda.profiler.start()
     torch.cuda.synchronize()
@@ -195,6 +257,7 @@ result = dict(
     pdl_enabled=megafold_pdl.PDL_ENABLED,
     inductor_enable_pdl=bool(want_pdl),
     torch_compile_debug=os.environ.get("TORCH_COMPILE_DEBUG", "0"),
+    compile_mode=args.compile_mode,
     seq_len=args.seq_len,
     num_atoms=num_atoms,
     msa_depth=args.msa_depth,
