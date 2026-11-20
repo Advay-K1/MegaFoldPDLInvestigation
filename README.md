@@ -12,6 +12,9 @@ for a MegaFold training step on a single NVIDIA GH200 (NCSA DeltaAI).
   sweep (eager vs CUDA graphs), graph-break census, CUDA-graph experiments, attribution of the ~100k
   eager kernels per step, ranked modifications.
 
+**Overleaf:** LaTeX versions of both reports are in `reports/overleaf/` (`report1.tex`, `report2.tex`, `figures/`);
+upload `reports/overleaf_project.zip` to Overleaf (New Project → Upload Project) and compile with pdfLaTeX.
+
 Code added for the investigation: `megafold/model/pdl.py` (PDL switch, policies, Inductor fix),
 PDL prologue/launch flags in `megafold/model/Fused*/`, `benchmarks/train_step_bench.py` (harness),
 `benchmarks/pdl_*.py`, `benchmarks/analyze_nsys.py`, `benchmarks/plot_profiles.py`,
