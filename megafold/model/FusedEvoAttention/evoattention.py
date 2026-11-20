@@ -30,6 +30,8 @@ import torch
 import triton
 import triton.language as tl
 
+from megafold.model.pdl import LAUNCH_PDL, pdl_prologue
+
 def is_hip():
     return triton.runtime.driver.active.get_current_target().backend == "hip"
 
@@ -200,6 +202,7 @@ def _attn_fwd(
     BLOCK_SIZE_KV: tl.constexpr,
     BLOCK_DIM: tl.constexpr,
 ):
+    pdl_prologue()  # PDL: wait for producer grid before any global memory access
     block_index_q = tl.program_id(0).to(tl.int64)
 
     index_batch_msa_head = tl.program_id(1).to(tl.int64)
@@ -305,6 +308,7 @@ def _attn_bwd_preprocess(
     DIM: tl.constexpr,
     BLOCK_DIM: tl.constexpr,
 ):
+    pdl_prologue()  # PDL: wait for producer grid before any global memory access
     block_index_q = tl.program_id(0).to(tl.int64)
     offs_q = block_index_q * BLOCK_SIZE_Q + tl.arange(0, BLOCK_SIZE_Q)
     index_batch_msa_head = tl.program_id(1).to(tl.int64)
@@ -389,6 +393,7 @@ def _attn_bwd_dq(
     BLOCK_SIZE_Q: tl.constexpr,
     BLOCK_SIZE_KV: tl.constexpr,
 ):
+    pdl_prologue()  # PDL: wait for producer grid before any global memory access
     index_batch_msa_head = tl.program_id(1).to(tl.int64)
     index_batch_msa = index_batch_msa_head // HEAD
     index_head = index_batch_msa_head % HEAD
@@ -577,6 +582,7 @@ def _attn_bwd_dk_dv(
     BLOCK_SIZE_KV: tl.constexpr,
     
 ):
+    pdl_prologue()  # PDL: wait for producer grid before any global memory access
     index_batch_msa_head = tl.program_id(1).to(tl.int64)
     index_batch_msa = index_batch_msa_head // HEAD
     index_head = index_batch_msa_head % HEAD
@@ -791,8 +797,7 @@ class EvoformerAttention(torch.autograd.Function):
             BATCH_SIZE=BATCH_SIZE, HEAD=HEAD, N_SEQ=N_SEQ, SEQ_LEN=SEQ_LEN, DIM=DIM, BLOCK_DIM=BLOCK_DIM,
             **extra_kern_args,
             # H200; seq-len=384
-            BLOCK_SIZE_Q=16, BLOCK_SIZE_KV=64, num_stages=3, num_warps=4
-        )
+            BLOCK_SIZE_Q=16, BLOCK_SIZE_KV=64, num_stages=3, num_warps=4, launch_pdl=LAUNCH_PDL)
         
         ctx.save_for_backward(Q, K, V, res_mask, pair_bias, O, M) # all tensors are in order: (BATCH_SIZE, N_SEQ, HEAD, SEQ_LEN, DIM)
         ctx.grid = grid
@@ -836,8 +841,7 @@ class EvoformerAttention(torch.autograd.Function):
             DIM=DIM,
             BLOCK_DIM=BLOCK_DIM,
             # H200; seq-len=384
-            BLOCK_SIZE_Q=32, num_stages=2, num_warps=4
-        )
+            BLOCK_SIZE_Q=32, num_stages=2, num_warps=4, launch_pdl=LAUNCH_PDL)
 
         bwd_dk_dv_grid = lambda args: (triton.cdiv(SEQ_LEN, args["BLOCK_SIZE_KV"]), BATCH_SIZE * N_SEQ * HEAD, 1)
         # Fix KV and iterate through all the Q blocks
@@ -875,8 +879,7 @@ class EvoformerAttention(torch.autograd.Function):
             BLOCK_DIM=BLOCK_DIM,
             DIM=ctx.DIM,
             # H200; seq-len=384
-            BLOCK_SIZE_Q=64, BLOCK_SIZE_KV=16, num_stages=3, num_warps=4, 
-        )
+            BLOCK_SIZE_Q=64, BLOCK_SIZE_KV=16, num_stages=3, num_warps=4, launch_pdl=LAUNCH_PDL)
 
         bwd_dq_grid = lambda args: (triton.cdiv(SEQ_LEN, args["BLOCK_SIZE_Q"]), BATCH_SIZE * N_SEQ * HEAD, 1)
         # Fix Q and iterate through all the KV block
@@ -918,8 +921,7 @@ class EvoformerAttention(torch.autograd.Function):
             BLOCK_DIM=BLOCK_DIM,
             DIM=ctx.DIM,
             # H200; seq-len=384
-            BLOCK_SIZE_Q=16, BLOCK_SIZE_KV=64, num_stages=3, num_warps=4,
-        )
+            BLOCK_SIZE_Q=16, BLOCK_SIZE_KV=64, num_stages=3, num_warps=4, launch_pdl=LAUNCH_PDL)
         
         # change shape to original 
         dQ = dQ.transpose(-2, -3).contiguous()

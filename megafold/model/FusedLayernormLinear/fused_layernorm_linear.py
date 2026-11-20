@@ -31,6 +31,8 @@ import torch.nn as nn
 from torch.nn import functional as F, init
 import triton
 import triton.language as tl
+
+from megafold.model.pdl import LAUNCH_PDL, pdl_prologue
 from liger_kernel.ops.utils import calculate_settings
 from liger_kernel.utils import infer_device
 from liger_kernel.ops.utils import ensure_contiguous
@@ -147,6 +149,7 @@ def _first_forward_kernel(
     """
     First kernel just calculates the mean and variance along the whole row and store back 
     """
+    pdl_prologue()  # PDL: wait for producer grid before any global memory access
     row_idx = tl.program_id(0).to(tl.int64)
     col_offsets = tl.arange(0, BLOCK_SIZE)
     mask = col_offsets < K
@@ -193,6 +196,7 @@ def _second_forward_kernel(
     c: [M, N]
     linear_bias: [N]
     """
+    pdl_prologue()  # PDL: wait for producer grid before any global memory access
     pid = tl.program_id(axis=0).to(tl.int64)
     num_pid_m = tl.cdiv(M, BLOCK_SIZE_M)
     num_pid_n = tl.cdiv(N, BLOCK_SIZE_N)
@@ -265,6 +269,7 @@ def _first_backward_kernel(
     Fuse in dB = Y^T @ dOUT via atomic adds
     Calculate dWEIGHT, dBIAS, c1, c2
     """
+    pdl_prologue()  # PDL: wait for producer grid before any global memory access
     pid = tl.program_id(axis=0).to(tl.int64)
     num_pid_m = tl.cdiv(M, BLOCK_SIZE_M)
     num_pid_k = tl.cdiv(K, BLOCK_SIZE_K)
@@ -344,6 +349,7 @@ def _second_backward_kernel(
     """ 
     Calculate dX by wdy, x_hat, c1, c2
     """
+    pdl_prologue()  # PDL: wait for producer grid before any global memory access
     # on each row: load current wdy in dX, load c1 and c2, perhaps recompute x_hat again 
     # then perform: real_dX = wdy - c1 * x_hat - c2
     row = tl.program_id(0).to(tl.int64)
@@ -392,8 +398,7 @@ def layernorm_linear_forward(a, b, linear_bias, WEIGHT, BIAS, has_layernorm_bias
     _first_forward_kernel[(M, )](
         a, a.stride(0), Mean, Mean.stride(0), RSTD, RSTD.stride(0),
         K, 1e-5,
-        BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps,
-    )
+        BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps, launch_pdl=LAUNCH_PDL)
 
     # Second kernel: calculate matmul. Normalize each input block loaded  
     grid = lambda META: (triton.cdiv(M, META['BLOCK_SIZE_M']) * triton.cdiv(N, META['BLOCK_SIZE_N']), )
@@ -410,8 +415,7 @@ def layernorm_linear_forward(a, b, linear_bias, WEIGHT, BIAS, has_layernorm_bias
             Mean.stride(0), RSTD.stride(0),
             has_layernorm_bias=has_layernorm_bias, has_linear_bias=has_linear_bias,
             DTYPE=tl.float16 if a.dtype == torch.float16 else tl.bfloat16 if a.dtype == torch.bfloat16 else tl.float32, 
-            BLOCK_SIZE_M=BLOCK_SIZE_M, BLOCK_SIZE_N=BLOCK_SIZE_N, BLOCK_SIZE_K=BLOCK_SIZE_K, GROUP_SIZE_M=GROUP_SIZE_M, num_stages=num_stages, num_warps=num_warps, maxnreg=maxnreg        
-        )
+            BLOCK_SIZE_M=BLOCK_SIZE_M, BLOCK_SIZE_N=BLOCK_SIZE_N, BLOCK_SIZE_K=BLOCK_SIZE_K, GROUP_SIZE_M=GROUP_SIZE_M, num_stages=num_stages, num_warps=num_warps, maxnreg=maxnreg, launch_pdl=LAUNCH_PDL)
     else:
         BLOCK_SIZE_M, BLOCK_SIZE_N, BLOCK_SIZE_K, GROUP_SIZE_M, num_stages, num_warps, waves_per_eu = forward_config # if forward_config is not None else calculate_config_layernorm_linear(M, N, K, 0)
         _second_forward_kernel[grid](
@@ -425,8 +429,7 @@ def layernorm_linear_forward(a, b, linear_bias, WEIGHT, BIAS, has_layernorm_bias
             Mean.stride(0), RSTD.stride(0),
             has_layernorm_bias=has_layernorm_bias, has_linear_bias=has_linear_bias,
             DTYPE=tl.float16 if a.dtype == torch.float16 else tl.bfloat16 if a.dtype == torch.bfloat16 else tl.float32, 
-            BLOCK_SIZE_M=BLOCK_SIZE_M, BLOCK_SIZE_N=BLOCK_SIZE_N, BLOCK_SIZE_K=BLOCK_SIZE_K, GROUP_SIZE_M=GROUP_SIZE_M, num_stages=num_stages, num_warps=num_warps, waves_per_eu=waves_per_eu        
-        )
+            BLOCK_SIZE_M=BLOCK_SIZE_M, BLOCK_SIZE_N=BLOCK_SIZE_N, BLOCK_SIZE_K=BLOCK_SIZE_K, GROUP_SIZE_M=GROUP_SIZE_M, num_stages=num_stages, num_warps=num_warps, waves_per_eu=waves_per_eu, launch_pdl=LAUNCH_PDL)
     c = c.view(shape[:-1] + (N, ))
     return c, a, b, Mean, RSTD
 
@@ -462,8 +465,7 @@ def layernorm_linear_backward(dOUT, X, B, Mean, RSTD, WEIGHT, BIAS, has_layernor
             dX.stride(0), dX.stride(1),
             WEIGHT.stride(0), c1.stride(0), c2.stride(0), Mean.stride(0),
             has_layernorm_bias=has_layernorm_bias,
-            BLOCK_SIZE_M=BLOCK_SIZE_M, BLOCK_SIZE_K=BLOCK_SIZE_K, BLOCK_SIZE_N=BLOCK_SIZE_N, GROUP_SIZE_M=GROUP_SIZE_M, num_stages=num_stages, num_warps=num_warps, maxnreg=maxnreg
-        )
+            BLOCK_SIZE_M=BLOCK_SIZE_M, BLOCK_SIZE_K=BLOCK_SIZE_K, BLOCK_SIZE_N=BLOCK_SIZE_N, GROUP_SIZE_M=GROUP_SIZE_M, num_stages=num_stages, num_warps=num_warps, maxnreg=maxnreg, launch_pdl=LAUNCH_PDL)
     else:
         BLOCK_SIZE_M, BLOCK_SIZE_K, BLOCK_SIZE_N, GROUP_SIZE_M, num_stages, num_warps, waves_per_eu = backward_config # if backward_config is not None else calculate_config_layernorm_linear(M, N, K, 1)
         _first_backward_kernel[lambda META: (triton.cdiv(M, META['BLOCK_SIZE_M']) * triton.cdiv(K, META['BLOCK_SIZE_K']), )](
@@ -474,8 +476,7 @@ def layernorm_linear_backward(dOUT, X, B, Mean, RSTD, WEIGHT, BIAS, has_layernor
             dX.stride(0), dX.stride(1),
             WEIGHT.stride(0), c1.stride(0), c2.stride(0), Mean.stride(0),
             has_layernorm_bias=has_layernorm_bias,
-            BLOCK_SIZE_M=BLOCK_SIZE_M, BLOCK_SIZE_K=BLOCK_SIZE_K, BLOCK_SIZE_N=BLOCK_SIZE_N, GROUP_SIZE_M=GROUP_SIZE_M, num_stages=num_stages, num_warps=num_warps, waves_per_eu=waves_per_eu
-        )
+            BLOCK_SIZE_M=BLOCK_SIZE_M, BLOCK_SIZE_K=BLOCK_SIZE_K, BLOCK_SIZE_N=BLOCK_SIZE_N, GROUP_SIZE_M=GROUP_SIZE_M, num_stages=num_stages, num_warps=num_warps, waves_per_eu=waves_per_eu, launch_pdl=LAUNCH_PDL)
     
     # now, c1 and c2 are ready to be computed in dX -> do in row parallel
     BLOCK_SIZE, num_warps = calculate_settings(K)
@@ -484,8 +485,7 @@ def layernorm_linear_backward(dOUT, X, B, Mean, RSTD, WEIGHT, BIAS, has_layernor
         M, K, N,
         X.stride(0), Mean.stride(0),
         BLOCK_SIZE=BLOCK_SIZE,
-        num_warps=num_warps,
-    )
+        num_warps=num_warps, launch_pdl=LAUNCH_PDL)
     
     # cannot fuse in, so best to separate it out 
     dLinearBias = None 

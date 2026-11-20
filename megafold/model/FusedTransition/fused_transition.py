@@ -30,12 +30,15 @@ import torch
 import torch.nn as nn 
 import triton 
 import triton.language as tl
+
+from megafold.model.pdl import LAUNCH_PDL, pdl_prologue
 from liger_kernel.ops.utils import calculate_settings, ensure_contiguous
 from liger_kernel.utils import infer_device
 from megafold.model.FusedLayernormLinear.fused_layernorm_linear import LayernormLinear
 
 @triton.jit
 def _swiglu_forward_kernel(x_ptr, y_ptr, stride_y, D: tl.constexpr, BLOCK_SIZE: tl.constexpr):
+    pdl_prologue()  # PDL: wait for producer grid before any global memory access
     row_idx = tl.program_id(axis=0).to(tl.int64)
 
     a_ptr = x_ptr + row_idx * stride_y * 2  # left half of x
@@ -54,6 +57,7 @@ def _swiglu_forward_kernel(x_ptr, y_ptr, stride_y, D: tl.constexpr, BLOCK_SIZE: 
 
 @triton.jit
 def _swiglu_backward_kernel(dy_ptr, x_ptr, stride, D: tl.constexpr, BLOCK_SIZE: tl.constexpr):
+    pdl_prologue()  # PDL: wait for producer grid before any global memory access
     row_idx = tl.program_id(axis=0).to(tl.int64)
 
     dy_ptr += row_idx * stride
@@ -96,8 +100,7 @@ def swiglu_forward(x):
     BLOCK_SIZE, num_warps = calculate_settings(dim_out)
     _swiglu_forward_kernel[(M,)](
         x, y, y.stride(0),
-        D=D, BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps,
-    )
+        D=D, BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps, launch_pdl=LAUNCH_PDL)
     return x, y.view(ori_shape[:-1] + (dim_out, ))
 
 
@@ -114,8 +117,7 @@ def swiglu_backward(x, dy):
     BLOCK_SIZE, num_warps = calculate_settings(D)
     _swiglu_backward_kernel[(M,)](
         dy, x, dy.stride(0),
-        D=D, BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps,
-    )
+        D=D, BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps, launch_pdl=LAUNCH_PDL)
     return x.view(ori_shape[:-1] + (D*2, ))
 
 
