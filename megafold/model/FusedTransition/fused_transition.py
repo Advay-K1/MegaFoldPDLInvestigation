@@ -31,14 +31,14 @@ import torch.nn as nn
 import triton 
 import triton.language as tl
 
-from megafold.model.pdl import LAUNCH_PDL, pdl_prologue
+from megafold.model.pdl import LAUNCH_PDL, LAUNCH_PDL_ROWWISE, pdl_prologue, pdl_prologue_rowwise
 from liger_kernel.ops.utils import calculate_settings, ensure_contiguous
 from liger_kernel.utils import infer_device
 from megafold.model.FusedLayernormLinear.fused_layernorm_linear import LayernormLinear
 
 @triton.jit
 def _swiglu_forward_kernel(x_ptr, y_ptr, stride_y, D: tl.constexpr, BLOCK_SIZE: tl.constexpr):
-    pdl_prologue()  # PDL: wait for producer grid before any global memory access
+    pdl_prologue_rowwise()  # PDL: wait for producer grid before any global memory access
     row_idx = tl.program_id(axis=0).to(tl.int64)
 
     a_ptr = x_ptr + row_idx * stride_y * 2  # left half of x
@@ -56,13 +56,15 @@ def _swiglu_forward_kernel(x_ptr, y_ptr, stride_y, D: tl.constexpr, BLOCK_SIZE: 
 
 
 @triton.jit
-def _swiglu_backward_kernel(dy_ptr, x_ptr, stride, D: tl.constexpr, BLOCK_SIZE: tl.constexpr):
-    pdl_prologue()  # PDL: wait for producer grid before any global memory access
+def _swiglu_backward_kernel(dy_ptr, x_ptr, dx_ptr, stride, D: tl.constexpr, BLOCK_SIZE: tl.constexpr):
+    pdl_prologue_rowwise()  # PDL: wait for producer grid before any global memory access
     row_idx = tl.program_id(axis=0).to(tl.int64)
 
     dy_ptr += row_idx * stride
     a_ptr = x_ptr + row_idx * stride * 2 
     b_ptr = x_ptr + row_idx * stride * 2 + stride
+    da_ptr = dx_ptr + row_idx * stride * 2
+    db_ptr = dx_ptr + row_idx * stride * 2 + stride
 
     col_offsets = tl.arange(0, BLOCK_SIZE)
     mask = col_offsets < D
@@ -76,10 +78,11 @@ def _swiglu_backward_kernel(dy_ptr, x_ptr, stride, D: tl.constexpr, BLOCK_SIZE: 
     da_row = dy_row * silu_b # db = dy * silu(a) # [(BLOCK_SIZE, )]
     db_row = dy_row * (silu_b * (1 - sig_b) + sig_b) * a_row # [(BLOCK_SIZE, )]
 
-    # Store da and db back into input tensor as buffer -> do not create new tensors
-    # NOTE: triton cannot concat 2 tiles [da_row, db_row] and use only 1 store  -- tl.cat
-    tl.store(a_ptr + col_offsets, da_row, mask=mask)
-    tl.store(b_ptr + col_offsets, db_row, mask=mask)
+    # Store da and db into a separate dx buffer (same bytes moved as the original in-place store).
+    # Writing into the saved forward input is illegal under torch.compile/aot-autograd, which forbids
+    # in-place mutation of a view produced by another custom autograd.Function.
+    tl.store(da_ptr + col_offsets, da_row, mask=mask)
+    tl.store(db_ptr + col_offsets, db_row, mask=mask)
     
 
 def swiglu_forward(x):
@@ -100,7 +103,7 @@ def swiglu_forward(x):
     BLOCK_SIZE, num_warps = calculate_settings(dim_out)
     _swiglu_forward_kernel[(M,)](
         x, y, y.stride(0),
-        D=D, BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps, launch_pdl=LAUNCH_PDL)
+        D=D, BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps, launch_pdl=LAUNCH_PDL_ROWWISE)
     return x, y.view(ori_shape[:-1] + (dim_out, ))
 
 
@@ -115,10 +118,11 @@ def swiglu_backward(x, dy):
     M = dy.shape[0]
 
     BLOCK_SIZE, num_warps = calculate_settings(D)
+    dx = torch.empty_like(x)
     _swiglu_backward_kernel[(M,)](
-        dy, x, dy.stride(0),
-        D=D, BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps, launch_pdl=LAUNCH_PDL)
-    return x.view(ori_shape[:-1] + (D*2, ))
+        dy, x, dx, dy.stride(0),
+        D=D, BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps, launch_pdl=LAUNCH_PDL_ROWWISE)
+    return dx.view(ori_shape[:-1] + (D*2, ))
 
 
 class FusedSwiGLUFunction(torch.autograd.Function):

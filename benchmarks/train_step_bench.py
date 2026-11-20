@@ -44,6 +44,7 @@ parser.add_argument("--confidence-head", action="store_true",
 parser.add_argument("--seed", type=int, default=42)
 parser.add_argument("--nvtx-step", type=int, default=-1,
                     help="if >=0, wrap this step index in cudaProfilerStart/Stop (for nsys --capture-range)")
+parser.add_argument("--inductor-pdl", type=int, default=1, help="with --mode pdl: also enable Inductor PDL codegen")
 parser.add_argument("--out", required=True)
 args = parser.parse_args()
 
@@ -55,12 +56,34 @@ import torch  # noqa: E402
 import torch.distributed as dist  # noqa: E402
 
 torch.set_float32_matmul_precision("high")  # same as train.py
-torch._dynamo.config.cache_size_limit = 64
+torch._dynamo.config.cache_size_limit = 256
+torch._dynamo.config.accumulated_cache_size_limit = 4096
 
-if want_pdl:
+if want_pdl and args.inductor_pdl:
     import torch._inductor.config as inductor_config
 
     inductor_config.triton.enable_pdl = True
+
+    # Bug fix for torch 2.10's experimental Inductor PDL codegen: `_handle_pdl_after_load` calls
+    # `cse.generate(...)` without `shape=`, so any kernel with a load crashes with
+    # "AssertionError: TritonCSEVariable must have shape". The generated value is the scalar `0`,
+    # so its shape is (). Otherwise identical to torch/_inductor/codegen/triton.py.
+    from torch._inductor.codegen import triton as _inductor_triton
+    from torch._inductor.utils import DelayMaybeLine
+
+    def _handle_pdl_after_load(self, launch_buffer, result_var):
+        GDC_LAUNCH = "tl.extra.cuda.gdc_launch_dependents()"
+        if self.inside_reduction:
+            launch_buffer = self.post_loop_combine
+        if _inductor_triton.enable_pdl_codegen():
+            current_load_index = self._load_index
+            launch_if_last_load = DelayMaybeLine(
+                lambda: current_load_index == self._load_index,
+                f"0; {GDC_LAUNCH} # gdc launch for {result_var}",
+            )
+            self.cse.generate(launch_buffer, launch_if_last_load, dtype=torch.int32, shape=())
+
+    _inductor_triton.TritonKernel._handle_pdl_after_load = _handle_pdl_after_load
 
 os.environ.setdefault("MASTER_ADDR", "localhost")
 os.environ.setdefault("MASTER_PORT", str(29500 + random.randint(0, 1000)))
@@ -70,6 +93,8 @@ torch.cuda.set_device(0)
 from megafold.configs import MegaFoldConfig  # noqa: E402
 from megafold.distributed.parallel_info import setup_2d_parallel_groups  # noqa: E402
 from megafold.inputs import (  # noqa: E402
+    CONSTRAINT_DIMS,
+    CONSTRAINTS_MASK_VALUE,
     DEFAULT_NUM_MOLECULE_MODS,
     IS_MOLECULE_TYPES,
     AtomInput,
@@ -124,9 +149,12 @@ def make_example(n: int, msa_depth: int, num_templates: int, dim_atom_inputs: in
         atom_pos=torch.randn(m, 3, generator=g) * 10.0,
         molecule_atom_indices=center,
         distogram_atom_indices=center,
-        distance_labels=torch.randint(0, 64, (n, n), generator=g),
         resolved_labels=torch.ones(m, dtype=torch.long),
         chains=torch.tensor([0, -1]),
+        atom_ids=torch.randint(0, 47, (m,), generator=g),          # config: num_atom_embeds=47
+        atompair_ids=torch.randint(0, 11, (m, m), generator=g),    # config: num_atompair_embeds=11
+        # constraints [pocket, contact, docking] -> 1+1+4 dims, all 'no constraint' (mask value)
+        token_constraints=torch.full((n, n, sum(CONSTRAINT_DIMS.values())), CONSTRAINTS_MASK_VALUE),
     )
 
 
@@ -144,7 +172,10 @@ batch_kwargs = {k: (v.cuda() if torch.is_tensor(v) else v) for k, v in batch.dic
 num_atoms = int(batch_kwargs["molecule_atom_lens"].sum())
 
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
-compiled = torch.compile(model)
+# dynamic=False: with the default automatic-dynamic shapes, Dynamo 2.10 crashes while tracing MegaFold's
+# user-defined Triton launches once a dim turns symbolic ("SymNodeVariable has no attribute value").
+# The benchmark input is fixed, so static graphs are the natural setting anyway.
+compiled = torch.compile(model, dynamic=False)
 
 
 def train_step(step: int):
@@ -184,7 +215,8 @@ timed = step_times[args.warmup:]
 result = dict(
     mode=args.mode,
     pdl_enabled=megafold_pdl.PDL_ENABLED,
-    inductor_enable_pdl=bool(want_pdl),
+    inductor_enable_pdl=bool(want_pdl and args.inductor_pdl),
+    megafold_pdl=megafold_pdl.describe(),
     torch_compile_debug=os.environ.get("TORCH_COMPILE_DEBUG", "0"),
     seq_len=args.seq_len,
     num_atoms=num_atoms,
@@ -208,6 +240,9 @@ result = dict(
     cuda=torch.version.cuda,
     triton=__import__("triton").__version__,
     host=os.uname().nodename,
+    source_tree=str(ROOT),
+    git_commit=__import__('subprocess').run(['git', '-C', str(ROOT), 'rev-parse', '--short', 'HEAD'],
+                                            capture_output=True, text=True).stdout.strip(),
     slurm_job=os.environ.get("SLURM_JOB_ID"),
 )
 Path(args.out).parent.mkdir(parents=True, exist_ok=True)

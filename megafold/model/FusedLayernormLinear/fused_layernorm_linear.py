@@ -32,7 +32,7 @@ from torch.nn import functional as F, init
 import triton
 import triton.language as tl
 
-from megafold.model.pdl import LAUNCH_PDL, pdl_prologue
+from megafold.model.pdl import LAUNCH_PDL, LAUNCH_PDL_ROWWISE, pdl_prologue, pdl_prologue_rowwise
 from liger_kernel.ops.utils import calculate_settings
 from liger_kernel.utils import infer_device
 from liger_kernel.ops.utils import ensure_contiguous
@@ -149,7 +149,7 @@ def _first_forward_kernel(
     """
     First kernel just calculates the mean and variance along the whole row and store back 
     """
-    pdl_prologue()  # PDL: wait for producer grid before any global memory access
+    pdl_prologue_rowwise()  # PDL: wait for producer grid before any global memory access
     row_idx = tl.program_id(0).to(tl.int64)
     col_offsets = tl.arange(0, BLOCK_SIZE)
     mask = col_offsets < K
@@ -349,7 +349,7 @@ def _second_backward_kernel(
     """ 
     Calculate dX by wdy, x_hat, c1, c2
     """
-    pdl_prologue()  # PDL: wait for producer grid before any global memory access
+    pdl_prologue_rowwise()  # PDL: wait for producer grid before any global memory access
     # on each row: load current wdy in dX, load c1 and c2, perhaps recompute x_hat again 
     # then perform: real_dX = wdy - c1 * x_hat - c2
     row = tl.program_id(0).to(tl.int64)
@@ -398,7 +398,7 @@ def layernorm_linear_forward(a, b, linear_bias, WEIGHT, BIAS, has_layernorm_bias
     _first_forward_kernel[(M, )](
         a, a.stride(0), Mean, Mean.stride(0), RSTD, RSTD.stride(0),
         K, 1e-5,
-        BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps, launch_pdl=LAUNCH_PDL)
+        BLOCK_SIZE=BLOCK_SIZE, num_warps=num_warps, launch_pdl=LAUNCH_PDL_ROWWISE)
 
     # Second kernel: calculate matmul. Normalize each input block loaded  
     grid = lambda META: (triton.cdiv(M, META['BLOCK_SIZE_M']) * triton.cdiv(N, META['BLOCK_SIZE_N']), )
@@ -485,7 +485,7 @@ def layernorm_linear_backward(dOUT, X, B, Mean, RSTD, WEIGHT, BIAS, has_layernor
         M, K, N,
         X.stride(0), Mean.stride(0),
         BLOCK_SIZE=BLOCK_SIZE,
-        num_warps=num_warps, launch_pdl=LAUNCH_PDL)
+        num_warps=num_warps, launch_pdl=LAUNCH_PDL_ROWWISE)
     
     # cannot fuse in, so best to separate it out 
     dLinearBias = None 

@@ -48,15 +48,53 @@ PDL_ENABLED: bool = _pdl_requested() and _pdl_supported()
 if _pdl_requested() and not PDL_ENABLED:
     print("[megafold.pdl] MEGAFOLD_PDL=1 but device is not CUDA sm_90+; PDL disabled.")
 
-# Python-side launch flag, passed as `launch_pdl=` to `kernel[grid](...)`.
-LAUNCH_PDL: bool = PDL_ENABLED
-# Device-side flag, a global constexpr readable from inside @triton.jit functions.
+# --- knobs (only read when MEGAFOLD_PDL=1) -------------------------------------------------------
+# MEGAFOLD_PDL_KERNELS = all | tiled
+#   all   : every MegaFold Triton kernel uses PDL.
+#   tiled : only the tiled kernels (EvoFlash-3D attention x4, LayernormLinear matmul fwd/bwd) use PDL;
+#           the row-wise kernels launched with one tiny CTA per row (LN statistics, LN dX, SwiGLU fwd/bwd,
+#           grid = (M,) with M = n*n ~ 1.5e5) do not. Those pay the per-CTA griddepcontrol.wait cost
+#           on ~1.5e5 CTAs each, which measured far larger than the launch latency PDL hides.
+# MEGAFOLD_PDL_LAUNCH = 1 | 0     0 = compile the gdc_* instructions but launch normally (diagnostic:
+#                                 isolates the codegen cost from the scheduling effect).
+# MEGAFOLD_PDL_TRIGGER = early | implicit
+#   early    : gdc_launch_dependents() right after gdc_wait() (successor may be scheduled ASAP);
+#   implicit : no explicit trigger; successor is released as each CTA exits (CUDA default).
+PDL_KERNELS = os.environ.get("MEGAFOLD_PDL_KERNELS", "all")
+PDL_TRIGGER = os.environ.get("MEGAFOLD_PDL_TRIGGER", "early")
+_LAUNCH = os.environ.get("MEGAFOLD_PDL_LAUNCH", "1") == "1"
+assert PDL_KERNELS in ("all", "tiled"), PDL_KERNELS
+assert PDL_TRIGGER in ("early", "implicit"), PDL_TRIGGER
+
+_rowwise_on = PDL_ENABLED and PDL_KERNELS == "all"
+
+# Python-side launch flags, passed as `launch_pdl=` to `kernel[grid](...)`.
+LAUNCH_PDL: bool = PDL_ENABLED and _LAUNCH
+LAUNCH_PDL_ROWWISE: bool = _rowwise_on and _LAUNCH
+# Device-side flags: global constexprs readable from inside @triton.jit functions.
 USE_PDL = tl.constexpr(PDL_ENABLED)
+USE_PDL_ROWWISE = tl.constexpr(_rowwise_on)
+EARLY_TRIGGER = tl.constexpr(PDL_TRIGGER == "early")
+
+
+def describe() -> dict:
+    return dict(enabled=PDL_ENABLED, kernels=PDL_KERNELS if PDL_ENABLED else None,
+                launch=_LAUNCH if PDL_ENABLED else None, trigger=PDL_TRIGGER if PDL_ENABLED else None)
 
 
 @triton.jit
 def pdl_prologue():
-    """Wait for the predecessor grid, then let the successor grid get scheduled."""
+    """Tiled kernels: wait for the predecessor grid, then (optionally) release the successor grid."""
     if USE_PDL:
         tl.extra.cuda.gdc_wait()
-        tl.extra.cuda.gdc_launch_dependents()
+        if EARLY_TRIGGER:
+            tl.extra.cuda.gdc_launch_dependents()
+
+
+@triton.jit
+def pdl_prologue_rowwise():
+    """Row-wise (one-CTA-per-row) kernels: same contract, gated separately by MEGAFOLD_PDL_KERNELS."""
+    if USE_PDL_ROWWISE:
+        tl.extra.cuda.gdc_wait()
+        if EARLY_TRIGGER:
+            tl.extra.cuda.gdc_launch_dependents()
