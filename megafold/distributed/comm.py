@@ -91,6 +91,10 @@ def _gather(tensor: Tensor, dim: int = -1) -> Tensor:
 
 
 def scatter(input: Tensor, dim: int = -1) -> Tensor:
+    # With one sequence-parallel rank this is the identity. Returning the input from a custom
+    # autograd.Function makes it a view, which torch.compile rejects once it is modified in place.
+    if get_parallel_info()["sp_size"] == 1:
+        return input
     if torch.is_grad_enabled() and input.requires_grad:
         input = Scatter.apply(input, dim)
     else:
@@ -112,6 +116,10 @@ class Scatter(torch.autograd.Function):
 
 
 def gather(input: Tensor, dim: int = -1) -> Tensor:
+    # With one sequence-parallel rank this is the identity. Returning the input from a custom
+    # autograd.Function makes it a view, which torch.compile rejects once it is modified in place.
+    if get_parallel_info()["sp_size"] == 1:
+        return input
     if torch.is_grad_enabled() and input.requires_grad:
         input = Gather.apply(input, dim)
     else:

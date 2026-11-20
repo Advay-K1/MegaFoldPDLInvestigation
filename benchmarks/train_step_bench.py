@@ -55,7 +55,8 @@ import torch  # noqa: E402
 import torch.distributed as dist  # noqa: E402
 
 torch.set_float32_matmul_precision("high")  # same as train.py
-torch._dynamo.config.cache_size_limit = 64
+torch._dynamo.config.cache_size_limit = 256
+torch._dynamo.config.accumulated_cache_size_limit = 4096
 
 if want_pdl:
     import torch._inductor.config as inductor_config
@@ -70,6 +71,8 @@ torch.cuda.set_device(0)
 from megafold.configs import MegaFoldConfig  # noqa: E402
 from megafold.distributed.parallel_info import setup_2d_parallel_groups  # noqa: E402
 from megafold.inputs import (  # noqa: E402
+    CONSTRAINT_DIMS,
+    CONSTRAINTS_MASK_VALUE,
     DEFAULT_NUM_MOLECULE_MODS,
     IS_MOLECULE_TYPES,
     AtomInput,
@@ -124,9 +127,12 @@ def make_example(n: int, msa_depth: int, num_templates: int, dim_atom_inputs: in
         atom_pos=torch.randn(m, 3, generator=g) * 10.0,
         molecule_atom_indices=center,
         distogram_atom_indices=center,
-        distance_labels=torch.randint(0, 64, (n, n), generator=g),
         resolved_labels=torch.ones(m, dtype=torch.long),
         chains=torch.tensor([0, -1]),
+        atom_ids=torch.randint(0, 47, (m,), generator=g),          # config: num_atom_embeds=47
+        atompair_ids=torch.randint(0, 11, (m, m), generator=g),    # config: num_atompair_embeds=11
+        # constraints [pocket, contact, docking] -> 1+1+4 dims, all 'no constraint' (mask value)
+        token_constraints=torch.full((n, n, sum(CONSTRAINT_DIMS.values())), CONSTRAINTS_MASK_VALUE),
     )
 
 
@@ -144,7 +150,10 @@ batch_kwargs = {k: (v.cuda() if torch.is_tensor(v) else v) for k, v in batch.dic
 num_atoms = int(batch_kwargs["molecule_atom_lens"].sum())
 
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
-compiled = torch.compile(model)
+# dynamic=False: with the default automatic-dynamic shapes, Dynamo 2.10 crashes while tracing MegaFold's
+# user-defined Triton launches once a dim turns symbolic ("SymNodeVariable has no attribute value").
+# The benchmark input is fixed, so static graphs are the natural setting anyway.
+compiled = torch.compile(model, dynamic=False)
 
 
 def train_step(step: int):
@@ -208,6 +217,9 @@ result = dict(
     cuda=torch.version.cuda,
     triton=__import__("triton").__version__,
     host=os.uname().nodename,
+    source_tree=str(ROOT),
+    git_commit=__import__('subprocess').run(['git', '-C', str(ROOT), 'rev-parse', '--short', 'HEAD'],
+                                            capture_output=True, text=True).stdout.strip(),
     slurm_job=os.environ.get("SLURM_JOB_ID"),
 )
 Path(args.out).parent.mkdir(parents=True, exist_ok=True)
