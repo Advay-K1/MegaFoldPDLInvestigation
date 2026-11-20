@@ -229,5 +229,6 @@ srun --jobid=<id> --overlap -n1 bash scripts/run_investigation.sh   # kernel-lev
 srun --jobid=<id> --overlap -n1 bash scripts/run_e2e_final.sh       # interleaved e2e + nsys
 python benchmarks/make_report.py; python benchmarks/plot_profiles.py name=<trace.csv> ...
 ```
-Baseline runs use a checkout with the original kernels (`BASE_TREE`, commit `0c97c88` of this history);
-PDL runs use this tree with `MEGAFOLD_PDL=1`.
+Baseline runs use a checkout of the **`baseline` branch** of this repository (original MegaFold kernels plus
+the two compile fixes; measured at commit `0c97c88`, harness additions in `a890b55`), passed as `BASE_TREE`.
+PDL runs use the `main` branch with `MEGAFOLD_PDL=1` (Report 1 measurements: commit `bc7e216`).
