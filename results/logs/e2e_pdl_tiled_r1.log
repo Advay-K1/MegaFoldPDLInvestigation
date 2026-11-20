@@ -1,0 +1,92 @@
+name, driver_version, memory.total [MiB], clocks.max.sm [MHz]
+NVIDIA GH200 120GB, 595.71.05, 97871 MiB, 1980 MHz
+[2026-11-19 20:52:21,832] [INFO] [real_accelerator.py:239:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+df: /tmp/triton_cache_pdl_3638598_1052306_1795143135: No such file or directory
+Type checking is disabled.
+Debugging is disabled.
+Loading CCD component SMILES strings from data/ccd_data/components_smiles.json.
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+  accum.append(directions[dim_slice])
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:357.)
+  accum.append(directions[dim_slice])
+[rank0]:W1119 20:52:35.287000 1052328 site-packages/torch/_inductor/debug.py:518] [0/0_1] model__0_inference_0 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__0_inference_0.0
+[rank0]:W1119 20:52:38.028000 1052328 site-packages/torch/_inductor/debug.py:518] [2/0_1] model__1_forward_2 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__1_forward_2.1
+[rank0]:W1119 20:52:39.804000 1052328 site-packages/torch/_inductor/debug.py:518] [5/0_1] model__2_forward_5 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__2_forward_5.2
+[rank0]:W1119 20:52:40.171000 1052328 site-packages/torch/_inductor/debug.py:518] [8/0_1] model__3_inference_7 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__3_inference_7.3
+[rank0]:W1119 20:52:40.709000 1052328 site-packages/torch/_inductor/debug.py:518] [10/0_1] model__4_inference_8 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__4_inference_8.4
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] Traceback (most recent call last):
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 979, in identify_mutated_tensors
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     mutations = analyze_kernel_mutations(
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 791, in __call__
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     self.cache[key] = self.fn(functions, fn_name, *args)
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 915, in analyze_kernel_mutations
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     mutations = analyze_kernel_mutations(
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 791, in __call__
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     self.cache[key] = self.fn(functions, fn_name, *args)
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 896, in analyze_kernel_mutations
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     raise RuntimeError(
+[rank0]:W1119 20:52:40.841000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] RuntimeError: ttir analysis hit an op we do not know how to analyze: tt.elementwise_inline_asm
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] Traceback (most recent call last):
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 979, in identify_mutated_tensors
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     mutations = analyze_kernel_mutations(
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 791, in __call__
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     self.cache[key] = self.fn(functions, fn_name, *args)
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 915, in analyze_kernel_mutations
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     mutations = analyze_kernel_mutations(
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 791, in __call__
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     self.cache[key] = self.fn(functions, fn_name, *args)
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 896, in analyze_kernel_mutations
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     raise RuntimeError(
+[rank0]:W1119 20:52:40.886000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] RuntimeError: ttir analysis hit an op we do not know how to analyze: tt.elementwise_inline_asm
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] Traceback (most recent call last):
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 979, in identify_mutated_tensors
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     mutations = analyze_kernel_mutations(
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 791, in __call__
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     self.cache[key] = self.fn(functions, fn_name, *args)
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 915, in analyze_kernel_mutations
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     mutations = analyze_kernel_mutations(
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 791, in __call__
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     self.cache[key] = self.fn(functions, fn_name, *args)
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 896, in analyze_kernel_mutations
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     raise RuntimeError(
+[rank0]:W1119 20:52:41.010000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] RuntimeError: ttir analysis hit an op we do not know how to analyze: tt.elementwise_inline_asm
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] Traceback (most recent call last):
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 979, in identify_mutated_tensors
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     mutations = analyze_kernel_mutations(
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 791, in __call__
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     self.cache[key] = self.fn(functions, fn_name, *args)
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 915, in analyze_kernel_mutations
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     mutations = analyze_kernel_mutations(
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 791, in __call__
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     self.cache[key] = self.fn(functions, fn_name, *args)
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 896, in analyze_kernel_mutations
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0]     raise RuntimeError(
+[rank0]:W1119 20:52:41.052000 1052328 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [11/0] RuntimeError: ttir analysis hit an op we do not know how to analyze: tt.elementwise_inline_asm
+[rank0]:W1119 20:52:41.078000 1052328 site-packages/torch/_inductor/debug.py:518] [11/0] model__5_inference_9 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__5_inference_9.5
+[rank0]:W1119 20:52:41.212000 1052328 site-packages/torch/_inductor/debug.py:518] [13/0] model__6_inference_10 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__6_inference_10.6
+[rank0]:W1119 20:52:41.492000 1052328 site-packages/torch/_inductor/debug.py:518] [14/0_1] model__7_forward_12 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__7_forward_12.7
+[rank0]:W1119 20:52:42.195000 1052328 site-packages/torch/_inductor/debug.py:518] [15/0_1] model__8_forward_15 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__8_forward_15.8
+[rank0]:W1119 20:52:44.957000 1052328 site-packages/torch/_inductor/debug.py:518] [17/0] model__9_forward_18 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__9_forward_18.9
+[rank0]:W1119 20:52:45.463000 1052328 site-packages/torch/_inductor/debug.py:518] [19/0] model__10_forward_21 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__10_forward_21.10
+[rank0]:W1119 20:52:46.807000 1052328 site-packages/torch/_inductor/debug.py:518] [5/1] model__11_forward_24 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__11_forward_24.11
+[rank0]:W1119 20:52:47.879000 1052328 site-packages/torch/_inductor/debug.py:518] [5/2_1] model__12_forward_27 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/e2e_pdl_tiled_r1/torch_compile_debug/run_2026_11_19_20_52_31_224633-pid_1052328/torchinductor/model__12_forward_27.12

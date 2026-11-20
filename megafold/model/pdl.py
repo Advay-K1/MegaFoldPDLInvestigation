@@ -98,3 +98,42 @@ def pdl_prologue_rowwise():
         tl.extra.cuda.gdc_wait()
         if EARLY_TRIGGER:
             tl.extra.cuda.gdc_launch_dependents()
+
+
+def _patch_inductor_mutation_analysis() -> None:
+    """Keep torch.compile correct for PDL-instrumented user Triton kernels.
+
+    Under torch.compile, Dynamo traces MegaFold's Triton launches into the graph and Inductor
+    statically analyses each kernel's TTIR to find which pointer arguments it writes
+    (`torch._higher_order_ops.triton_kernel_wrap.analyze_kernel_mutations`). Any non-pure
+    `tt.elementwise_inline_asm` makes that analysis bail out ("assuming every input is mutated").
+    `gdc_wait` / `gdc_launch_dependents` are exactly such ops (non-pure on purpose, so they are not
+    reordered or eliminated). On this model the bail-out path produced uninitialised outputs (NaN
+    loss), even with PDL launches disabled.
+
+    An inline-asm op with *no operands* receives no pointer, so it cannot mutate any kernel
+    parameter: drop exactly those ops before the analysis. Inline asm that takes operands still
+    triggers the conservative bail-out.
+    """
+    try:
+        from torch._higher_order_ops import triton_kernel_wrap as tkw
+    except ImportError:  # pragma: no cover
+        return
+    # Hook the TTIR -> op-list parse (called once per analysis) rather than
+    # `analyze_kernel_mutations`, which is a memoizing object with a `.reset()` the caller relies on.
+    if getattr(tkw.ttir_to_functions, "_megafold_pdl_patched", False):
+        return
+    orig = tkw.ttir_to_functions
+
+    def ttir_to_functions(ttir_module):
+        functions = orig(ttir_module)
+        for body in functions.values():
+            for key, ops in body.items():
+                body[key] = [op for op in ops if not (op.name == "tt.elementwise_inline_asm" and len(op.args) == 0)]
+        return functions
+
+    ttir_to_functions._megafold_pdl_patched = True
+    tkw.ttir_to_functions = ttir_to_functions
+
+if PDL_ENABLED:
+    _patch_inductor_mutation_analysis()

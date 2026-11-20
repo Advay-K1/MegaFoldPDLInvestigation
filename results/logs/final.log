@@ -1,0 +1,12 @@
+rep 1 baseline exit=0
+rep 1 pdl_all exit=0
+rep 1 pdl_implicit exit=0
+rep 1 pdl_tiled exit=0
+rep 2 baseline exit=0
+rep 2 pdl_all exit=0
+rep 2 pdl_implicit exit=0
+rep 2 pdl_tiled exit=0
+##### e2e done
+nsys pdl_all exit=0
+nsys pdl_implicit exit=0
+##### all done

@@ -1,0 +1,149 @@
+[2026-11-19 18:59:51,739] [INFO] [real_accelerator.py:239:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+df: /tmp/triton_cache_nsys_pdl_3637683_2440429_1795136384: No such file or directory
+Type checking is disabled.
+Debugging is disabled.
+Loading CCD component SMILES strings from data/ccd_data/components_smiles.json.
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+  accum.append(directions[dim_slice])
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:357.)
+  accum.append(directions[dim_slice])
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1] Error in codegen for ComputedBuffer(name='buf0', layout=FixedLayout('cuda:0', torch.int64, size=[1, 384], stride=[384, 1]), data=Pointwise(
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   'cuda',
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   torch.int64,
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   def inner_fn(index):
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]       _, i1 = index
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]       tmp0 = ops.load(arg0_1, i1)
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]       tmp1 = ops.constant(0, torch.int64)
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]       tmp2 = tmp0 >= tmp1
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]       tmp3 = ops.logical_not(tmp2)
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]       tmp4 = ops.constant(0, torch.int64)
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]       tmp5 = ops.load(arg0_1, i1)
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]       tmp6 = ops.where(tmp3, tmp4, tmp5)
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]       return tmp6
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   ,
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   ranges=[1, 384],
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   origin_node=where,
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   origins=OrderedSet([where, bitwise_not, ge, full_default]),
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   stack_traces = {,
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]     File "/u/akadam2/MegaFold-pdl/megafold/model/megafold.py", line 9490, in forward,
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]       molecule_atom_lens = molecule_atom_lens.masked_fill(~valid_atom_len_mask, 0),
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   ,
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   },
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   stack_traces = {,
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]     File "/u/akadam2/MegaFold-pdl/megafold/model/megafold.py", line 9488, in forward,
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]       valid_molecule_atom_mask = valid_atom_len_mask = molecule_atom_lens >= 0,
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   ,
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1]   }
+[rank0]:C1119 19:00:07.051000 2440583 site-packages/torch/_inductor/scheduler.py:1712] [0/0_1] ), _split_size=None, _original_inner_fn=None, _original_ranges=None, _original_reduction_ranges=None)
+[rank0]:W1119 19:00:07.052000 2440583 site-packages/torch/_inductor/debug.py:518] [0/0_1] model__0_inference_0 debug trace: /tmp/compile_debug_nsys_pdl_3637683_2440429_1795136384/torch_compile_debug/run_2026_11_19_19_00_03_349970-pid_2440583/torchinductor/model__0_inference_0.0
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/u/akadam2/MegaFold-pdl/benchmarks/train_step_bench.py", line 181, in <module>
+[rank0]:     loss = train_step(step)
+[rank0]:            ^^^^^^^^^^^^^^^^
+[rank0]:   File "/u/akadam2/MegaFold-pdl/benchmarks/train_step_bench.py", line 160, in train_step
+[rank0]:     loss, breakdown = compiled(
+[rank0]:                       ^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 465, in __call__
+[rank0]:     return super().__call__(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 967, in compile_wrapper
+[rank0]:     raise e.remove_dynamo_frames() from None  # see TORCHDYNAMO_VERBOSE=1
+[rank0]:     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/compile_fx.py", line 1019, in _compile_fx_inner
+[rank0]:     raise InductorError(e, currentframe()).with_traceback(
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/compile_fx.py", line 1003, in _compile_fx_inner
+[rank0]:     mb_compiled_graph = fx_codegen_and_compile(
+[rank0]:                         ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/compile_fx.py", line 1766, in fx_codegen_and_compile
+[rank0]:     return scheme.codegen_and_compile(gm, example_inputs, inputs_to_check, graph_kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/compile_fx.py", line 1537, in codegen_and_compile
+[rank0]:     compiled_module = graph.compile_to_module()
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/graph.py", line 2416, in compile_to_module
+[rank0]:     return self._compile_to_module()
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/graph.py", line 2422, in _compile_to_module
+[rank0]:     self.codegen_with_cpp_wrapper() if self.cpp_wrapper else self.codegen()
+[rank0]:                                                              ^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/graph.py", line 2358, in codegen
+[rank0]:     self.scheduler.codegen()
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/scheduler.py", line 6019, in codegen
+[rank0]:     self._codegen_partitions()
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/scheduler.py", line 6161, in _codegen_partitions
+[rank0]:     self._codegen(partition)
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/scheduler.py", line 6266, in _codegen
+[rank0]:     self.get_backend(device).codegen_node(node)
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/cuda_combined_scheduling.py", line 130, in codegen_node
+[rank0]:     return self._triton_scheduling.codegen_node(node)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/simd.py", line 1822, in codegen_node
+[rank0]:     return self._codegen_nodes(nodes, coalesce_analysis)  # type: ignore[arg-type]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/simd.py", line 1795, in _codegen_nodes
+[rank0]:     return self.codegen_node_schedule(
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/simd.py", line 1881, in codegen_node_schedule
+[rank0]:     self.codegen_node_schedule_with_kernel(node_schedule, kernel)
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/simd.py", line 1988, in codegen_node_schedule_with_kernel
+[rank0]:     node.codegen(index_vars)
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/scheduler.py", line 1710, in codegen
+[rank0]:     self._body(*index_vars)
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/loop_body.py", line 484, in __call__
+[rank0]:     result = self.root_block()
+[rank0]:              ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/loop_body.py", line 581, in __call__
+[rank0]:     return InterpreterShim(graph, submodules).run(V.get_ops_handler())
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/loop_body.py", line 61, in run
+[rank0]:     return super().run(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/fx/interpreter.py", line 200, in run
+[rank0]:     self.env[node] = self.run_node(node)
+[rank0]:                      ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/loop_body.py", line 57, in run_node
+[rank0]:     return super().run_node(n)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/fx/interpreter.py", line 295, in run_node
+[rank0]:     return getattr(self, n.op)(n.target, args, kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/fx/interpreter.py", line 399, in call_method
+[rank0]:     return getattr(self_obj, target)(*args_tail, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/sizevars.py", line 1193, in load
+[rank0]:     return self._inner.load(name, self._simplify(index))
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/common.py", line 2771, in load
+[rank0]:     out = self.kernel.load(name, index)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/triton.py", line 3490, in load
+[rank0]:     self._handle_pdl_after_load(load_buffer, result_var)
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/triton.py", line 3326, in _handle_pdl_after_load
+[rank0]:     self.cse.generate(launch_buffer, launch_if_last_load, dtype=torch.int32)
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/common.py", line 1993, in generate
+[rank0]:     var = self.newvar(bounds, dtype, shape)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/common.py", line 2042, in newvar
+[rank0]:     var = V.kernel.create_cse_var(var_name, bounds, dtype, shape)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/triton.py", line 5594, in create_cse_var
+[rank0]:     return TritonCSEVariable(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/codegen/triton.py", line 1012, in __init__
+[rank0]:     assert shape is not None, "TritonCSEVariable must have shape"
+[rank0]:            ^^^^^^^^^^^^^^^^^
+[rank0]: torch._inductor.exc.InductorError: AssertionError: TritonCSEVariable must have shape
+
+[rank0]: Set TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"
+
+[rank0]:[W1119 19:00:10.024246717 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+Processing events...
+Generated:
+	No reports were generated
+srun: error: gh118: task 0: Exited with exit code 1

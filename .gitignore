@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+# large raw artifacts (kept locally; derived JSON summaries are committed)
+results/**/*.pt
+results/**/*.sqlite
+results/**/*_cuda_gpu_trace.csv
+results/compile_debug/
+outputs/
+logs/

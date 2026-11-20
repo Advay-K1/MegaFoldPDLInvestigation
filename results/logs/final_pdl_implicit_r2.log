@@ -1,0 +1,657 @@
+name, driver_version, memory.total [MiB], clocks.max.sm [MHz]
+NVIDIA GH200 120GB, 595.71.05, 97871 MiB, 1980 MHz
+[2026-11-19 21:45:47,381] [INFO] [real_accelerator.py:239:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+df: /tmp/triton_cache_pdl_3638598_1167420_1795146341: No such file or directory
+Type checking is disabled.
+Debugging is disabled.
+Loading CCD component SMILES strings from data/ccd_data/components_smiles.json.
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+  accum.append(directions[dim_slice])
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:357.)
+  accum.append(directions[dim_slice])
+[rank0]:W1119 21:46:01.121000 1167474 site-packages/torch/_inductor/debug.py:518] [0/0_1] model__0_inference_0 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__0_inference_0.0
+[rank0]:W1119 21:46:03.925000 1167474 site-packages/torch/_inductor/debug.py:518] [2/0_1] model__1_forward_2 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__1_forward_2.1
+[rank0]:W1119 21:46:05.727000 1167474 site-packages/torch/_inductor/debug.py:518] [5/0_1] model__2_forward_5 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__2_forward_5.2
+[rank0]:W1119 21:46:06.101000 1167474 site-packages/torch/_inductor/debug.py:518] [8/0_1] model__3_inference_7 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__3_inference_7.3
+[rank0]:W1119 21:46:06.644000 1167474 site-packages/torch/_inductor/debug.py:518] [10/0_1] model__4_inference_8 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__4_inference_8.4
+[rank0]:W1119 21:46:07.464000 1167474 site-packages/torch/_inductor/debug.py:518] [11/0] model__5_inference_9 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__5_inference_9.5
+[rank0]:W1119 21:46:07.599000 1167474 site-packages/torch/_inductor/debug.py:518] [13/0] model__6_inference_10 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__6_inference_10.6
+[rank0]:W1119 21:46:07.883000 1167474 site-packages/torch/_inductor/debug.py:518] [14/0_1] model__7_forward_12 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__7_forward_12.7
+[rank0]:W1119 21:46:08.879000 1167474 site-packages/torch/_inductor/debug.py:518] [15/0_1] model__8_forward_15 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__8_forward_15.8
+[rank0]:W1119 21:46:11.425000 1167474 site-packages/torch/_inductor/debug.py:518] [17/0] model__9_forward_18 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__9_forward_18.9
+[rank0]:W1119 21:46:11.940000 1167474 site-packages/torch/_inductor/debug.py:518] [19/0] model__10_forward_21 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__10_forward_21.10
+[rank0]:W1119 21:46:13.279000 1167474 site-packages/torch/_inductor/debug.py:518] [5/1] model__11_forward_24 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__11_forward_24.11
+[rank0]:W1119 21:46:14.340000 1167474 site-packages/torch/_inductor/debug.py:518] [5/2_1] model__12_forward_27 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__12_forward_27.12
+[rank0]:W1119 21:46:16.585000 1167474 site-packages/torch/_inductor/debug.py:518] [21/0] model__13_forward_30 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__13_forward_30.13
+[rank0]:W1119 21:46:18.145000 1167474 site-packages/torch/_inductor/debug.py:518] [22/0_1] model__14_forward_33 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__14_forward_33.14
+[rank0]:W1119 21:46:18.774000 1167474 site-packages/torch/_inductor/debug.py:518] [24/0] model__15_inference_35 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__15_inference_35.15
+[rank0]:W1119 21:46:18.861000 1167474 site-packages/torch/_inductor/debug.py:518] [25/0] model__16_inference_36 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__16_inference_36.16
+[rank0]:W1119 21:46:20.880000 1167474 site-packages/torch/_inductor/debug.py:518] [26/0] model__17_forward_38 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__17_forward_38.17
+[rank0]:W1119 21:46:21.186000 1167474 site-packages/torch/_inductor/debug.py:518] [27/0] model__18_inference_40 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__18_inference_40.18
+[rank0]:W1119 21:46:21.304000 1167474 site-packages/torch/_inductor/debug.py:518] [28/0] model__19_inference_41 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__19_inference_41.19
+[rank0]:W1119 21:46:21.732000 1167474 site-packages/torch/_inductor/debug.py:518] [13/1] model__20_inference_42 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__20_inference_42.20
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/utils.py:3694: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/utils.py:3694: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 2.7938 GB | max_mem_allocated: 4.0422 GB | cache_allocated: 4.0957 GB | max_cache_allocated: 4.0957 GB
+[rank0]:W1119 21:46:22.122000 1167474 site-packages/torch/_inductor/debug.py:518] [8/1_1] model__21_inference_43 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__21_inference_43.21
+[rank0]:W1119 21:46:22.441000 1167474 site-packages/torch/_inductor/debug.py:518] [10/1_1] model__22_inference_44 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__22_inference_44.22
+[rank0]:W1119 21:46:22.952000 1167474 site-packages/torch/_inductor/debug.py:518] [11/1] model__23_inference_45 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__23_inference_45.23
+[rank0]:W1119 21:46:23.701000 1167474 site-packages/torch/_inductor/debug.py:518] [37/0_1] model__24_forward_47 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__24_forward_47.24
+[rank0]:W1119 21:46:27.183000 1167474 site-packages/torch/_inductor/debug.py:518] [42/0] model__25_forward_50 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__25_forward_50.25
+Time taken template embedder: 5.653930902481079
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 3.2872 GB | max_mem_allocated: 6.2809 GB | cache_allocated: 6.4863 GB | max_cache_allocated: 6.4863 GB
+Memory usage before msamodule:  | mem_allocated: 3.2872 GB | max_mem_allocated: 6.2809 GB | cache_allocated: 6.4863 GB | max_cache_allocated: 6.4863 GB
+[rank0]:W1119 21:46:28.628000 1167474 site-packages/torch/_inductor/debug.py:518] [43/0_1] model__26_forward_53 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__26_forward_53.26
+[rank0]:W1119 21:46:30.823000 1167474 site-packages/torch/_inductor/debug.py:518] [50/0] model__27_forward_56 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__27_forward_56.27
+Time taken msa module: 3.3495259284973145
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 4.2141 GB | max_mem_allocated: 6.2809 GB | cache_allocated: 6.4863 GB | max_cache_allocated: 6.4863 GB
+Memory usage before pairformer:  | mem_allocated: 4.2141 GB | max_mem_allocated: 6.2809 GB | cache_allocated: 6.4863 GB | max_cache_allocated: 6.4863 GB
+[rank0]:W1119 21:46:31.906000 1167474 site-packages/torch/_inductor/debug.py:518] [51/0_1] model__28_forward_59 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__28_forward_59.28
+Time taken pairformer: 3.5457522869110107
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 7.6418 GB | max_mem_allocated: 8.1371 GB | cache_allocated: 8.3828 GB | max_cache_allocated: 8.3828 GB
+[rank0]:W1119 21:46:34.794000 1167474 site-packages/torch/_inductor/debug.py:518] [7/2] model__29_forward_62 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__29_forward_62.29
+[rank0]:W1119 21:46:35.024000 1167474 site-packages/torch/_inductor/debug.py:518] [8/2_1] model__30_inference_64 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__30_inference_64.30
+[rank0]:W1119 21:46:35.285000 1167474 site-packages/torch/_inductor/debug.py:518] [10/2_1] model__31_inference_65 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__31_inference_65.31
+[rank0]:W1119 21:46:35.847000 1167474 site-packages/torch/_inductor/debug.py:518] [11/2] model__32_inference_66 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__32_inference_66.32
+[rank0]:W1119 21:46:36.438000 1167474 site-packages/torch/_inductor/debug.py:518] [58/0_1] model__33_inference_67 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__33_inference_67.33
+[rank0]:W1119 21:46:36.958000 1167474 site-packages/torch/_inductor/debug.py:518] [60/0_1] model__34_inference_68 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__34_inference_68.34
+[rank0]:W1119 21:46:37.490000 1167474 site-packages/torch/_inductor/debug.py:518] [62/0_1] model__35_inference_69 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__35_inference_69.35
+[rank0]:W1119 21:46:37.790000 1167474 site-packages/torch/_inductor/debug.py:518] [63/0] model__36_inference_70 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__36_inference_70.36
+[rank0]:W1119 21:46:38.147000 1167474 site-packages/torch/_inductor/debug.py:518] [64/0_1] model__37_inference_71 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__37_inference_71.37
+[rank0]:W1119 21:46:38.308000 1167474 site-packages/torch/_inductor/debug.py:518] [62/1_1] model__38_inference_72 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__38_inference_72.38
+[rank0]:W1119 21:46:38.466000 1167474 site-packages/torch/_inductor/debug.py:518] [63/1] model__39_inference_73 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__39_inference_73.39
+[rank0]:W1119 21:46:38.855000 1167474 site-packages/torch/_inductor/debug.py:518] [65/0_1] model__40_inference_74 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__40_inference_74.40
+[rank0]:W1119 21:46:39.213000 1167474 site-packages/torch/_inductor/debug.py:518] [66/0] model__41_inference_75 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__41_inference_75.41
+[rank0]:W1119 21:46:39.557000 1167474 site-packages/torch/_inductor/debug.py:518] [67/0_1] model__42_inference_76 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__42_inference_76.42
+[rank0]:W1119 21:46:40.043000 1167474 site-packages/torch/_inductor/debug.py:518] [66/1] model__43_inference_77 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__43_inference_77.43
+[rank0]:W1119 21:46:40.227000 1167474 site-packages/torch/_inductor/debug.py:518] [68/0_1] model__44_inference_78 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__44_inference_78.44
+[rank0]:W1119 21:46:40.799000 1167474 site-packages/torch/_inductor/debug.py:518] [70/0] model__45_forward_80 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__45_forward_80.45
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before diffusion module:  | mem_allocated: 7.4930 GB | max_mem_allocated: 8.1371 GB | cache_allocated: 8.3828 GB | max_cache_allocated: 8.3828 GB
+[rank0]:W1119 21:46:41.650000 1167474 site-packages/torch/_inductor/debug.py:518] [70/1_1] model__46_forward_83 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__46_forward_83.46
+[rank0]:W1119 21:46:42.575000 1167474 site-packages/torch/_inductor/debug.py:518] [71/0_1] model__47_inference_85 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__47_inference_85.47
+[rank0]:W1119 21:46:43.260000 1167474 site-packages/torch/_inductor/debug.py:518] [72/0_1] model__48_inference_86 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__48_inference_86.48
+[rank0]:W1119 21:46:43.395000 1167474 site-packages/torch/_inductor/debug.py:518] [28/1] model__49_inference_87 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__49_inference_87.49
+[rank0]:W1119 21:46:43.492000 1167474 site-packages/torch/_inductor/debug.py:518] [28/2] model__50_inference_88 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__50_inference_88.50
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:2056: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS="+dynamo" for a DEBUG stack trace.
+  torch._dynamo.utils.warn_once(msg)
+[rank0]:W1119 21:46:43.742000 1167474 site-packages/torch/_inductor/debug.py:518] [73/0] model__51_inference_89 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__51_inference_89.51
+[rank0]:W1119 21:46:43.842000 1167474 site-packages/torch/_inductor/debug.py:518] [28/3] model__52_inference_90 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__52_inference_90.52
+[rank0]:W1119 21:46:45.953000 1167474 site-packages/torch/_inductor/debug.py:518] [75/0] model__53_inference_91 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__53_inference_91.53
+[rank0]:W1119 21:46:46.423000 1167474 site-packages/torch/_inductor/debug.py:518] [76/0] model__54_inference_92 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__54_inference_92.54
+[rank0]:W1119 21:46:46.544000 1167474 site-packages/torch/_inductor/debug.py:518] [28/4] model__55_inference_93 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__55_inference_93.55
+[rank0]:W1119 21:46:46.740000 1167474 site-packages/torch/_inductor/debug.py:518] [77/0] model__56_inference_94 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__56_inference_94.56
+[rank0]:W1119 21:46:47.330000 1167474 site-packages/torch/_inductor/debug.py:518] [78/0_1] model__57_inference_95 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__57_inference_95.57
+[rank0]:W1119 21:46:50.498000 1167474 site-packages/torch/_inductor/debug.py:518] [79/0_1] model__58_forward_97 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__58_forward_97.58
+[rank0]:W1119 21:46:50.927000 1167474 site-packages/torch/_inductor/debug.py:518] [8/3_1] model__59_inference_99 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__59_inference_99.59
+[rank0]:W1119 21:46:51.257000 1167474 site-packages/torch/_inductor/debug.py:518] [10/3_1] model__60_inference_100 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__60_inference_100.60
+[rank0]:W1119 21:46:52.153000 1167474 site-packages/torch/_inductor/debug.py:518] [11/3] model__61_inference_101 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__61_inference_101.61
+[rank0]:W1119 21:46:52.449000 1167474 site-packages/torch/_inductor/debug.py:518] [82/0] model__62_forward_103 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__62_forward_103.62
+[rank0]:W1119 21:46:53.230000 1167474 site-packages/torch/_inductor/debug.py:518] [83/0_1] model__63_forward_106 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__63_forward_106.63
+[rank0]:W1119 21:46:53.367000 1167474 site-packages/torch/_inductor/debug.py:518] [62/2_1] model__64_inference_108 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__64_inference_108.64
+[rank0]:W1119 21:46:53.427000 1167474 site-packages/torch/_inductor/debug.py:518] [63/2] model__65_inference_109 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__65_inference_109.65
+[rank0]:W1119 21:46:53.517000 1167474 site-packages/torch/_inductor/debug.py:518] [64/1_1] model__66_inference_110 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__66_inference_110.66
+[rank0]:W1119 21:46:53.575000 1167474 site-packages/torch/_inductor/debug.py:518] [62/3_1] model__67_inference_111 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__67_inference_111.67
+[rank0]:W1119 21:46:53.630000 1167474 site-packages/torch/_inductor/debug.py:518] [63/3] model__68_inference_112 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__68_inference_112.68
+[rank0]:W1119 21:46:53.690000 1167474 site-packages/torch/_inductor/debug.py:518] [65/1_1] model__69_inference_113 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__69_inference_113.69
+[rank0]:W1119 21:46:54.094000 1167474 site-packages/torch/_inductor/debug.py:518] [66/2] model__70_forward_115 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__70_forward_115.70
+[rank0]:W1119 21:46:54.488000 1167474 site-packages/torch/_inductor/debug.py:518] [84/0_1] model__71_forward_118 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__71_forward_118.71
+[rank0]:W1119 21:46:54.685000 1167474 site-packages/torch/_inductor/debug.py:518] [8/4_1] model__72_inference_120 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__72_inference_120.72
+[rank0]:W1119 21:46:54.926000 1167474 site-packages/torch/_inductor/debug.py:518] [10/4_1] model__73_inference_121 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__73_inference_121.73
+[rank0]:W1119 21:46:55.456000 1167474 site-packages/torch/_inductor/debug.py:518] [11/4] model__74_inference_122 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__74_inference_122.74
+[rank0]:W1119 21:46:55.629000 1167474 site-packages/torch/_inductor/debug.py:518] [85/0_1] model__75_inference_123 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__75_inference_123.75
+[rank0]:W1119 21:46:55.879000 1167474 site-packages/torch/_inductor/debug.py:518] [66/3] model__77_inference_124 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__77_inference_124.76
+[rank0]:W1119 21:46:58.038000 1167474 site-packages/torch/_inductor/debug.py:518] [86/0_1] model__78_forward_126 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__78_forward_126.77
+[rank0]:W1119 21:47:00.052000 1167474 site-packages/torch/_inductor/debug.py:518] [90/0_1] model__79_forward_129 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__79_forward_129.78
+[rank0]:W1119 21:47:02.192000 1167474 site-packages/torch/_inductor/debug.py:518] [91/0_1] model__80_forward_132 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__80_forward_132.79
+[rank0]:W1119 21:47:02.608000 1167474 site-packages/torch/_inductor/debug.py:518] [92/0_1] model__81_forward_135 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__81_forward_135.80
+[rank0]:W1119 21:47:03.751000 1167474 site-packages/torch/_inductor/debug.py:518] [93/0] model__82_forward_138 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__82_forward_138.81
+[rank0]:W1119 21:47:04.225000 1167474 site-packages/torch/_inductor/debug.py:518] [94/0] model__83_forward_141 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__83_forward_141.82
+[rank0]:W1119 21:47:06.534000 1167474 site-packages/torch/_inductor/debug.py:518] [78/1_1] model__84_inference_143 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__84_inference_143.83
+[rank0]:W1119 21:47:09.090000 1167474 site-packages/torch/_inductor/debug.py:518] [79/1_1] model__85_forward_145 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__85_forward_145.84
+[rank0]:W1119 21:47:09.853000 1167474 site-packages/torch/_inductor/debug.py:518] [83/1_1] model__86_forward_148 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__86_forward_148.85
+[rank0]:W1119 21:47:10.275000 1167474 site-packages/torch/_inductor/debug.py:518] [66/4] model__87_forward_151 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__87_forward_151.86
+[rank0]:W1119 21:47:11.319000 1167474 site-packages/torch/_inductor/debug.py:518] [84/1_1] model__88_forward_154 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__88_forward_154.87
+[rank0]:W1119 21:47:13.058000 1167474 site-packages/torch/_inductor/debug.py:518] [86/1_1] model__89_forward_157 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__89_forward_157.88
+[rank0]:W1119 21:47:14.886000 1167474 site-packages/torch/_inductor/debug.py:518] [90/1_1] model__90_forward_160 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__90_forward_160.89
+[rank0]:W1119 21:47:15.960000 1167474 site-packages/torch/_inductor/debug.py:518] [91/1_1] model__91_forward_163 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__91_forward_163.90
+[rank0]:W1119 21:47:16.193000 1167474 site-packages/torch/_inductor/debug.py:518] [92/1_1] model__92_forward_166 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__92_forward_166.91
+[rank0]:W1119 21:47:16.957000 1167474 site-packages/torch/_inductor/debug.py:518] [93/1] model__93_forward_169 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__93_forward_169.92
+[rank0]:W1119 21:47:17.344000 1167474 site-packages/torch/_inductor/debug.py:518] [94/1] model__94_forward_172 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__94_forward_172.93
+[rank0]:W1119 21:47:17.485000 1167474 site-packages/torch/_inductor/debug.py:518] [62/4_1] model__95_inference_174 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__95_inference_174.94
+[rank0]:W1119 21:47:17.573000 1167474 site-packages/torch/_inductor/debug.py:518] [63/4] model__96_inference_175 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__96_inference_175.95
+[rank0]:W1119 21:47:17.680000 1167474 site-packages/torch/_inductor/debug.py:518] [64/2_1] model__97_inference_176 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__97_inference_176.96
+[rank0]:W1119 21:47:17.748000 1167474 site-packages/torch/_inductor/debug.py:518] [62/5_1] model__98_inference_177 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__98_inference_177.97
+[rank0]:W1119 21:47:17.814000 1167474 site-packages/torch/_inductor/debug.py:518] [63/5] model__99_inference_178 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__99_inference_178.98
+[rank0]:W1119 21:47:17.882000 1167474 site-packages/torch/_inductor/debug.py:518] [65/3_1] model__100_inference_179 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__100_inference_179.99
+[rank0]:W1119 21:47:18.223000 1167474 site-packages/torch/_inductor/debug.py:518] [66/5] model__101_inference_180 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__101_inference_180.100
+[rank0]:W1119 21:47:19.189000 1167474 site-packages/torch/_inductor/debug.py:518] [97/0] model__102_inference_181 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__102_inference_181.101
+[rank0]:W1119 21:47:20.067000 1167474 site-packages/torch/_inductor/debug.py:518] [98/0] model__103_inference_182 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__103_inference_182.102
+[rank0]:W1119 21:47:20.142000 1167474 site-packages/torch/_inductor/debug.py:518] [99/0] model__104_inference_183 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__104_inference_183.103
+Time taken diffusionmodule: 38.8637216091156
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after diffusion module:  | mem_allocated: 31.8642 GB | max_mem_allocated: 32.0135 GB | cache_allocated: 32.4785 GB | max_cache_allocated: 32.4785 GB
+[rank0]:W1119 21:47:20.306000 1167474 site-packages/torch/_inductor/debug.py:518] [70/2_1] model__105_inference_184 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__105_inference_184.104
+[rank0]:W1119 21:47:20.879000 1167474 site-packages/torch/_inductor/debug.py:518] [100/0_1] model__106_forward_186 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__106_forward_186.105
+[rank0]:W1119 21:47:21.044000 1167474 site-packages/torch/_inductor/debug.py:518] [8/5_1] model__107_inference_188 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__107_inference_188.106
+[rank0]:W1119 21:47:21.312000 1167474 site-packages/torch/_inductor/debug.py:518] [10/5_1] model__108_inference_189 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__108_inference_189.107
+[rank0]:W1119 21:47:21.924000 1167474 site-packages/torch/_inductor/debug.py:518] [11/5] model__109_inference_190 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__109_inference_190.108
+[rank0]:W1119 21:47:23.751000 1167474 site-packages/torch/_inductor/debug.py:518] [101/0_1] model__110_forward_192 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__110_forward_192.109
+[rank0]:W1119 21:47:24.046000 1167474 site-packages/torch/_inductor/debug.py:518] [51/1_1] model__111_forward_195 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__111_forward_195.110
+[rank0]:W1119 21:47:25.595000 1167474 site-packages/torch/_inductor/debug.py:518] [66/6] model__112_forward_198 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__112_forward_198.111
+[rank0]:W1119 21:47:25.965000 1167474 site-packages/torch/_inductor/debug.py:518] [104/0] model__113_forward_201 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__113_forward_201.112
+[rank0]:W1119 21:47:26.114000 1167474 site-packages/torch/_inductor/debug.py:518] [13/2] model__114_inference_203 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__114_inference_203.113
+[rank0]:W1119 21:47:26.240000 1167474 site-packages/torch/_inductor/debug.py:518] [13/3] model__115_inference_204 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__115_inference_204.114
+[rank0]:W1119 21:47:26.365000 1167474 site-packages/torch/_inductor/debug.py:518] [13/4] model__116_inference_205 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__116_inference_205.115
+[rank0]:W1119 21:47:26.708000 1167474 site-packages/torch/_inductor/debug.py:518] [105/0] model__117_forward_207 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__117_forward_207.116
+[rank0]:W1119 21:47:26.791000 1167474 site-packages/torch/_inductor/debug.py:518] [99/1] model__118_inference_209 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__118_inference_209.117
+[rank0]:W1119 21:47:28.327000 1167474 site-packages/torch/_inductor/debug.py:518] [106/0_1] model__119_forward_211 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__119_forward_211.118
+[rank0]:W1119 21:47:28.711000 1167474 site-packages/torch/_inductor/debug.py:518] [27/1] model__120_inference_213 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__120_inference_213.119
+[rank0]:W1119 21:47:28.913000 1167474 site-packages/torch/_inductor/debug.py:518] [66/7] model__121_inference_214 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__121_inference_214.120
+[rank0]:W1119 21:47:29.825000 1167474 site-packages/torch/_inductor/debug.py:518] [108/0] model__122_forward_216 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__122_forward_216.121
+MSAModule forward time over the steps: [3.3495240211486816]
+TemplateEmbedder forward time over the steps: [5.6539294719696045]
+Pairformer forward time over the steps: [3.545750856399536]
+DiffusionModule forward time over the steps: [38.86371946334839]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 32.3858 GB | max_mem_allocated: 34.5540 GB | cache_allocated: 35.4082 GB | max_cache_allocated: 35.4082 GB
+[rank0]:W1119 21:47:30.113000 1167474 site-packages/torch/_inductor/debug.py:518] [108/0] model__122_backward_218 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__122_backward_218.122
+[rank0]:W1119 21:47:31.099000 1167474 site-packages/torch/_inductor/debug.py:518] [106/0_1] model__119_backward_219 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__119_backward_219.123
+[rank0]:W1119 21:47:31.377000 1167474 site-packages/torch/_inductor/debug.py:518] [105/0] model__117_backward_220 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__117_backward_220.124
+[rank0]:W1119 21:47:31.487000 1167474 site-packages/torch/_inductor/debug.py:518] [104/0] model__113_backward_221 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__113_backward_221.125
+[rank0]:W1119 21:47:31.715000 1167474 site-packages/torch/_inductor/debug.py:518] [66/6] model__112_backward_222 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__112_backward_222.126
+[rank0]:W1119 21:47:37.419000 1167474 site-packages/torch/_inductor/debug.py:518] [51/1_1] model__111_backward_223 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__111_backward_223.127
+[rank0]:W1119 21:47:38.400000 1167474 site-packages/torch/_inductor/debug.py:518] [101/0_1] model__110_backward_224 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__110_backward_224.128
+[rank0]:W1119 21:47:39.042000 1167474 site-packages/torch/_inductor/debug.py:518] [100/0_1] model__106_backward_225 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__106_backward_225.129
+[rank0]:W1119 21:47:39.246000 1167474 site-packages/torch/_inductor/debug.py:518] [94/1] model__94_backward_226 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__94_backward_226.130
+[rank0]:W1119 21:47:39.779000 1167474 site-packages/torch/_inductor/debug.py:518] [93/1] model__93_backward_227 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__93_backward_227.131
+[rank0]:W1119 21:47:40.256000 1167474 site-packages/torch/_inductor/debug.py:518] [92/1_1] model__92_backward_228 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__92_backward_228.132
+[rank0]:W1119 21:47:40.463000 1167474 site-packages/torch/_inductor/debug.py:518] [66/4] model__87_backward_229 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__87_backward_229.133
+[rank0]:W1119 21:47:40.745000 1167474 site-packages/torch/_inductor/debug.py:518] [91/1_1] model__91_backward_230 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__91_backward_230.134
+[rank0]:W1119 21:47:41.519000 1167474 site-packages/torch/_inductor/debug.py:518] [90/1_1] model__90_backward_231 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__90_backward_231.135
+[rank0]:W1119 21:47:42.477000 1167474 site-packages/torch/_inductor/debug.py:518] [86/1_1] model__89_backward_232 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__89_backward_232.136
+[rank0]:W1119 21:47:42.639000 1167474 site-packages/torch/_inductor/debug.py:518] [84/1_1] model__88_backward_233 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__88_backward_233.137
+[rank0]:W1119 21:47:42.938000 1167474 site-packages/torch/_inductor/debug.py:518] [83/1_1] model__86_backward_234 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__86_backward_234.138
+[rank0]:W1119 21:47:43.096000 1167474 site-packages/torch/_inductor/debug.py:518] [82/0] model__62_backward_235 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__62_backward_235.139
+[rank0]:W1119 21:47:44.619000 1167474 site-packages/torch/_inductor/debug.py:518] [79/1_1] model__85_backward_236 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__85_backward_236.140
+[rank0]:W1119 21:47:44.920000 1167474 site-packages/torch/_inductor/debug.py:518] [94/0] model__83_backward_237 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__83_backward_237.141
+[rank0]:W1119 21:47:45.693000 1167474 site-packages/torch/_inductor/debug.py:518] [93/0] model__82_backward_238 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__82_backward_238.142
+[rank0]:W1119 21:47:46.125000 1167474 site-packages/torch/_inductor/debug.py:518] [92/0_1] model__81_backward_239 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__81_backward_239.143
+[rank0]:W1119 21:47:46.351000 1167474 site-packages/torch/_inductor/debug.py:518] [66/2] model__70_backward_240 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__70_backward_240.144
+[rank0]:W1119 21:47:46.663000 1167474 site-packages/torch/_inductor/debug.py:518] [91/0_1] model__80_backward_241 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__80_backward_241.145
+[rank0]:W1119 21:47:47.847000 1167474 site-packages/torch/_inductor/debug.py:518] [90/0_1] model__79_backward_242 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__79_backward_242.146
+[rank0]:W1119 21:47:49.123000 1167474 site-packages/torch/_inductor/debug.py:518] [86/0_1] model__78_backward_243 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__78_backward_243.147
+[rank0]:W1119 21:47:49.482000 1167474 site-packages/torch/_inductor/debug.py:518] [84/0_1] model__71_backward_244 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__71_backward_244.148
+[rank0]:W1119 21:47:49.861000 1167474 site-packages/torch/_inductor/debug.py:518] [83/0_1] model__63_backward_245 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__63_backward_245.149
+[rank0]:W1119 21:47:50.980000 1167474 site-packages/torch/_inductor/debug.py:518] [79/0_1] model__58_backward_246 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__58_backward_246.150
+[rank0]:W1119 21:47:53.753000 1167474 site-packages/torch/_inductor/debug.py:518] [70/1_1] model__46_backward_247 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__46_backward_247.151
+[rank0]:W1119 21:47:53.997000 1167474 site-packages/torch/_inductor/debug.py:518] [70/0] model__45_backward_248 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__45_backward_248.152
+[rank0]:W1119 21:47:54.832000 1167474 site-packages/torch/_inductor/debug.py:518] [7/2] model__29_backward_249 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__29_backward_249.153
+[rank0]:W1119 21:47:57.434000 1167474 site-packages/torch/_inductor/debug.py:518] [51/0_1] model__28_backward_250 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__28_backward_250.154
+[rank0]:W1119 21:47:57.648000 1167474 site-packages/torch/_inductor/debug.py:518] [50/0] model__27_backward_251 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__27_backward_251.155
+[rank0]:W1119 21:47:58.937000 1167474 site-packages/torch/_inductor/debug.py:518] [43/0_1] model__26_backward_252 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__26_backward_252.156
+[rank0]:W1119 21:48:00.587000 1167474 site-packages/torch/_inductor/debug.py:518] [42/0] model__25_backward_253 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__25_backward_253.157
+[rank0]:W1119 21:48:02.597000 1167474 site-packages/torch/_inductor/debug.py:518] [37/0_1] model__24_backward_254 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__24_backward_254.158
+[rank0]:W1119 21:48:02.757000 1167474 site-packages/torch/_inductor/debug.py:518] [26/0] model__17_backward_255 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__17_backward_255.159
+[rank0]:W1119 21:48:04.205000 1167474 site-packages/torch/_inductor/debug.py:518] [22/0_1] model__14_backward_256 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__14_backward_256.160
+[rank0]:W1119 21:48:06.001000 1167474 site-packages/torch/_inductor/debug.py:518] [21/0] model__13_backward_257 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__13_backward_257.161
+[rank0]:W1119 21:48:07.285000 1167474 site-packages/torch/_inductor/debug.py:518] [5/1] model__11_backward_258 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__11_backward_258.162
+[rank0]:W1119 21:48:07.580000 1167474 site-packages/torch/_inductor/debug.py:518] [19/0] model__10_backward_259 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__10_backward_259.163
+[rank0]:W1119 21:48:08.430000 1167474 site-packages/torch/_inductor/debug.py:518] [17/0] model__9_backward_260 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__9_backward_260.164
+[rank0]:W1119 21:48:08.976000 1167474 site-packages/torch/_inductor/debug.py:518] [15/0_1] model__8_backward_261 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__8_backward_261.165
+[rank0]:W1119 21:48:09.056000 1167474 site-packages/torch/_inductor/debug.py:518] [14/0_1] model__7_backward_262 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__7_backward_262.166
+[rank0]:W1119 21:48:10.225000 1167474 site-packages/torch/_inductor/debug.py:518] [5/2_1] model__12_backward_263 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__12_backward_263.167
+[rank0]:W1119 21:48:11.251000 1167474 site-packages/torch/_inductor/debug.py:518] [5/0_1] model__2_backward_264 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__2_backward_264.168
+[rank0]:W1119 21:48:12.074000 1167474 site-packages/torch/_inductor/debug.py:518] [2/0_1] model__1_backward_265 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__1_backward_265.169
+[pdl] step   0   135619.1 ms  loss 7.66252
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 6.7017 GB | max_mem_allocated: 7.8912 GB | cache_allocated: 40.3477 GB | max_cache_allocated: 40.3477 GB
+Time taken template embedder: 0.021307706832885742
+Memory usage after templateembedder:  | mem_allocated: 7.1950 GB | max_mem_allocated: 10.1890 GB | cache_allocated: 40.3477 GB | max_cache_allocated: 40.3477 GB
+Memory usage before msamodule:  | mem_allocated: 7.1950 GB | max_mem_allocated: 10.1890 GB | cache_allocated: 40.3477 GB | max_cache_allocated: 40.3477 GB
+Time taken msa module: 0.05347251892089844
+Memory usage after msamodule:  | mem_allocated: 8.1219 GB | max_mem_allocated: 10.1890 GB | cache_allocated: 40.3477 GB | max_cache_allocated: 40.3477 GB
+Memory usage before pairformer:  | mem_allocated: 8.1219 GB | max_mem_allocated: 10.1890 GB | cache_allocated: 40.3477 GB | max_cache_allocated: 40.3477 GB
+Time taken pairformer: 0.5066807270050049
+Memory usage after pairformer:  | mem_allocated: 11.5496 GB | max_mem_allocated: 12.0451 GB | cache_allocated: 40.3477 GB | max_cache_allocated: 40.3477 GB
+[rank0]:W1119 21:48:13.552000 1167474 site-packages/torch/_inductor/debug.py:518] [109/0] model__123_forward_267 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__123_forward_267.170
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before diffusion module:  | mem_allocated: 11.4356 GB | max_mem_allocated: 12.0451 GB | cache_allocated: 40.3477 GB | max_cache_allocated: 40.3477 GB
+Time taken diffusionmodule: 1.74263334274292
+Memory usage after diffusion module:  | mem_allocated: 35.7432 GB | max_mem_allocated: 35.8679 GB | cache_allocated: 40.3477 GB | max_cache_allocated: 40.3477 GB
+[rank0]:W1119 21:48:15.738000 1167474 site-packages/torch/_inductor/debug.py:518] [105/1] model__124_forward_270 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__124_forward_270.171
+MSAModule forward time over the steps: [3.3495240211486816, 0.05347108840942383]
+TemplateEmbedder forward time over the steps: [5.6539294719696045, 0.021306514739990234]
+Pairformer forward time over the steps: [3.545750856399536, 0.5066792964935303]
+DiffusionModule forward time over the steps: [38.86371946334839, 1.7426316738128662]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 36.2640 GB | max_mem_allocated: 38.4315 GB | cache_allocated: 40.3477 GB | max_cache_allocated: 40.3477 GB
+[rank0]:W1119 21:48:16.153000 1167474 site-packages/torch/_inductor/debug.py:518] [105/1] model__124_backward_272 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__124_backward_272.172
+[rank0]:W1119 21:48:19.503000 1167474 site-packages/torch/_inductor/debug.py:518] [109/0] model__123_backward_273 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__123_backward_273.173
+[pdl] step   1     8386.2 ms  loss 7.40647
+Memory usage before templateembedder:  | mem_allocated: 6.7017 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken template embedder: 0.020365238189697266
+Memory usage after templateembedder:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before msamodule:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken msa module: 0.05353569984436035
+Memory usage after msamodule:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before pairformer:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken pairformer: 0.5105278491973877
+Memory usage after pairformer:  | mem_allocated: 11.5496 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken template embedder: 0.01878643035888672
+Memory usage after templateembedder:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before msamodule:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken msa module: 0.05904674530029297
+Memory usage after msamodule:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before pairformer:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken pairformer: 0.5175254344940186
+Memory usage after pairformer:  | mem_allocated: 11.6221 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before templateembedder:  | mem_allocated: 8.2301 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken template embedder: 0.01929783821105957
+Memory usage after templateembedder:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before msamodule:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken msa module: 0.05364704132080078
+Memory usage after msamodule:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before pairformer:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken pairformer: 0.5074682235717773
+Memory usage after pairformer:  | mem_allocated: 11.6219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before templateembedder:  | mem_allocated: 8.2299 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken template embedder: 0.01854681968688965
+Memory usage after templateembedder:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before msamodule:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken msa module: 0.053057193756103516
+Memory usage after msamodule:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before pairformer:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken pairformer: 0.5002274513244629
+Memory usage after pairformer:  | mem_allocated: 11.6221 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3655 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken diffusionmodule: 1.721423864364624
+Memory usage after diffusion module:  | mem_allocated: 35.6728 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+[rank0]:W1119 21:48:26.894000 1167474 site-packages/torch/_inductor/debug.py:518] [105/2] model__125_forward_275 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__125_forward_275.174
+MSAModule forward time over the steps: [3.3495240211486816, 0.05347108840942383, 0.053534507751464844, 0.059044599533081055, 0.05364489555358887, 0.05305624008178711]
+TemplateEmbedder forward time over the steps: [5.6539294719696045, 0.021306514739990234, 0.020363569259643555, 0.01878523826599121, 0.019295930862426758, 0.018546342849731445]
+Pairformer forward time over the steps: [3.545750856399536, 0.5066792964935303, 0.5105268955230713, 0.517524003982544, 0.5074663162231445, 0.5002262592315674]
+DiffusionModule forward time over the steps: [38.86371946334839, 1.7426316738128662, 1.7214224338531494]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 36.1936 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+[rank0]:W1119 21:48:27.290000 1167474 site-packages/torch/_inductor/debug.py:518] [105/2] model__125_backward_277 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__125_backward_277.175
+[pdl] step   2    10993.8 ms  loss 7.11220
+Memory usage before templateembedder:  | mem_allocated: 6.7017 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken template embedder: 0.022040128707885742
+Memory usage after templateembedder:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before msamodule:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken msa module: 0.05558013916015625
+Memory usage after msamodule:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before pairformer:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken pairformer: 0.521697998046875
+Memory usage after pairformer:  | mem_allocated: 11.5496 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken template embedder: 0.019501686096191406
+Memory usage after templateembedder:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before msamodule:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken msa module: 0.05627298355102539
+Memory usage after msamodule:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before pairformer:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken pairformer: 0.5152528285980225
+Memory usage after pairformer:  | mem_allocated: 11.6221 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before templateembedder:  | mem_allocated: 8.2301 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken template embedder: 0.01914811134338379
+Memory usage after templateembedder:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before msamodule:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken msa module: 0.05561947822570801
+Memory usage after msamodule:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before pairformer:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken pairformer: 0.513596773147583
+Memory usage after pairformer:  | mem_allocated: 11.6219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3653 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken diffusionmodule: 2.556077480316162
+Memory usage after diffusion module:  | mem_allocated: 35.6724 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+[rank0]:W1119 21:48:36.991000 1167474 site-packages/torch/_inductor/debug.py:518] [105/3] model__126_forward_279 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__126_forward_279.176
+MSAModule forward time over the steps: [3.3495240211486816, 0.05347108840942383, 0.053534507751464844, 0.059044599533081055, 0.05364489555358887, 0.05305624008178711, 0.055579185485839844, 0.05627155303955078, 0.0556180477142334]
+TemplateEmbedder forward time over the steps: [5.6539294719696045, 0.021306514739990234, 0.020363569259643555, 0.01878523826599121, 0.019295930862426758, 0.018546342849731445, 0.022038698196411133, 0.0195004940032959, 0.019146203994750977]
+Pairformer forward time over the steps: [3.545750856399536, 0.5066792964935303, 0.5105268955230713, 0.517524003982544, 0.5074663162231445, 0.5002262592315674, 0.5216970443725586, 0.5152513980865479, 0.5135955810546875]
+DiffusionModule forward time over the steps: [38.86371946334839, 1.7426316738128662, 1.7214224338531494, 2.5560760498046875]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 36.1934 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+[rank0]:W1119 21:48:37.420000 1167474 site-packages/torch/_inductor/debug.py:518] [105/3] model__126_backward_281 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__126_backward_281.177
+[pdl] step   3    10084.1 ms  loss 6.96366
+Memory usage before templateembedder:  | mem_allocated: 6.7017 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken template embedder: 0.021150827407836914
+Memory usage after templateembedder:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before msamodule:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken msa module: 0.05321836471557617
+Memory usage after msamodule:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before pairformer:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken pairformer: 0.519242525100708
+Memory usage after pairformer:  | mem_allocated: 11.5496 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Memory usage before diffusion module:  | mem_allocated: 11.4356 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+Time taken diffusionmodule: 1.765171766281128
+Memory usage after diffusion module:  | mem_allocated: 35.7432 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+MSAModule forward time over the steps: [3.3495240211486816, 0.05347108840942383, 0.053534507751464844, 0.059044599533081055, 0.05364489555358887, 0.05305624008178711, 0.055579185485839844, 0.05627155303955078, 0.0556180477142334, 0.053217411041259766]
+TemplateEmbedder forward time over the steps: [5.6539294719696045, 0.021306514739990234, 0.020363569259643555, 0.01878523826599121, 0.019295930862426758, 0.018546342849731445, 0.022038698196411133, 0.0195004940032959, 0.019146203994750977, 0.021149873733520508]
+Pairformer forward time over the steps: [3.545750856399536, 0.5066792964935303, 0.5105268955230713, 0.517524003982544, 0.5074663162231445, 0.5002262592315674, 0.5216970443725586, 0.5152513980865479, 0.5135955810546875, 0.5192415714263916]
+DiffusionModule forward time over the steps: [38.86371946334839, 1.7426316738128662, 1.7214224338531494, 2.5560760498046875, 1.765169620513916]
+Memory usage after fwd pass:  | mem_allocated: 36.2641 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4766 GB | max_cache_allocated: 41.4766 GB
+[pdl] step   4     7520.5 ms  loss 7.01314
+Memory usage before templateembedder:  | mem_allocated: 6.7017 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.020071983337402344
+Memory usage after templateembedder:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05273771286010742
+Memory usage after msamodule:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5291147232055664
+Memory usage after pairformer:  | mem_allocated: 11.5496 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.01956319808959961
+Memory usage after templateembedder:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05485367774963379
+Memory usage after msamodule:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 1.297835111618042
+Memory usage after pairformer:  | mem_allocated: 11.6221 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before templateembedder:  | mem_allocated: 8.2301 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.01994490623474121
+Memory usage after templateembedder:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.0560302734375
+Memory usage after msamodule:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5206294059753418
+Memory usage after pairformer:  | mem_allocated: 11.6219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3653 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken diffusionmodule: 1.7647721767425537
+Memory usage after diffusion module:  | mem_allocated: 35.6724 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+MSAModule forward time over the steps: [3.3495240211486816, 0.05347108840942383, 0.053534507751464844, 0.059044599533081055, 0.05364489555358887, 0.05305624008178711, 0.055579185485839844, 0.05627155303955078, 0.0556180477142334, 0.053217411041259766, 0.05273628234863281, 0.05485200881958008, 0.05602860450744629]
+TemplateEmbedder forward time over the steps: [5.6539294719696045, 0.021306514739990234, 0.020363569259643555, 0.01878523826599121, 0.019295930862426758, 0.018546342849731445, 0.022038698196411133, 0.0195004940032959, 0.019146203994750977, 0.021149873733520508, 0.020070791244506836, 0.0195620059967041, 0.019943952560424805]
+Pairformer forward time over the steps: [3.545750856399536, 0.5066792964935303, 0.5105268955230713, 0.517524003982544, 0.5074663162231445, 0.5002262592315674, 0.5216970443725586, 0.5152513980865479, 0.5135955810546875, 0.5192415714263916, 0.5291132926940918, 1.2978332042694092, 0.5206279754638672]
+DiffusionModule forward time over the steps: [38.86371946334839, 1.7426316738128662, 1.7214224338531494, 2.5560760498046875, 1.765169620513916, 1.7647712230682373]
+Memory usage after fwd pass:  | mem_allocated: 36.1934 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+[pdl] step   5     9897.2 ms  loss 6.87824
+Memory usage before templateembedder:  | mem_allocated: 6.7017 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.021420001983642578
+Memory usage after templateembedder:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05665397644042969
+Memory usage after msamodule:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5225977897644043
+Memory usage after pairformer:  | mem_allocated: 11.5496 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.018695592880249023
+Memory usage after templateembedder:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05426383018493652
+Memory usage after msamodule:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5013754367828369
+Memory usage after pairformer:  | mem_allocated: 11.6221 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before templateembedder:  | mem_allocated: 8.2301 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.018770217895507812
+Memory usage after templateembedder:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05418872833251953
+Memory usage after msamodule:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5002520084381104
+Memory usage after pairformer:  | mem_allocated: 11.6219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3653 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken diffusionmodule: 2.5972230434417725
+Memory usage after diffusion module:  | mem_allocated: 35.6724 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+MSAModule forward time over the steps: [3.3495240211486816, 0.05347108840942383, 0.053534507751464844, 0.059044599533081055, 0.05364489555358887, 0.05305624008178711, 0.055579185485839844, 0.05627155303955078, 0.0556180477142334, 0.053217411041259766, 0.05273628234863281, 0.05485200881958008, 0.05602860450744629, 0.05665302276611328, 0.054262638092041016, 0.05418658256530762]
+TemplateEmbedder forward time over the steps: [5.6539294719696045, 0.021306514739990234, 0.020363569259643555, 0.01878523826599121, 0.019295930862426758, 0.018546342849731445, 0.022038698196411133, 0.0195004940032959, 0.019146203994750977, 0.021149873733520508, 0.020070791244506836, 0.0195620059967041, 0.019943952560424805, 0.02141880989074707, 0.018694639205932617, 0.018769502639770508]
+Pairformer forward time over the steps: [3.545750856399536, 0.5066792964935303, 0.5105268955230713, 0.517524003982544, 0.5074663162231445, 0.5002262592315674, 0.5216970443725586, 0.5152513980865479, 0.5135955810546875, 0.5192415714263916, 0.5291132926940918, 1.2978332042694092, 0.5206279754638672, 0.5225965976715088, 0.5013744831085205, 0.5002505779266357]
+DiffusionModule forward time over the steps: [38.86371946334839, 1.7426316738128662, 1.7214224338531494, 2.5560760498046875, 1.765169620513916, 1.7647712230682373, 2.597221851348877]
+Memory usage after fwd pass:  | mem_allocated: 36.1934 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+[pdl] step   6     9533.5 ms  loss 6.86168
+Memory usage before templateembedder:  | mem_allocated: 6.7017 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.021720170974731445
+Memory usage after templateembedder:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05521512031555176
+Memory usage after msamodule:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.516481876373291
+Memory usage after pairformer:  | mem_allocated: 11.5496 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before diffusion module:  | mem_allocated: 11.4356 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken diffusionmodule: 1.8031103610992432
+Memory usage after diffusion module:  | mem_allocated: 35.7432 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+[rank0]:W1119 21:49:11.931000 1167474 site-packages/torch/_inductor/debug.py:518] [105/4] model__127_forward_283 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__127_forward_283.178
+MSAModule forward time over the steps: [3.3495240211486816, 0.05347108840942383, 0.053534507751464844, 0.059044599533081055, 0.05364489555358887, 0.05305624008178711, 0.055579185485839844, 0.05627155303955078, 0.0556180477142334, 0.053217411041259766, 0.05273628234863281, 0.05485200881958008, 0.05602860450744629, 0.05665302276611328, 0.054262638092041016, 0.05418658256530762, 0.055213212966918945]
+TemplateEmbedder forward time over the steps: [5.6539294719696045, 0.021306514739990234, 0.020363569259643555, 0.01878523826599121, 0.019295930862426758, 0.018546342849731445, 0.022038698196411133, 0.0195004940032959, 0.019146203994750977, 0.021149873733520508, 0.020070791244506836, 0.0195620059967041, 0.019943952560424805, 0.02141880989074707, 0.018694639205932617, 0.018769502639770508, 0.021718263626098633]
+Pairformer forward time over the steps: [3.545750856399536, 0.5066792964935303, 0.5105268955230713, 0.517524003982544, 0.5074663162231445, 0.5002262592315674, 0.5216970443725586, 0.5152513980865479, 0.5135955810546875, 0.5192415714263916, 0.5291132926940918, 1.2978332042694092, 0.5206279754638672, 0.5225965976715088, 0.5013744831085205, 0.5002505779266357, 0.5164802074432373]
+DiffusionModule forward time over the steps: [38.86371946334839, 1.7426316738128662, 1.7214224338531494, 2.5560760498046875, 1.765169620513916, 1.7647712230682373, 2.597221851348877, 1.8031094074249268]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 36.2641 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+[rank0]:W1119 21:49:12.351000 1167474 site-packages/torch/_inductor/debug.py:518] [105/4] model__127_backward_285 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__127_backward_285.179
+[pdl] step   7     8071.0 ms  loss 6.73209
+Memory usage before templateembedder:  | mem_allocated: 6.7017 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.02023148536682129
+Memory usage after templateembedder:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05386948585510254
+Memory usage after msamodule:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5143287181854248
+Memory usage after pairformer:  | mem_allocated: 11.5496 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.01947760581970215
+Memory usage after templateembedder:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05464529991149902
+Memory usage after msamodule:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5108599662780762
+Memory usage after pairformer:  | mem_allocated: 11.6221 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before templateembedder:  | mem_allocated: 8.2301 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.019401073455810547
+Memory usage after templateembedder:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05552959442138672
+Memory usage after msamodule:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5067577362060547
+Memory usage after pairformer:  | mem_allocated: 11.6219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before templateembedder:  | mem_allocated: 8.2299 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.018993616104125977
+Memory usage after templateembedder:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05361461639404297
+Memory usage after msamodule:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5054256916046143
+Memory usage after pairformer:  | mem_allocated: 11.6221 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3655 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken diffusionmodule: 2.619222640991211
+Memory usage after diffusion module:  | mem_allocated: 35.6728 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+MSAModule forward time over the steps: [3.3495240211486816, 0.05347108840942383, 0.053534507751464844, 0.059044599533081055, 0.05364489555358887, 0.05305624008178711, 0.055579185485839844, 0.05627155303955078, 0.0556180477142334, 0.053217411041259766, 0.05273628234863281, 0.05485200881958008, 0.05602860450744629, 0.05665302276611328, 0.054262638092041016, 0.05418658256530762, 0.055213212966918945, 0.05386853218078613, 0.05464315414428711, 0.05552816390991211, 0.05361294746398926]
+TemplateEmbedder forward time over the steps: [5.6539294719696045, 0.021306514739990234, 0.020363569259643555, 0.01878523826599121, 0.019295930862426758, 0.018546342849731445, 0.022038698196411133, 0.0195004940032959, 0.019146203994750977, 0.021149873733520508, 0.020070791244506836, 0.0195620059967041, 0.019943952560424805, 0.02141880989074707, 0.018694639205932617, 0.018769502639770508, 0.021718263626098633, 0.020230531692504883, 0.019476652145385742, 0.019399642944335938, 0.01899242401123047]
+Pairformer forward time over the steps: [3.545750856399536, 0.5066792964935303, 0.5105268955230713, 0.517524003982544, 0.5074663162231445, 0.5002262592315674, 0.5216970443725586, 0.5152513980865479, 0.5135955810546875, 0.5192415714263916, 0.5291132926940918, 1.2978332042694092, 0.5206279754638672, 0.5225965976715088, 0.5013744831085205, 0.5002505779266357, 0.5164802074432373, 0.5143275260925293, 0.5108590126037598, 0.5067567825317383, 0.5054244995117188]
+DiffusionModule forward time over the steps: [38.86371946334839, 1.7426316738128662, 1.7214224338531494, 2.5560760498046875, 1.765169620513916, 1.7647712230682373, 2.597221851348877, 1.8031094074249268, 2.619220495223999]
+Memory usage after fwd pass:  | mem_allocated: 36.1936 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+[pdl] step   8    10332.5 ms  loss 6.64458
+Memory usage before templateembedder:  | mem_allocated: 6.7017 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.020319461822509766
+Memory usage after templateembedder:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05454587936401367
+Memory usage after msamodule:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5233361721038818
+Memory usage after pairformer:  | mem_allocated: 11.5496 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.01936054229736328
+Memory usage after templateembedder:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05557584762573242
+Memory usage after msamodule:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5084083080291748
+Memory usage after pairformer:  | mem_allocated: 11.6221 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3655 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken diffusionmodule: 1.9209752082824707
+Memory usage after diffusion module:  | mem_allocated: 35.6728 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+[rank0]:W1119 21:49:31.091000 1167474 site-packages/torch/_inductor/debug.py:518] [105/5] model__128_forward_287 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__128_forward_287.180
+MSAModule forward time over the steps: [3.3495240211486816, 0.05347108840942383, 0.053534507751464844, 0.059044599533081055, 0.05364489555358887, 0.05305624008178711, 0.055579185485839844, 0.05627155303955078, 0.0556180477142334, 0.053217411041259766, 0.05273628234863281, 0.05485200881958008, 0.05602860450744629, 0.05665302276611328, 0.054262638092041016, 0.05418658256530762, 0.055213212966918945, 0.05386853218078613, 0.05464315414428711, 0.05552816390991211, 0.05361294746398926, 0.054544925689697266, 0.05557441711425781]
+TemplateEmbedder forward time over the steps: [5.6539294719696045, 0.021306514739990234, 0.020363569259643555, 0.01878523826599121, 0.019295930862426758, 0.018546342849731445, 0.022038698196411133, 0.0195004940032959, 0.019146203994750977, 0.021149873733520508, 0.020070791244506836, 0.0195620059967041, 0.019943952560424805, 0.02141880989074707, 0.018694639205932617, 0.018769502639770508, 0.021718263626098633, 0.020230531692504883, 0.019476652145385742, 0.019399642944335938, 0.01899242401123047, 0.02031874656677246, 0.019359588623046875]
+Pairformer forward time over the steps: [3.545750856399536, 0.5066792964935303, 0.5105268955230713, 0.517524003982544, 0.5074663162231445, 0.5002262592315674, 0.5216970443725586, 0.5152513980865479, 0.5135955810546875, 0.5192415714263916, 0.5291132926940918, 1.2978332042694092, 0.5206279754638672, 0.5225965976715088, 0.5013744831085205, 0.5002505779266357, 0.5164802074432373, 0.5143275260925293, 0.5108590126037598, 0.5067567825317383, 0.5054244995117188, 0.5233347415924072, 0.5084073543548584]
+DiffusionModule forward time over the steps: [38.86371946334839, 1.7426316738128662, 1.7214224338531494, 2.5560760498046875, 1.765169620513916, 1.7647712230682373, 2.597221851348877, 1.8031094074249268, 2.619220495223999, 1.9209740161895752]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 36.1937 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+[rank0]:W1119 21:49:31.530000 1167474 site-packages/torch/_inductor/debug.py:518] [105/5] model__128_backward_289 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__128_backward_289.181
+[pdl] step   9     8825.4 ms  loss 6.77901
+Memory usage before templateembedder:  | mem_allocated: 6.7017 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.020290136337280273
+Memory usage after templateembedder:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05282998085021973
+Memory usage after msamodule:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5142385959625244
+Memory usage after pairformer:  | mem_allocated: 11.5496 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.020048141479492188
+Memory usage after templateembedder:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05499267578125
+Memory usage after msamodule:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.5086240768432617
+Memory usage after pairformer:  | mem_allocated: 11.6221 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before templateembedder:  | mem_allocated: 8.2301 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.020439863204956055
+Memory usage after templateembedder:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 8.6532 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05523347854614258
+Memory usage after msamodule:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 1.2828800678253174
+Memory usage after pairformer:  | mem_allocated: 11.6219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3653 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken diffusionmodule: 1.7810094356536865
+Memory usage after diffusion module:  | mem_allocated: 35.6724 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+[rank0]:W1119 21:49:41.231000 1167474 site-packages/torch/_inductor/debug.py:518] [105/6] model__129_forward_291 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__129_forward_291.182
+MSAModule forward time over the steps: [3.3495240211486816, 0.05347108840942383, 0.053534507751464844, 0.059044599533081055, 0.05364489555358887, 0.05305624008178711, 0.055579185485839844, 0.05627155303955078, 0.0556180477142334, 0.053217411041259766, 0.05273628234863281, 0.05485200881958008, 0.05602860450744629, 0.05665302276611328, 0.054262638092041016, 0.05418658256530762, 0.055213212966918945, 0.05386853218078613, 0.05464315414428711, 0.05552816390991211, 0.05361294746398926, 0.054544925689697266, 0.05557441711425781, 0.05282878875732422, 0.05499076843261719, 0.05523180961608887]
+TemplateEmbedder forward time over the steps: [5.6539294719696045, 0.021306514739990234, 0.020363569259643555, 0.01878523826599121, 0.019295930862426758, 0.018546342849731445, 0.022038698196411133, 0.0195004940032959, 0.019146203994750977, 0.021149873733520508, 0.020070791244506836, 0.0195620059967041, 0.019943952560424805, 0.02141880989074707, 0.018694639205932617, 0.018769502639770508, 0.021718263626098633, 0.020230531692504883, 0.019476652145385742, 0.019399642944335938, 0.01899242401123047, 0.02031874656677246, 0.019359588623046875, 0.020288944244384766, 0.020046234130859375, 0.020438194274902344]
+Pairformer forward time over the steps: [3.545750856399536, 0.5066792964935303, 0.5105268955230713, 0.517524003982544, 0.5074663162231445, 0.5002262592315674, 0.5216970443725586, 0.5152513980865479, 0.5135955810546875, 0.5192415714263916, 0.5291132926940918, 1.2978332042694092, 0.5206279754638672, 0.5225965976715088, 0.5013744831085205, 0.5002505779266357, 0.5164802074432373, 0.5143275260925293, 0.5108590126037598, 0.5067567825317383, 0.5054244995117188, 0.5233347415924072, 0.5084073543548584, 0.5142374038696289, 0.5086226463317871, 1.2828786373138428]
+DiffusionModule forward time over the steps: [38.86371946334839, 1.7426316738128662, 1.7214224338531494, 2.5560760498046875, 1.765169620513916, 1.7647712230682373, 2.597221851348877, 1.8031094074249268, 2.619220495223999, 1.9209740161895752, 1.781008243560791]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 36.1934 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+[rank0]:W1119 21:49:41.663000 1167474 site-packages/torch/_inductor/debug.py:518] [105/6] model__129_backward_293 debug trace: /u/akadam2/MegaFold-pdl/results/compile_debug/final_pdl_implicit_r2/torch_compile_debug/run_2026_11_19_21_45_56_939145-pid_1167474/torchinductor/model__129_backward_293.183
+[pdl] step  10    10136.1 ms  loss 6.66004
+Memory usage before templateembedder:  | mem_allocated: 6.7017 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.020060062408447266
+Memory usage after templateembedder:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 7.1950 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05342721939086914
+Memory usage after msamodule:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1219 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.517554759979248
+Memory usage after pairformer:  | mem_allocated: 11.5496 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1942 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken template embedder: 0.01997995376586914
+Memory usage after templateembedder:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before msamodule:  | mem_allocated: 8.6174 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken msa module: 0.05616497993469238
+Memory usage after msamodule:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before pairformer:  | mem_allocated: 8.1944 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken pairformer: 0.513622522354126
+Memory usage after pairformer:  | mem_allocated: 11.6221 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3655 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+Time taken diffusionmodule: 2.0641374588012695
+Memory usage after diffusion module:  | mem_allocated: 35.6728 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+MSAModule forward time over the steps: [3.3495240211486816, 0.05347108840942383, 0.053534507751464844, 0.059044599533081055, 0.05364489555358887, 0.05305624008178711, 0.055579185485839844, 0.05627155303955078, 0.0556180477142334, 0.053217411041259766, 0.05273628234863281, 0.05485200881958008, 0.05602860450744629, 0.05665302276611328, 0.054262638092041016, 0.05418658256530762, 0.055213212966918945, 0.05386853218078613, 0.05464315414428711, 0.05552816390991211, 0.05361294746398926, 0.054544925689697266, 0.05557441711425781, 0.05282878875732422, 0.05499076843261719, 0.05523180961608887, 0.05342578887939453, 0.05616354942321777]
+TemplateEmbedder forward time over the steps: [5.6539294719696045, 0.021306514739990234, 0.020363569259643555, 0.01878523826599121, 0.019295930862426758, 0.018546342849731445, 0.022038698196411133, 0.0195004940032959, 0.019146203994750977, 0.021149873733520508, 0.020070791244506836, 0.0195620059967041, 0.019943952560424805, 0.02141880989074707, 0.018694639205932617, 0.018769502639770508, 0.021718263626098633, 0.020230531692504883, 0.019476652145385742, 0.019399642944335938, 0.01899242401123047, 0.02031874656677246, 0.019359588623046875, 0.020288944244384766, 0.020046234130859375, 0.020438194274902344, 0.020058870315551758, 0.019979000091552734]
+Pairformer forward time over the steps: [3.545750856399536, 0.5066792964935303, 0.5105268955230713, 0.517524003982544, 0.5074663162231445, 0.5002262592315674, 0.5216970443725586, 0.5152513980865479, 0.5135955810546875, 0.5192415714263916, 0.5291132926940918, 1.2978332042694092, 0.5206279754638672, 0.5225965976715088, 0.5013744831085205, 0.5002505779266357, 0.5164802074432373, 0.5143275260925293, 0.5108590126037598, 0.5067567825317383, 0.5054244995117188, 0.5233347415924072, 0.5084073543548584, 0.5142374038696289, 0.5086226463317871, 1.2828786373138428, 0.5175533294677734, 0.5136208534240723]
+DiffusionModule forward time over the steps: [38.86371946334839, 1.7426316738128662, 1.7214224338531494, 2.5560760498046875, 1.765169620513916, 1.7647712230682373, 2.597221851348877, 1.8031094074249268, 2.619220495223999, 1.9209740161895752, 1.781008243560791, 2.064135789871216]
+Memory usage after fwd pass:  | mem_allocated: 36.1937 GB | max_mem_allocated: 40.1495 GB | cache_allocated: 41.4785 GB | max_cache_allocated: 41.4785 GB
+[pdl] step  11     9232.9 ms  loss 6.65831
+{
+  "mode": "pdl",
+  "pdl_enabled": true,
+  "inductor_enable_pdl": true,
+  "megafold_pdl": {
+    "enabled": true,
+    "kernels": "all",
+    "launch": true,
+    "trigger": "implicit"
+  },
+  "torch_compile_debug": "1",
+  "compile_mode": "default",
+  "seq_len": 384,
+  "num_atoms": 3481,
+  "msa_depth": 512,
+  "num_templates": 4,
+  "batch_size": 1,
+  "confidence_head": false,
+  "num_params": 509004585,
+  "warmup": 2,
+  "iters": 10,
+  "first_step_s": 135.6191352219903,
+  "step_ms_mean": 9462.71662809595,
+  "step_ms_median": 9715.346989498357,
+  "step_ms_stdev": 1069.9019337721168,
+  "step_ms_min": 7520.4860719968565,
+  "peak_mem_gib": 40.14949655532837,
+  "gpu": "NVIDIA GH200 120GB",
+  "torch": "2.10.0+cu129",
+  "cuda": "12.9",
+  "triton": "3.6.0",
+  "host": "gh037.hsn.cm.delta.internal.ncsa.edu",
+  "source_tree": "/u/akadam2/MegaFold-pdl",
+  "git_commit": "2c731fb",
+  "slurm_job": "3638598"
+}

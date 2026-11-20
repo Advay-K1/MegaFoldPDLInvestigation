@@ -1,0 +1,22 @@
+##### phase 1: kernel-level variants
+df: /tmp/tc_k0_baseline_3638598_1036080_1795142504: No such file or directory
+baseline {"fwd_bwd_ms_median": 46.810943603515625, "fwd_bwd_ms_mean": 46.84416313171387, "fwd_bwd_ms_stdev": 0.09283780918671417, "n": 384, "dim": 128, "heads": 4, "depth": 8, "iters": 20, "pdl": {"enabled": false, "kernels": null, "launch": null, "trigger": null}}
+df: /tmp/tc_k1_pdl_all_3638598_1036080_1795142504: No such file or directory
+pdl {"fwd_bwd_ms_median": 48.60726356506348, "fwd_bwd_ms_mean": 48.60675163269043, "fwd_bwd_ms_stdev": 0.08850956530789597, "n": 384, "dim": 128, "heads": 4, "depth": 8, "iters": 20, "pdl": {"enabled": true, "kernels": "all", "launch": true, "trigger": "early"}}
+df: /tmp/tc_k2_pdl_all_nolaunch_3638598_1036080_1795142504: No such file or directory
+pdl {"fwd_bwd_ms_median": 48.72591972351074, "fwd_bwd_ms_mean": 48.737015914916995, "fwd_bwd_ms_stdev": 0.08868973084479775, "n": 384, "dim": 128, "heads": 4, "depth": 8, "iters": 20, "pdl": {"enabled": true, "kernels": "all", "launch": false, "trigger": "early"}}
+df: /tmp/tc_k3_pdl_all_implicit_3638598_1036080_1795142504: No such file or directory
+pdl {"fwd_bwd_ms_median": 46.65920066833496, "fwd_bwd_ms_mean": 46.679318237304685, "fwd_bwd_ms_stdev": 0.06278644991311354, "n": 384, "dim": 128, "heads": 4, "depth": 8, "iters": 20, "pdl": {"enabled": true, "kernels": "all", "launch": true, "trigger": "implicit"}}
+df: /tmp/tc_k4_pdl_tiled_3638598_1036080_1795142504: No such file or directory
+pdl {"fwd_bwd_ms_median": 46.790462493896484, "fwd_bwd_ms_mean": 46.80381736755371, "fwd_bwd_ms_stdev": 0.056758926216002537, "n": 384, "dim": 128, "heads": 4, "depth": 8, "iters": 20, "pdl": {"enabled": true, "kernels": "tiled", "launch": true, "trigger": "early"}}
+k1_pdl_all median_ms 48.607 speedup 0.963 y_bitwise True
+k2_pdl_all_nolaunch median_ms 48.726 speedup 0.9607 y_bitwise True
+k3_pdl_all_implicit median_ms 46.659 speedup 1.0033 y_bitwise True
+k4_pdl_tiled median_ms 46.79 speedup 1.0004 y_bitwise True
+##### phase 2: end-to-end training step, interleaved (cold caches, TORCH_COMPILE_DEBUG=1)
+rep 1 baseline exit=0
+rep 1 pdl_all exit=0
+srun: forcing job termination
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+[2026-11-19T20:52:48.318] error: *** STEP 3638598.0 ON gh037 CANCELLED AT 2026-11-19T20:52:48 DUE to SIGNAL Killed ***
+srun: error: gh037: task 0: Killed

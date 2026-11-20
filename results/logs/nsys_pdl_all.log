@@ -1,0 +1,406 @@
+[2026-11-19 21:54:37,755] [INFO] [real_accelerator.py:239:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+df: /tmp/triton_cache_nsys_pdl_3638598_1182525_1795146870: No such file or directory
+Type checking is disabled.
+Debugging is disabled.
+Loading CCD component SMILES strings from data/ccd_data/components_smiles.json.
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+  accum.append(directions[dim_slice])
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:357.)
+  accum.append(directions[dim_slice])
+[rank0]:W1119 21:54:52.890000 1182572 site-packages/torch/_inductor/debug.py:518] [0/0_1] model__0_inference_0 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__0_inference_0.0
+[rank0]:W1119 21:54:55.903000 1182572 site-packages/torch/_inductor/debug.py:518] [2/0_1] model__1_forward_2 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__1_forward_2.1
+[rank0]:W1119 21:54:58.034000 1182572 site-packages/torch/_inductor/debug.py:518] [5/0_1] model__2_forward_5 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__2_forward_5.2
+[rank0]:W1119 21:54:58.515000 1182572 site-packages/torch/_inductor/debug.py:518] [8/0_1] model__3_inference_7 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__3_inference_7.3
+[rank0]:W1119 21:54:59.113000 1182572 site-packages/torch/_inductor/debug.py:518] [10/0_1] model__4_inference_8 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__4_inference_8.4
+[rank0]:W1119 21:55:00.029000 1182572 site-packages/torch/_inductor/debug.py:518] [11/0] model__5_inference_9 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__5_inference_9.5
+[rank0]:W1119 21:55:00.156000 1182572 site-packages/torch/_inductor/debug.py:518] [13/0] model__6_inference_10 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__6_inference_10.6
+[rank0]:W1119 21:55:00.460000 1182572 site-packages/torch/_inductor/debug.py:518] [14/0_1] model__7_forward_12 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__7_forward_12.7
+[rank0]:W1119 21:55:01.281000 1182572 site-packages/torch/_inductor/debug.py:518] [15/0_1] model__8_forward_15 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__8_forward_15.8
+[rank0]:W1119 21:55:04.386000 1182572 site-packages/torch/_inductor/debug.py:518] [17/0] model__9_forward_18 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__9_forward_18.9
+[rank0]:W1119 21:55:04.993000 1182572 site-packages/torch/_inductor/debug.py:518] [19/0] model__10_forward_21 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__10_forward_21.10
+[rank0]:W1119 21:55:06.474000 1182572 site-packages/torch/_inductor/debug.py:518] [5/1] model__11_forward_24 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__11_forward_24.11
+[rank0]:W1119 21:55:07.716000 1182572 site-packages/torch/_inductor/debug.py:518] [5/2_1] model__12_forward_27 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__12_forward_27.12
+[rank0]:W1119 21:55:10.298000 1182572 site-packages/torch/_inductor/debug.py:518] [21/0] model__13_forward_30 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__13_forward_30.13
+[rank0]:W1119 21:55:12.069000 1182572 site-packages/torch/_inductor/debug.py:518] [22/0_1] model__14_forward_33 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__14_forward_33.14
+[rank0]:W1119 21:55:12.672000 1182572 site-packages/torch/_inductor/debug.py:518] [24/0] model__15_inference_35 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__15_inference_35.15
+[rank0]:W1119 21:55:12.740000 1182572 site-packages/torch/_inductor/debug.py:518] [25/0] model__16_inference_36 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__16_inference_36.16
+[rank0]:W1119 21:55:15.009000 1182572 site-packages/torch/_inductor/debug.py:518] [26/0] model__17_forward_38 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__17_forward_38.17
+[rank0]:W1119 21:55:15.361000 1182572 site-packages/torch/_inductor/debug.py:518] [27/0] model__18_inference_40 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__18_inference_40.18
+[rank0]:W1119 21:55:15.458000 1182572 site-packages/torch/_inductor/debug.py:518] [28/0] model__19_inference_41 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__19_inference_41.19
+[rank0]:W1119 21:55:15.877000 1182572 site-packages/torch/_inductor/debug.py:518] [13/1] model__20_inference_42 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__20_inference_42.20
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/utils.py:3694: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/utils.py:3694: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 2.7938 GB | max_mem_allocated: 4.0421 GB | cache_allocated: 4.0938 GB | max_cache_allocated: 4.0938 GB
+[rank0]:W1119 21:55:16.314000 1182572 site-packages/torch/_inductor/debug.py:518] [8/1_1] model__21_inference_43 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__21_inference_43.21
+[rank0]:W1119 21:55:16.657000 1182572 site-packages/torch/_inductor/debug.py:518] [10/1_1] model__22_inference_44 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__22_inference_44.22
+[rank0]:W1119 21:55:17.188000 1182572 site-packages/torch/_inductor/debug.py:518] [11/1] model__23_inference_45 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__23_inference_45.23
+[rank0]:W1119 21:55:18.059000 1182572 site-packages/torch/_inductor/debug.py:518] [37/0_1] model__24_forward_47 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__24_forward_47.24
+[rank0]:W1119 21:55:21.549000 1182572 site-packages/torch/_inductor/debug.py:518] [42/0] model__25_forward_50 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__25_forward_50.25
+Time taken template embedder: 5.943553924560547
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 3.2872 GB | max_mem_allocated: 6.2809 GB | cache_allocated: 6.4863 GB | max_cache_allocated: 6.4863 GB
+Memory usage before msamodule:  | mem_allocated: 3.2872 GB | max_mem_allocated: 6.2809 GB | cache_allocated: 6.4863 GB | max_cache_allocated: 6.4863 GB
+[rank0]:W1119 21:55:23.679000 1182572 site-packages/torch/_inductor/debug.py:518] [43/0_1] model__26_forward_53 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__26_forward_53.26
+[rank0]:W1119 21:55:26.150000 1182572 site-packages/torch/_inductor/debug.py:518] [50/0] model__27_forward_56 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__27_forward_56.27
+Time taken msa module: 4.231224298477173
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 4.2140 GB | max_mem_allocated: 6.2809 GB | cache_allocated: 6.4863 GB | max_cache_allocated: 6.4863 GB
+Memory usage before pairformer:  | mem_allocated: 4.2844 GB | max_mem_allocated: 6.2809 GB | cache_allocated: 6.4863 GB | max_cache_allocated: 6.4863 GB
+[rank0]:W1119 21:55:27.312000 1182572 site-packages/torch/_inductor/debug.py:518] [51/0_1] model__28_forward_59 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__28_forward_59.28
+Time taken pairformer: 3.980396270751953
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 7.6418 GB | max_mem_allocated: 8.1371 GB | cache_allocated: 8.3809 GB | max_cache_allocated: 8.3809 GB
+[rank0]:W1119 21:55:30.588000 1182572 site-packages/torch/_inductor/debug.py:518] [7/2] model__29_forward_62 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__29_forward_62.29
+[rank0]:W1119 21:55:30.834000 1182572 site-packages/torch/_inductor/debug.py:518] [8/2_1] model__30_inference_64 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__30_inference_64.30
+[rank0]:W1119 21:55:31.110000 1182572 site-packages/torch/_inductor/debug.py:518] [10/2_1] model__31_inference_65 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__31_inference_65.31
+[rank0]:W1119 21:55:31.690000 1182572 site-packages/torch/_inductor/debug.py:518] [11/2] model__32_inference_66 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__32_inference_66.32
+[rank0]:W1119 21:55:32.312000 1182572 site-packages/torch/_inductor/debug.py:518] [58/0_1] model__33_inference_67 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__33_inference_67.33
+[rank0]:W1119 21:55:32.862000 1182572 site-packages/torch/_inductor/debug.py:518] [60/0_1] model__34_inference_68 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__34_inference_68.34
+[rank0]:W1119 21:55:33.450000 1182572 site-packages/torch/_inductor/debug.py:518] [62/0_1] model__35_inference_69 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__35_inference_69.35
+[rank0]:W1119 21:55:33.768000 1182572 site-packages/torch/_inductor/debug.py:518] [63/0] model__36_inference_70 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__36_inference_70.36
+[rank0]:W1119 21:55:34.162000 1182572 site-packages/torch/_inductor/debug.py:518] [64/0_1] model__37_inference_71 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__37_inference_71.37
+[rank0]:W1119 21:55:34.311000 1182572 site-packages/torch/_inductor/debug.py:518] [62/1_1] model__38_inference_72 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__38_inference_72.38
+[rank0]:W1119 21:55:34.468000 1182572 site-packages/torch/_inductor/debug.py:518] [63/1] model__39_inference_73 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__39_inference_73.39
+[rank0]:W1119 21:55:34.892000 1182572 site-packages/torch/_inductor/debug.py:518] [65/0_1] model__40_inference_74 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__40_inference_74.40
+[rank0]:W1119 21:55:35.267000 1182572 site-packages/torch/_inductor/debug.py:518] [66/0] model__41_inference_75 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__41_inference_75.41
+[rank0]:W1119 21:55:35.630000 1182572 site-packages/torch/_inductor/debug.py:518] [67/0_1] model__42_inference_76 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__42_inference_76.42
+[rank0]:W1119 21:55:36.157000 1182572 site-packages/torch/_inductor/debug.py:518] [66/1] model__43_inference_77 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__43_inference_77.43
+[rank0]:W1119 21:55:36.349000 1182572 site-packages/torch/_inductor/debug.py:518] [68/0_1] model__44_inference_78 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__44_inference_78.44
+[rank0]:W1119 21:55:36.975000 1182572 site-packages/torch/_inductor/debug.py:518] [70/0] model__45_forward_80 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__45_forward_80.45
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before diffusion module:  | mem_allocated: 7.4930 GB | max_mem_allocated: 8.1371 GB | cache_allocated: 8.3809 GB | max_cache_allocated: 8.3809 GB
+[rank0]:W1119 21:55:37.879000 1182572 site-packages/torch/_inductor/debug.py:518] [70/1_1] model__46_forward_83 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__46_forward_83.46
+[rank0]:W1119 21:55:38.929000 1182572 site-packages/torch/_inductor/debug.py:518] [71/0_1] model__47_inference_85 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__47_inference_85.47
+[rank0]:W1119 21:55:39.869000 1182572 site-packages/torch/_inductor/debug.py:518] [72/0_1] model__48_inference_86 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__48_inference_86.48
+[rank0]:W1119 21:55:39.996000 1182572 site-packages/torch/_inductor/debug.py:518] [28/1] model__49_inference_87 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__49_inference_87.49
+[rank0]:W1119 21:55:40.082000 1182572 site-packages/torch/_inductor/debug.py:518] [28/2] model__50_inference_88 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__50_inference_88.50
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:2056: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS="+dynamo" for a DEBUG stack trace.
+  torch._dynamo.utils.warn_once(msg)
+[rank0]:W1119 21:55:40.328000 1182572 site-packages/torch/_inductor/debug.py:518] [73/0] model__51_inference_89 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__51_inference_89.51
+[rank0]:W1119 21:55:40.422000 1182572 site-packages/torch/_inductor/debug.py:518] [28/3] model__52_inference_90 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__52_inference_90.52
+[rank0]:W1119 21:55:42.616000 1182572 site-packages/torch/_inductor/debug.py:518] [75/0] model__53_inference_91 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__53_inference_91.53
+[rank0]:W1119 21:55:43.160000 1182572 site-packages/torch/_inductor/debug.py:518] [76/0] model__54_inference_92 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__54_inference_92.54
+[rank0]:W1119 21:55:43.265000 1182572 site-packages/torch/_inductor/debug.py:518] [28/4] model__55_inference_93 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__55_inference_93.55
+[rank0]:W1119 21:55:43.472000 1182572 site-packages/torch/_inductor/debug.py:518] [77/0] model__56_inference_94 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__56_inference_94.56
+[rank0]:W1119 21:55:44.128000 1182572 site-packages/torch/_inductor/debug.py:518] [78/0_1] model__57_inference_95 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__57_inference_95.57
+[rank0]:W1119 21:55:47.600000 1182572 site-packages/torch/_inductor/debug.py:518] [79/0_1] model__58_forward_97 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__58_forward_97.58
+[rank0]:W1119 21:55:48.126000 1182572 site-packages/torch/_inductor/debug.py:518] [8/3_1] model__59_inference_99 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__59_inference_99.59
+[rank0]:W1119 21:55:48.492000 1182572 site-packages/torch/_inductor/debug.py:518] [10/3_1] model__60_inference_100 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__60_inference_100.60
+[rank0]:W1119 21:55:49.974000 1182572 site-packages/torch/_inductor/debug.py:518] [11/3] model__61_inference_101 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__61_inference_101.61
+[rank0]:W1119 21:55:50.290000 1182572 site-packages/torch/_inductor/debug.py:518] [82/0] model__62_forward_103 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__62_forward_103.62
+[rank0]:W1119 21:55:51.182000 1182572 site-packages/torch/_inductor/debug.py:518] [83/0_1] model__63_forward_106 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__63_forward_106.63
+[rank0]:W1119 21:55:51.336000 1182572 site-packages/torch/_inductor/debug.py:518] [62/2_1] model__64_inference_108 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__64_inference_108.64
+[rank0]:W1119 21:55:51.394000 1182572 site-packages/torch/_inductor/debug.py:518] [63/2] model__65_inference_109 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__65_inference_109.65
+[rank0]:W1119 21:55:51.489000 1182572 site-packages/torch/_inductor/debug.py:518] [64/1_1] model__66_inference_110 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__66_inference_110.66
+[rank0]:W1119 21:55:51.548000 1182572 site-packages/torch/_inductor/debug.py:518] [62/3_1] model__67_inference_111 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__67_inference_111.67
+[rank0]:W1119 21:55:51.607000 1182572 site-packages/torch/_inductor/debug.py:518] [63/3] model__68_inference_112 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__68_inference_112.68
+[rank0]:W1119 21:55:51.669000 1182572 site-packages/torch/_inductor/debug.py:518] [65/1_1] model__69_inference_113 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__69_inference_113.69
+[rank0]:W1119 21:55:52.092000 1182572 site-packages/torch/_inductor/debug.py:518] [66/2] model__70_forward_115 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__70_forward_115.70
+[rank0]:W1119 21:55:52.548000 1182572 site-packages/torch/_inductor/debug.py:518] [84/0_1] model__71_forward_118 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__71_forward_118.71
+[rank0]:W1119 21:55:52.758000 1182572 site-packages/torch/_inductor/debug.py:518] [8/4_1] model__72_inference_120 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__72_inference_120.72
+[rank0]:W1119 21:55:53.004000 1182572 site-packages/torch/_inductor/debug.py:518] [10/4_1] model__73_inference_121 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__73_inference_121.73
+[rank0]:W1119 21:55:53.542000 1182572 site-packages/torch/_inductor/debug.py:518] [11/4] model__74_inference_122 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__74_inference_122.74
+[rank0]:W1119 21:55:53.726000 1182572 site-packages/torch/_inductor/debug.py:518] [85/0_1] model__75_inference_123 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__75_inference_123.75
+[rank0]:W1119 21:55:53.985000 1182572 site-packages/torch/_inductor/debug.py:518] [66/3] model__77_inference_124 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__77_inference_124.76
+[rank0]:W1119 21:55:56.402000 1182572 site-packages/torch/_inductor/debug.py:518] [86/0_1] model__78_forward_126 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__78_forward_126.77
+[rank0]:W1119 21:55:58.861000 1182572 site-packages/torch/_inductor/debug.py:518] [90/0_1] model__79_forward_129 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__79_forward_129.78
+[rank0]:W1119 21:56:00.866000 1182572 site-packages/torch/_inductor/debug.py:518] [91/0_1] model__80_forward_132 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__80_forward_132.79
+[rank0]:W1119 21:56:01.911000 1182572 site-packages/torch/_inductor/debug.py:518] [92/0_1] model__81_forward_135 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__81_forward_135.80
+[rank0]:W1119 21:56:03.163000 1182572 site-packages/torch/_inductor/debug.py:518] [93/0] model__82_forward_138 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__82_forward_138.81
+[rank0]:W1119 21:56:03.709000 1182572 site-packages/torch/_inductor/debug.py:518] [94/0] model__83_forward_141 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__83_forward_141.82
+[rank0]:W1119 21:56:06.638000 1182572 site-packages/torch/_inductor/debug.py:518] [78/1_1] model__84_inference_143 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__84_inference_143.83
+[rank0]:W1119 21:56:09.693000 1182572 site-packages/torch/_inductor/debug.py:518] [79/1_1] model__85_forward_145 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__85_forward_145.84
+[rank0]:W1119 21:56:10.634000 1182572 site-packages/torch/_inductor/debug.py:518] [83/1_1] model__86_forward_148 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__86_forward_148.85
+[rank0]:W1119 21:56:11.102000 1182572 site-packages/torch/_inductor/debug.py:518] [66/4] model__87_forward_151 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__87_forward_151.86
+[rank0]:W1119 21:56:12.190000 1182572 site-packages/torch/_inductor/debug.py:518] [84/1_1] model__88_forward_154 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__88_forward_154.87
+[rank0]:W1119 21:56:14.208000 1182572 site-packages/torch/_inductor/debug.py:518] [86/1_1] model__89_forward_157 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__89_forward_157.88
+[rank0]:W1119 21:56:16.290000 1182572 site-packages/torch/_inductor/debug.py:518] [90/1_1] model__90_forward_160 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__90_forward_160.89
+[rank0]:W1119 21:56:17.200000 1182572 site-packages/torch/_inductor/debug.py:518] [91/1_1] model__91_forward_163 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__91_forward_163.90
+[rank0]:W1119 21:56:17.458000 1182572 site-packages/torch/_inductor/debug.py:518] [92/1_1] model__92_forward_166 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__92_forward_166.91
+[rank0]:W1119 21:56:18.255000 1182572 site-packages/torch/_inductor/debug.py:518] [93/1] model__93_forward_169 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__93_forward_169.92
+[rank0]:W1119 21:56:18.681000 1182572 site-packages/torch/_inductor/debug.py:518] [94/1] model__94_forward_172 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__94_forward_172.93
+[rank0]:W1119 21:56:18.838000 1182572 site-packages/torch/_inductor/debug.py:518] [62/4_1] model__95_inference_174 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__95_inference_174.94
+[rank0]:W1119 21:56:18.921000 1182572 site-packages/torch/_inductor/debug.py:518] [63/4] model__96_inference_175 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__96_inference_175.95
+[rank0]:W1119 21:56:19.031000 1182572 site-packages/torch/_inductor/debug.py:518] [64/2_1] model__97_inference_176 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__97_inference_176.96
+[rank0]:W1119 21:56:19.099000 1182572 site-packages/torch/_inductor/debug.py:518] [62/5_1] model__98_inference_177 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__98_inference_177.97
+[rank0]:W1119 21:56:19.167000 1182572 site-packages/torch/_inductor/debug.py:518] [63/5] model__99_inference_178 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__99_inference_178.98
+[rank0]:W1119 21:56:19.233000 1182572 site-packages/torch/_inductor/debug.py:518] [65/3_1] model__100_inference_179 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__100_inference_179.99
+[rank0]:W1119 21:56:19.582000 1182572 site-packages/torch/_inductor/debug.py:518] [66/5] model__101_inference_180 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__101_inference_180.100
+[rank0]:W1119 21:56:20.684000 1182572 site-packages/torch/_inductor/debug.py:518] [97/0] model__102_inference_181 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__102_inference_181.101
+[rank0]:W1119 21:56:21.721000 1182572 site-packages/torch/_inductor/debug.py:518] [98/0] model__103_inference_182 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__103_inference_182.102
+[rank0]:W1119 21:56:21.813000 1182572 site-packages/torch/_inductor/debug.py:518] [99/0] model__104_inference_183 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__104_inference_183.103
+Time taken diffusionmodule: 44.76471757888794
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after diffusion module:  | mem_allocated: 31.8548 GB | max_mem_allocated: 32.0041 GB | cache_allocated: 32.4961 GB | max_cache_allocated: 32.4961 GB
+[rank0]:W1119 21:56:22.006000 1182572 site-packages/torch/_inductor/debug.py:518] [70/2_1] model__105_inference_184 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__105_inference_184.104
+[rank0]:W1119 21:56:22.650000 1182572 site-packages/torch/_inductor/debug.py:518] [100/0_1] model__106_forward_186 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__106_forward_186.105
+[rank0]:W1119 21:56:22.826000 1182572 site-packages/torch/_inductor/debug.py:518] [8/5_1] model__107_inference_188 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__107_inference_188.106
+[rank0]:W1119 21:56:23.103000 1182572 site-packages/torch/_inductor/debug.py:518] [10/5_1] model__108_inference_189 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__108_inference_189.107
+[rank0]:W1119 21:56:23.728000 1182572 site-packages/torch/_inductor/debug.py:518] [11/5] model__109_inference_190 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__109_inference_190.108
+[rank0]:W1119 21:56:24.929000 1182572 site-packages/torch/_inductor/debug.py:518] [101/0_1] model__110_forward_192 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__110_forward_192.109
+[rank0]:W1119 21:56:26.020000 1182572 site-packages/torch/_inductor/debug.py:518] [51/1_1] model__111_forward_195 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__111_forward_195.110
+[rank0]:W1119 21:56:27.708000 1182572 site-packages/torch/_inductor/debug.py:518] [66/6] model__112_forward_198 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__112_forward_198.111
+[rank0]:W1119 21:56:28.111000 1182572 site-packages/torch/_inductor/debug.py:518] [104/0] model__113_forward_201 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__113_forward_201.112
+[rank0]:W1119 21:56:28.246000 1182572 site-packages/torch/_inductor/debug.py:518] [13/2] model__114_inference_203 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__114_inference_203.113
+[rank0]:W1119 21:56:28.365000 1182572 site-packages/torch/_inductor/debug.py:518] [13/3] model__115_inference_204 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__115_inference_204.114
+[rank0]:W1119 21:56:28.485000 1182572 site-packages/torch/_inductor/debug.py:518] [13/4] model__116_inference_205 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__116_inference_205.115
+[rank0]:W1119 21:56:28.858000 1182572 site-packages/torch/_inductor/debug.py:518] [105/0] model__117_forward_207 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__117_forward_207.116
+[rank0]:W1119 21:56:28.954000 1182572 site-packages/torch/_inductor/debug.py:518] [99/1] model__118_inference_209 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__118_inference_209.117
+[rank0]:W1119 21:56:30.779000 1182572 site-packages/torch/_inductor/debug.py:518] [106/0_1] model__119_forward_211 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__119_forward_211.118
+[rank0]:W1119 21:56:31.216000 1182572 site-packages/torch/_inductor/debug.py:518] [27/1] model__120_inference_213 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__120_inference_213.119
+[rank0]:W1119 21:56:31.430000 1182572 site-packages/torch/_inductor/debug.py:518] [66/7] model__121_inference_214 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__121_inference_214.120
+[rank0]:W1119 21:56:32.421000 1182572 site-packages/torch/_inductor/debug.py:518] [108/0] model__122_forward_216 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__122_forward_216.121
+MSAModule forward time over the steps: [4.231221914291382]
+TemplateEmbedder forward time over the steps: [5.943551778793335]
+Pairformer forward time over the steps: [3.980393171310425]
+DiffusionModule forward time over the steps: [44.76471471786499]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 32.3766 GB | max_mem_allocated: 34.5448 GB | cache_allocated: 35.4258 GB | max_cache_allocated: 35.4258 GB
+[rank0]:W1119 21:56:32.735000 1182572 site-packages/torch/_inductor/debug.py:518] [108/0] model__122_backward_218 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__122_backward_218.122
+[rank0]:W1119 21:56:33.819000 1182572 site-packages/torch/_inductor/debug.py:518] [106/0_1] model__119_backward_219 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__119_backward_219.123
+[rank0]:W1119 21:56:34.117000 1182572 site-packages/torch/_inductor/debug.py:518] [105/0] model__117_backward_220 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__117_backward_220.124
+[rank0]:W1119 21:56:34.211000 1182572 site-packages/torch/_inductor/debug.py:518] [104/0] model__113_backward_221 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__113_backward_221.125
+[rank0]:W1119 21:56:34.448000 1182572 site-packages/torch/_inductor/debug.py:518] [66/6] model__112_backward_222 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__112_backward_222.126
+[rank0]:W1119 21:56:40.655000 1182572 site-packages/torch/_inductor/debug.py:518] [51/1_1] model__111_backward_223 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__111_backward_223.127
+[rank0]:W1119 21:56:41.693000 1182572 site-packages/torch/_inductor/debug.py:518] [101/0_1] model__110_backward_224 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__110_backward_224.128
+[rank0]:W1119 21:56:42.352000 1182572 site-packages/torch/_inductor/debug.py:518] [100/0_1] model__106_backward_225 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__106_backward_225.129
+[rank0]:W1119 21:56:42.543000 1182572 site-packages/torch/_inductor/debug.py:518] [94/1] model__94_backward_226 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__94_backward_226.130
+[rank0]:W1119 21:56:43.110000 1182572 site-packages/torch/_inductor/debug.py:518] [93/1] model__93_backward_227 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__93_backward_227.131
+[rank0]:W1119 21:56:43.615000 1182572 site-packages/torch/_inductor/debug.py:518] [92/1_1] model__92_backward_228 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__92_backward_228.132
+[rank0]:W1119 21:56:43.826000 1182572 site-packages/torch/_inductor/debug.py:518] [66/4] model__87_backward_229 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__87_backward_229.133
+[rank0]:W1119 21:56:44.133000 1182572 site-packages/torch/_inductor/debug.py:518] [91/1_1] model__91_backward_230 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__91_backward_230.134
+[rank0]:W1119 21:56:44.934000 1182572 site-packages/torch/_inductor/debug.py:518] [90/1_1] model__90_backward_231 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__90_backward_231.135
+[rank0]:W1119 21:56:46.011000 1182572 site-packages/torch/_inductor/debug.py:518] [86/1_1] model__89_backward_232 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__89_backward_232.136
+[rank0]:W1119 21:56:46.216000 1182572 site-packages/torch/_inductor/debug.py:518] [84/1_1] model__88_backward_233 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__88_backward_233.137
+[rank0]:W1119 21:56:46.552000 1182572 site-packages/torch/_inductor/debug.py:518] [83/1_1] model__86_backward_234 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__86_backward_234.138
+[rank0]:W1119 21:56:46.702000 1182572 site-packages/torch/_inductor/debug.py:518] [82/0] model__62_backward_235 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__62_backward_235.139
+[rank0]:W1119 21:56:48.224000 1182572 site-packages/torch/_inductor/debug.py:518] [79/1_1] model__85_backward_236 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__85_backward_236.140
+[rank0]:W1119 21:56:48.519000 1182572 site-packages/torch/_inductor/debug.py:518] [94/0] model__83_backward_237 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__83_backward_237.141
+[rank0]:W1119 21:56:49.363000 1182572 site-packages/torch/_inductor/debug.py:518] [93/0] model__82_backward_238 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__82_backward_238.142
+[rank0]:W1119 21:56:49.793000 1182572 site-packages/torch/_inductor/debug.py:518] [92/0_1] model__81_backward_239 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__81_backward_239.143
+[rank0]:W1119 21:56:50.026000 1182572 site-packages/torch/_inductor/debug.py:518] [66/2] model__70_backward_240 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__70_backward_240.144
+[rank0]:W1119 21:56:50.377000 1182572 site-packages/torch/_inductor/debug.py:518] [91/0_1] model__80_backward_241 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__80_backward_241.145
+[rank0]:W1119 21:56:51.705000 1182572 site-packages/torch/_inductor/debug.py:518] [90/0_1] model__79_backward_242 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__79_backward_242.146
+[rank0]:W1119 21:56:53.095000 1182572 site-packages/torch/_inductor/debug.py:518] [86/0_1] model__78_backward_243 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__78_backward_243.147
+[rank0]:W1119 21:56:53.498000 1182572 site-packages/torch/_inductor/debug.py:518] [84/0_1] model__71_backward_244 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__71_backward_244.148
+[rank0]:W1119 21:56:53.900000 1182572 site-packages/torch/_inductor/debug.py:518] [83/0_1] model__63_backward_245 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__63_backward_245.149
+[rank0]:W1119 21:56:55.061000 1182572 site-packages/torch/_inductor/debug.py:518] [79/0_1] model__58_backward_246 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__58_backward_246.150
+[rank0]:W1119 21:56:58.548000 1182572 site-packages/torch/_inductor/debug.py:518] [70/1_1] model__46_backward_247 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__46_backward_247.151
+[rank0]:W1119 21:56:58.803000 1182572 site-packages/torch/_inductor/debug.py:518] [70/0] model__45_backward_248 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__45_backward_248.152
+[rank0]:W1119 21:56:59.677000 1182572 site-packages/torch/_inductor/debug.py:518] [7/2] model__29_backward_249 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__29_backward_249.153
+[rank0]:W1119 21:57:02.574000 1182572 site-packages/torch/_inductor/debug.py:518] [51/0_1] model__28_backward_250 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__28_backward_250.154
+[rank0]:W1119 21:57:02.791000 1182572 site-packages/torch/_inductor/debug.py:518] [50/0] model__27_backward_251 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__27_backward_251.155
+[rank0]:W1119 21:57:04.204000 1182572 site-packages/torch/_inductor/debug.py:518] [43/0_1] model__26_backward_252 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__26_backward_252.156
+[rank0]:W1119 21:57:05.963000 1182572 site-packages/torch/_inductor/debug.py:518] [42/0] model__25_backward_253 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__25_backward_253.157
+[rank0]:W1119 21:57:08.087000 1182572 site-packages/torch/_inductor/debug.py:518] [37/0_1] model__24_backward_254 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__24_backward_254.158
+[rank0]:W1119 21:57:08.241000 1182572 site-packages/torch/_inductor/debug.py:518] [26/0] model__17_backward_255 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__17_backward_255.159
+[rank0]:W1119 21:57:08.840000 1182572 site-packages/torch/_inductor/debug.py:518] [22/0_1] model__14_backward_256 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__14_backward_256.160
+[rank0]:W1119 21:57:10.828000 1182572 site-packages/torch/_inductor/debug.py:518] [21/0] model__13_backward_257 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__13_backward_257.161
+[rank0]:W1119 21:57:12.253000 1182572 site-packages/torch/_inductor/debug.py:518] [5/1] model__11_backward_258 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__11_backward_258.162
+[rank0]:W1119 21:57:13.530000 1182572 site-packages/torch/_inductor/debug.py:518] [19/0] model__10_backward_259 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__10_backward_259.163
+[rank0]:W1119 21:57:14.464000 1182572 site-packages/torch/_inductor/debug.py:518] [17/0] model__9_backward_260 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__9_backward_260.164
+[rank0]:W1119 21:57:14.991000 1182572 site-packages/torch/_inductor/debug.py:518] [15/0_1] model__8_backward_261 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__8_backward_261.165
+[rank0]:W1119 21:57:15.067000 1182572 site-packages/torch/_inductor/debug.py:518] [14/0_1] model__7_backward_262 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__7_backward_262.166
+[rank0]:W1119 21:57:16.309000 1182572 site-packages/torch/_inductor/debug.py:518] [5/2_1] model__12_backward_263 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__12_backward_263.167
+[rank0]:W1119 21:57:17.378000 1182572 site-packages/torch/_inductor/debug.py:518] [5/0_1] model__2_backward_264 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__2_backward_264.168
+[rank0]:W1119 21:57:18.252000 1182572 site-packages/torch/_inductor/debug.py:518] [2/0_1] model__1_backward_265 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__1_backward_265.169
+[pdl] step   0   150246.8 ms  loss 7.66242
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 6.7059 GB | max_mem_allocated: 7.8945 GB | cache_allocated: 40.6465 GB | max_cache_allocated: 40.6465 GB
+Time taken template embedder: 0.025799989700317383
+Memory usage after templateembedder:  | mem_allocated: 7.1997 GB | max_mem_allocated: 10.1927 GB | cache_allocated: 40.6465 GB | max_cache_allocated: 40.6465 GB
+Memory usage before msamodule:  | mem_allocated: 7.1997 GB | max_mem_allocated: 10.1927 GB | cache_allocated: 40.6465 GB | max_cache_allocated: 40.6465 GB
+Time taken msa module: 0.06383633613586426
+Memory usage after msamodule:  | mem_allocated: 8.1266 GB | max_mem_allocated: 10.1927 GB | cache_allocated: 40.6465 GB | max_cache_allocated: 40.6465 GB
+Memory usage before pairformer:  | mem_allocated: 8.1266 GB | max_mem_allocated: 10.1927 GB | cache_allocated: 40.6465 GB | max_cache_allocated: 40.6465 GB
+Time taken pairformer: 0.6426258087158203
+Memory usage after pairformer:  | mem_allocated: 11.5543 GB | max_mem_allocated: 12.0496 GB | cache_allocated: 40.6465 GB | max_cache_allocated: 40.6465 GB
+[rank0]:W1119 21:57:19.991000 1182572 site-packages/torch/_inductor/debug.py:518] [109/0] model__123_forward_267 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__123_forward_267.170
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before diffusion module:  | mem_allocated: 11.4395 GB | max_mem_allocated: 12.0496 GB | cache_allocated: 40.6465 GB | max_cache_allocated: 40.6465 GB
+Time taken diffusionmodule: 2.109772205352783
+Memory usage after diffusion module:  | mem_allocated: 35.7442 GB | max_mem_allocated: 35.8681 GB | cache_allocated: 40.6465 GB | max_cache_allocated: 40.6465 GB
+[rank0]:W1119 21:57:22.584000 1182572 site-packages/torch/_inductor/debug.py:518] [105/1] model__124_forward_270 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__124_forward_270.171
+MSAModule forward time over the steps: [4.231221914291382, 0.06383442878723145]
+TemplateEmbedder forward time over the steps: [5.943551778793335, 0.02579808235168457]
+Pairformer forward time over the steps: [3.980393171310425, 0.6426236629486084]
+DiffusionModule forward time over the steps: [44.76471471786499, 2.109769821166992]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 36.2651 GB | max_mem_allocated: 38.4325 GB | cache_allocated: 40.6465 GB | max_cache_allocated: 40.6465 GB
+[rank0]:W1119 21:57:22.992000 1182572 site-packages/torch/_inductor/debug.py:518] [105/1] model__124_backward_272 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__124_backward_272.172
+[rank0]:W1119 21:57:27.024000 1182572 site-packages/torch/_inductor/debug.py:518] [109/0] model__123_backward_273 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__123_backward_273.173
+[pdl] step   1     9861.9 ms  loss 7.40625
+Memory usage before templateembedder:  | mem_allocated: 6.7059 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken template embedder: 0.0340425968170166
+Memory usage after templateembedder:  | mem_allocated: 7.1997 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before msamodule:  | mem_allocated: 7.1997 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken msa module: 0.0851583480834961
+Memory usage after msamodule:  | mem_allocated: 8.1266 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before pairformer:  | mem_allocated: 8.1266 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken pairformer: 0.7970349788665771
+Memory usage after pairformer:  | mem_allocated: 11.5543 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1989 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken template embedder: 0.032425880432128906
+Memory usage after templateembedder:  | mem_allocated: 8.6213 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before msamodule:  | mem_allocated: 8.6213 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken msa module: 0.08443140983581543
+Memory usage after msamodule:  | mem_allocated: 8.1978 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before pairformer:  | mem_allocated: 8.1978 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken pairformer: 0.7958316802978516
+Memory usage after pairformer:  | mem_allocated: 11.6256 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before templateembedder:  | mem_allocated: 8.2336 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken template embedder: 0.03266716003417969
+Memory usage after templateembedder:  | mem_allocated: 8.6571 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before msamodule:  | mem_allocated: 8.6571 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken msa module: 0.08493852615356445
+Memory usage after msamodule:  | mem_allocated: 8.1991 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before pairformer:  | mem_allocated: 8.1991 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken pairformer: 1.558279037475586
+Memory usage after pairformer:  | mem_allocated: 11.6269 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before templateembedder:  | mem_allocated: 8.2349 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken template embedder: 0.030822277069091797
+Memory usage after templateembedder:  | mem_allocated: 8.6573 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before msamodule:  | mem_allocated: 8.6573 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken msa module: 0.08308100700378418
+Memory usage after msamodule:  | mem_allocated: 8.1978 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before pairformer:  | mem_allocated: 8.1978 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken pairformer: 0.7768588066101074
+Memory usage after pairformer:  | mem_allocated: 11.6256 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3681 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+Time taken diffusionmodule: 2.723637580871582
+Memory usage after diffusion module:  | mem_allocated: 35.6736 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+[rank0]:W1119 21:57:37.460000 1182572 site-packages/torch/_inductor/debug.py:518] [105/2] model__125_forward_275 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__125_forward_275.174
+MSAModule forward time over the steps: [4.231221914291382, 0.06383442878723145, 0.08515620231628418, 0.0844273567199707, 0.08493351936340332, 0.08307886123657227]
+TemplateEmbedder forward time over the steps: [5.943551778793335, 0.02579808235168457, 0.03404092788696289, 0.03242373466491699, 0.03266406059265137, 0.030820608139038086]
+Pairformer forward time over the steps: [3.980393171310425, 0.6426236629486084, 0.7970330715179443, 0.7958300113677979, 1.5582759380340576, 0.7768568992614746]
+DiffusionModule forward time over the steps: [44.76471471786499, 2.109769821166992, 2.72363543510437]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 36.1946 GB | max_mem_allocated: 40.1521 GB | cache_allocated: 41.2129 GB | max_cache_allocated: 41.2129 GB
+[rank0]:W1119 21:57:37.901000 1182572 site-packages/torch/_inductor/debug.py:518] [105/2] model__125_backward_277 debug trace: /tmp/compile_debug_nsys_pdl_3638598_1182525_1795146870/torch_compile_debug/run_2026_11_19_21_54_48_576470-pid_1182572/torchinductor/model__125_backward_277.175
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-0fe4.qdstrm'
+[1/1] [0%                          ] pdl_all.nsys-repProcessing events...
+[1/1] [0%                          ] pdl_all.nsys-rep[1/1] [6%                          ] pdl_all.nsys-rep[1/1] [5%                          ] pdl_all.nsys-rep[1/1] [7%                          ] pdl_all.nsys-rep[1/1] [6%                          ] pdl_all.nsys-rep[1/1] [7%                          ] pdl_all.nsys-rep[1/1] [8%                          ] pdl_all.nsys-rep[1/1] [11%                         ] pdl_all.nsys-rep[1/1] [=15%                        ] pdl_all.nsys-rep[1/1] [==18%                       ] pdl_all.nsys-rep[1/1] [==21%                       ] pdl_all.nsys-rep[1/1] [====25%                     ] pdl_all.nsys-rep[1/1] [====28%                     ] pdl_all.nsys-rep[1/1] [=====31%                    ] pdl_all.nsys-rep[1/1] [======34%                   ] pdl_all.nsys-rep[1/1] [=======38%                  ] pdl_all.nsys-rep[1/1] [========41%                 ] pdl_all.nsys-rep[1/1] [=========44%                ] pdl_all.nsys-rep[1/1] [==========47%               ] pdl_all.nsys-rep[1/1] [===========51%              ] pdl_all.nsys-rep[1/1] [============54%             ] pdl_all.nsys-rep[1/1] [============57%             ] pdl_all.nsys-rep[1/1] [==============61%           ] pdl_all.nsys-rep[1/1] [==============64%           ] pdl_all.nsys-rep[1/1] [===============67%          ] pdl_all.nsys-rep[1/1] [================70%         ] pdl_all.nsys-rep[1/1] [=================74%        ] pdl_all.nsys-rep[1/1] [==================77%       ] pdl_all.nsys-rep[1/1] [===================79%      ] pdl_all.nsys-rep[1/1] [========================100%] pdl_all.nsys-rep[1/1] [========================100%] pdl_all.nsys-rep
+[pdl] step   2    15707.6 ms  loss 7.11211
+{
+  "mode": "pdl",
+  "pdl_enabled": true,
+  "inductor_enable_pdl": true,
+  "megafold_pdl": {
+    "enabled": true,
+    "kernels": "all",
+    "launch": true,
+    "trigger": "early"
+  },
+  "torch_compile_debug": "1",
+  "compile_mode": "default",
+  "seq_len": 384,
+  "num_atoms": 3481,
+  "msa_depth": 512,
+  "num_templates": 4,
+  "batch_size": 1,
+  "confidence_head": false,
+  "num_params": 509004585,
+  "warmup": 2,
+  "iters": 1,
+  "first_step_s": 150.24676389599335,
+  "step_ms_mean": 15707.56097699632,
+  "step_ms_median": 15707.56097699632,
+  "step_ms_stdev": 0.0,
+  "step_ms_min": 15707.56097699632,
+  "peak_mem_gib": 40.15206718444824,
+  "gpu": "NVIDIA GH200 120GB",
+  "torch": "2.10.0+cu129",
+  "cuda": "12.9",
+  "triton": "3.6.0",
+  "host": "gh037.hsn.cm.delta.internal.ncsa.edu",
+  "source_tree": "/u/akadam2/MegaFold-pdl",
+  "git_commit": "2c731fb",
+  "slurm_job": "3638598"
+}
+Generated:
+	/u/akadam2/MegaFold-pdl/results/nsys/pdl_all.nsys-rep
+{
+  "num_streams": 1,
+  "num_gpu_ops": 168410,
+  "span_ms": 15667.607234,
+  "gpu_busy_union_ms": 5218.439108,
+  "gpu_idle_ms": 10449.168126,
+  "gpu_idle_frac": 0.6669281384157016,
+  "gaps_count": 164070,
+  "gap_total_ms": 10449.168126,
+  "gap_median_us": 20.896,
+  "gap_p90_us": 125.28,
+  "gap_p99_us": 429.728,
+  "gaps_under_5us": 62056,
+  "pdl_overlaps_count": 4339,
+  "pdl_overlap_total_ms": 18.740768,
+  "pdl_overlap_median_us": 0.256,
+  "pdl_overlap_by_pair": {
+    "megafold_layernorm_linear -> megafold_layernorm_linear": 3040,
+    "inductor_triton -> inductor_triton": 383,
+    "megafold_layernorm_linear -> megafold_swiglu": 260,
+    "cublas_gemm -> inductor_triton": 203,
+    "megafold_evoattention -> megafold_evoattention": 185,
+    "other_aten -> megafold_evoattention": 100,
+    "cublas_gemm -> megafold_swiglu": 60,
+    "other_aten -> megafold_layernorm_linear": 48,
+    "other_aten -> megafold_swiglu": 37,
+    "other_aten -> inductor_triton": 23
+  },
+  "kernel_count_by_family": {
+    "inductor_triton": 2660,
+    "cublas_gemm": 34982,
+    "other_aten": 108930,
+    "megafold_layernorm_linear": 6682,
+    "megafold_swiglu": 1940,
+    "memcpy_memset": 10348,
+    "megafold_evoattention": 2868
+  },
+  "kernel_time_ms_by_family": {
+    "inductor_triton": 27.727467,
+    "cublas_gemm": 729.925233,
+    "other_aten": 2243.658038,
+    "megafold_layernorm_linear": 1192.563739,
+    "megafold_swiglu": 99.221408,
+    "memcpy_memset": 22.367872,
+    "megafold_evoattention": 921.716119
+  }
+}

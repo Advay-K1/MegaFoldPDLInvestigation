@@ -1,0 +1,8 @@
+=== MEGAFOLD_PDL=0
+swiglu fwd : ['y_ptr']
+swiglu bwd : ['dx_ptr']
+LN stats   : ['Mean_ptr', 'RSTD_ptr']
+=== MEGAFOLD_PDL=1
+swiglu fwd : ['y_ptr']
+swiglu bwd : ['dx_ptr']
+LN stats   : ['Mean_ptr', 'RSTD_ptr']

@@ -45,6 +45,9 @@ parser.add_argument("--seed", type=int, default=42)
 parser.add_argument("--nvtx-step", type=int, default=-1,
                     help="if >=0, wrap this step index in cudaProfilerStart/Stop (for nsys --capture-range)")
 parser.add_argument("--inductor-pdl", type=int, default=1, help="with --mode pdl: also enable Inductor PDL codegen")
+parser.add_argument("--compile-mode", default="default", choices=["default", "reduce-overhead"],
+                    help="reduce-overhead = Inductor CUDA graphs (cudagraph trees)")
+parser.add_argument("--explain", action="store_true", help="dump torch._dynamo.explain graph-break census and exit")
 parser.add_argument("--out", required=True)
 args = parser.parse_args()
 
@@ -105,6 +108,40 @@ from megafold.utils.model_utils import exclusive_cumsum  # noqa: E402
 
 setup_2d_parallel_groups(data_parallel_size=1, sequence_parallel_size=1)
 assert megafold_pdl.PDL_ENABLED == want_pdl
+
+if os.environ.get("MEGAFOLD_NAN_TRACE") == "1":
+    # Diagnostic: report the first fused-kernel call whose inputs are finite but outputs are not.
+    from megafold.model.FusedEvoAttention.evoattention import EvoformerAttention
+    from megafold.model.FusedLayernormLinear.fused_layernorm_linear import LayernormLinearFunction
+    from megafold.model.FusedTransition.fused_transition import FusedSwiGLUFunction
+
+    _reported = set()
+
+    def _fin(ts):
+        return all(bool(torch.isfinite(t).all()) for t in ts if torch.is_tensor(t) and t.is_floating_point())
+
+    def _wrap(cls, which):
+        orig = getattr(cls, which)
+
+        def f(ctx, *a, **k):
+            out = orig(ctx, *a, **k)
+            outs = out if isinstance(out, tuple) else (out,)
+            if _fin(a) and not _fin(outs):
+                key = (cls.__name__, which, tuple(tuple(t.shape) for t in a if torch.is_tensor(t)))
+                if key not in _reported:
+                    _reported.add(key)
+                    print(f"[nan-trace] {cls.__name__}.{which}: finite inputs -> non-finite outputs; "
+                          f"in={[(tuple(t.shape), str(t.dtype), t.stride()) for t in a if torch.is_tensor(t)]} "
+                          f"out={[(tuple(t.shape), int((~torch.isfinite(t)).sum())) for t in outs if torch.is_tensor(t)]}",
+                          flush=True)
+            return out
+
+        setattr(cls, which, staticmethod(f))
+
+    for _c in (EvoformerAttention, LayernormLinearFunction, FusedSwiGLUFunction):
+        _wrap(_c, "forward")
+        _wrap(_c, "backward")
+    torch._dynamo.config.suppress_errors = False
 
 
 def seed_all(seed):
@@ -175,7 +212,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 # dynamic=False: with the default automatic-dynamic shapes, Dynamo 2.10 crashes while tracing MegaFold's
 # user-defined Triton launches once a dim turns symbolic ("SymNodeVariable has no attribute value").
 # The benchmark input is fixed, so static graphs are the natural setting anyway.
-compiled = torch.compile(model, dynamic=False)
+compiled = torch.compile(model, dynamic=False, mode=None if args.compile_mode == "default" else args.compile_mode)
 
 
 def train_step(step: int):
@@ -192,10 +229,31 @@ def train_step(step: int):
     return loss.detach()
 
 
+if args.explain:
+    import collections
+    seed_all(args.seed)
+    ex = torch._dynamo.explain(model)(**batch_kwargs, dtype=torch.bfloat16, return_loss_breakdown=True,
+                                     call_confidence_head=args.confidence_head)
+    reasons = collections.Counter()
+    where = collections.Counter()
+    for br in ex.break_reasons:
+        reasons[str(br.reason).split("\n")[0][:160]] += 1
+        if br.user_stack:
+            fr = br.user_stack[-1]
+            where[f"{Path(fr.filename).name}:{fr.lineno} {fr.name}"] += 1
+    rep = dict(graph_count=ex.graph_count, graph_break_count=ex.graph_break_count, op_count=ex.op_count,
+               top_reasons=reasons.most_common(25), top_locations=where.most_common(25))
+    Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.out).write_text(json.dumps(rep, indent=2))
+    print(json.dumps(rep, indent=2)[:4000])
+    sys.exit(0)
+
 step_times, losses = [], []
 total = args.warmup + args.iters
 for step in range(total):
     seed_all(args.seed + step)  # identical RNG stream per step in both variants
+    if args.compile_mode == "reduce-overhead":
+        torch.compiler.cudagraph_mark_step_begin()
     if step == args.nvtx_step:
         torch.cuda.profiler.start()
     torch.cuda.synchronize()
@@ -218,6 +276,7 @@ result = dict(
     inductor_enable_pdl=bool(want_pdl and args.inductor_pdl),
     megafold_pdl=megafold_pdl.describe(),
     torch_compile_debug=os.environ.get("TORCH_COMPILE_DEBUG", "0"),
+    compile_mode=args.compile_mode,
     seq_len=args.seq_len,
     num_atoms=num_atoms,
     msa_depth=args.msa_depth,

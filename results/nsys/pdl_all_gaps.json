@@ -1,0 +1,47 @@
+{
+  "num_streams": 1,
+  "num_gpu_ops": 168410,
+  "span_ms": 15667.607234,
+  "gpu_busy_union_ms": 5218.439108,
+  "gpu_idle_ms": 10449.168126,
+  "gpu_idle_frac": 0.6669281384157016,
+  "gaps_count": 164070,
+  "gap_total_ms": 10449.168126,
+  "gap_median_us": 20.896,
+  "gap_p90_us": 125.28,
+  "gap_p99_us": 429.728,
+  "gaps_under_5us": 62056,
+  "pdl_overlaps_count": 4339,
+  "pdl_overlap_total_ms": 18.740768,
+  "pdl_overlap_median_us": 0.256,
+  "pdl_overlap_by_pair": {
+    "megafold_layernorm_linear -> megafold_layernorm_linear": 3040,
+    "inductor_triton -> inductor_triton": 383,
+    "megafold_layernorm_linear -> megafold_swiglu": 260,
+    "cublas_gemm -> inductor_triton": 203,
+    "megafold_evoattention -> megafold_evoattention": 185,
+    "other_aten -> megafold_evoattention": 100,
+    "cublas_gemm -> megafold_swiglu": 60,
+    "other_aten -> megafold_layernorm_linear": 48,
+    "other_aten -> megafold_swiglu": 37,
+    "other_aten -> inductor_triton": 23
+  },
+  "kernel_count_by_family": {
+    "inductor_triton": 2660,
+    "cublas_gemm": 34982,
+    "other_aten": 108930,
+    "megafold_layernorm_linear": 6682,
+    "megafold_swiglu": 1940,
+    "memcpy_memset": 10348,
+    "megafold_evoattention": 2868
+  },
+  "kernel_time_ms_by_family": {
+    "inductor_triton": 27.727467,
+    "cublas_gemm": 729.925233,
+    "other_aten": 2243.658038,
+    "megafold_layernorm_linear": 1192.563739,
+    "megafold_swiglu": 99.221408,
+    "memcpy_memset": 22.367872,
+    "megafold_evoattention": 921.716119
+  }
+}

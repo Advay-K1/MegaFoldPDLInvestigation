@@ -1,0 +1,38 @@
+{
+  "num_streams": 1,
+  "num_gpu_ops": 3325,
+  "span_ms": 236.200768,
+  "gpu_busy_union_ms": 231.953695,
+  "gpu_idle_ms": 4.247073,
+  "gpu_idle_frac": 0.0179807755747856,
+  "gaps_count": 3124,
+  "gap_total_ms": 4.247073,
+  "gap_median_us": 1.248,
+  "gap_p90_us": 1.76,
+  "gap_p99_us": 2.016,
+  "gaps_under_5us": 3123,
+  "pdl_overlaps_count": 200,
+  "pdl_overlap_total_ms": 0.442144,
+  "pdl_overlap_median_us": 0.16,
+  "pdl_overlap_by_pair": {
+    "other_aten -> megafold_evoattention": 80,
+    "megafold_evoattention -> megafold_evoattention": 80,
+    "megafold_layernorm_linear -> megafold_layernorm_linear": 40
+  },
+  "kernel_count_by_family": {
+    "memcpy_memset": 255,
+    "other_aten": 2190,
+    "cublas_gemm": 480,
+    "megafold_evoattention": 160,
+    "megafold_layernorm_linear": 160,
+    "megafold_swiglu": 80
+  },
+  "kernel_time_ms_by_family": {
+    "memcpy_memset": 0.637792,
+    "other_aten": 80.192127,
+    "cublas_gemm": 23.93456,
+    "megafold_evoattention": 79.700576,
+    "megafold_layernorm_linear": 34.523072,
+    "megafold_swiglu": 13.407712
+  }
+}
