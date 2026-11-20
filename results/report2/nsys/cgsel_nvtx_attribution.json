@@ -1,0 +1,138 @@
+{
+ "by_phase": {
+  "forward (and loss)": {
+   "kernels": 60731,
+   "gpu_ms": 2309.587871
+  },
+  "backward": {
+   "kernels": 97406,
+   "gpu_ms": 2523.898652
+  },
+  "clip+optimizer": {
+   "kernels": 560,
+   "gpu_ms": 17.212128
+  }
+ },
+ "forward_by_module": [
+  [
+   "pairformer",
+   31698
+  ],
+  [
+   "diffusion_module.token_transformer",
+   15600
+  ],
+  [
+   "msa_module",
+   2988
+  ],
+  [
+   "diffusion_module.atom_encoder",
+   2301
+  ],
+  [
+   "diffusion_module.atom_decoder",
+   2301
+  ],
+  [
+   "diffusion_module",
+   1156
+  ],
+  [
+   "template_embedder",
+   1104
+  ],
+  [
+   "loss",
+   781
+  ],
+  [
+   "confidence_head",
+   560
+  ],
+  [
+   "edm",
+   489
+  ],
+  [
+   "diffusion_module.single_conditioner",
+   365
+  ],
+  [
+   "input_embedder",
+   347
+  ],
+  [
+   "diffusion_module.atom_feats_to_pooled_token",
+   194
+  ],
+  [
+   "diffusion_module.pairwise_conditioner",
+   169
+  ],
+  [
+   "cub::DeviceScan::InclusiveScan",
+   134
+  ],
+  [
+   "(outside ranges)",
+   126
+  ],
+  [
+   "diffusion_module.atompair_feats_mlp",
+   65
+  ],
+  [
+   "diffusion_module.single_repr_to_atom_feat_cond",
+   52
+  ],
+  [
+   "diffusion_module.cond_tokens_with_cond_single",
+   52
+  ],
+  [
+   "relative_position_encoding",
+   48
+  ],
+  [
+   "diffusion_module.atom_repr_to_atompair_feat_cond",
+   39
+  ],
+  [
+   "diffusion_module.tokens_to_atom_decoder_input_cond",
+   39
+  ],
+  [
+   "diffusion_module.atom_feat_to_atom_pos_update",
+   27
+  ],
+  [
+   "diffusion_module.pairwise_repr_to_atompair_feat_cond",
+   26
+  ],
+  [
+   "recycle_pairwise",
+   18
+  ],
+  [
+   "diffusion_module.atom_pos_to_atom_feat",
+   14
+  ],
+  [
+   "recycle_single",
+   12
+  ],
+  [
+   "cub::DeviceSelect::Flagged",
+   10
+  ],
+  [
+   "cub::DeviceReduce::Sum",
+   5
+  ],
+  [
+   "cub::DeviceSelect::Unique",
+   4
+  ]
+ ]
+}

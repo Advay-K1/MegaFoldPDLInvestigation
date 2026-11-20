@@ -39,8 +39,13 @@ from liger_kernel.ops.utils import ensure_contiguous
 import math 
 import sys
 
+# Evaluated once at import: querying the Triton driver on every call is untraceable for Dynamo and caused
+# a graph break at every LayernormLinear call under torch.compile (35 per forward).
+_IS_CUDA = triton.runtime.driver.active.get_current_target().backend == "cuda"
+
+
 def is_cuda():
-    return triton.runtime.driver.active.get_current_target().backend == "cuda"
+    return _IS_CUDA
 
 if is_cuda():
     from megafold.model.FusedLayernormLinear.helper import calculate_config_layernorm_linear

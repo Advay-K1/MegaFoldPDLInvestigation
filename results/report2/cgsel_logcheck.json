@@ -1,0 +1,38 @@
+{
+  "mode": "baseline",
+  "pdl_enabled": false,
+  "inductor_enable_pdl": false,
+  "torch_compile_debug": "1",
+  "compile_mode": "cg-selective",
+  "seq_len": 384,
+  "num_atoms": 3481,
+  "msa_depth": 512,
+  "num_templates": 4,
+  "batch_size": 1,
+  "confidence_head": false,
+  "num_params": 509004585,
+  "warmup": 1,
+  "iters": 1,
+  "first_step_s": 44.70075009998982,
+  "step_ms_mean": 9117.323421000037,
+  "step_ms_median": 9117.323421000037,
+  "step_ms_stdev": 0.0,
+  "step_ms_min": 9117.323421000037,
+  "step_ms_all": [
+    44700.75009998982,
+    9117.323421000037
+  ],
+  "losses": [
+    7.655813694000244,
+    7.355996131896973
+  ],
+  "peak_mem_gib": 40.99253177642822,
+  "gpu": "NVIDIA GH200 120GB",
+  "torch": "2.10.0+cu129",
+  "cuda": "12.9",
+  "triton": "3.6.0",
+  "host": "gh037.hsn.cm.delta.internal.ncsa.edu",
+  "source_tree": "/u/akadam2/MegaFold",
+  "git_commit": "0c97c88",
+  "slurm_job": "3638598"
+}

@@ -1,3 +1,24 @@
+# MegaFold PDL Investigation
+
+This repository is a fork of [MegaFold](https://github.com/Supercomputing-System-AI-Lab/MegaFold)
+(MIT licence, full upstream history kept) that investigates **CUDA Programmatic Dependent Launch (PDL)**
+for a MegaFold training step on a single NVIDIA GH200 (NCSA DeltaAI).
+
+* **[Report 1 — PDL for the MegaFold training step](reports/REPORT_1_PDL_INVESTIGATION.md)**: baseline
+  (bs 1, 384 tokens, `torch.compile`, `TORCH_COMPILE_DEBUG=1`), where and how PDL was applied (all 10
+  MegaFold Triton kernels + Inductor-generated kernels), correctness fixes, interleaved end-to-end
+  comparison, nsys profiles of every run, kernel-level analysis.
+* **[Report 2 — What would make PDL impactful](reports/REPORT_2_MAKING_PDL_IMPACTFUL.md)**: PDL regime
+  sweep (eager vs CUDA graphs), graph-break census, CUDA-graph experiments, attribution of the ~100k
+  eager kernels per step, ranked modifications.
+
+Code added for the investigation: `megafold/model/pdl.py` (PDL switch, policies, Inductor fix),
+PDL prologue/launch flags in `megafold/model/Fused*/`, `benchmarks/train_step_bench.py` (harness),
+`benchmarks/pdl_*.py`, `benchmarks/analyze_nsys.py`, `benchmarks/plot_profiles.py`,
+`benchmarks/attribute_nvtx.py`, `scripts/*.sh` (Slurm/DeltaAI drivers). Results: `results/`.
+
+---
+
 # MegaFold: Efficient Training of Next-Generation 3D Attention Protein Models on Cross-Platform GPUs
 
 [![](https://img.shields.io/badge/Paper-PDF-blue)](https://arxiv.org/abs/2506.20686)

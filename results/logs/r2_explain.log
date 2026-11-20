@@ -1,0 +1,148 @@
+name, driver_version, memory.total [MiB], clocks.max.sm [MHz]
+NVIDIA GH200 120GB, 595.71.05, 97871 MiB, 1980 MHz
+[2026-11-19 22:10:53,447] [INFO] [real_accelerator.py:239:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+df: /tmp/triton_cache_baseline_3638598_1217429_1795147846: No such file or directory
+Type checking is disabled.
+Debugging is disabled.
+Loading CCD component SMILES strings from data/ccd_data/components_smiles.json.
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+  accum.append(directions[dim_slice])
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:357.)
+  accum.append(directions[dim_slice])
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/utils.py:3694: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/utils.py:3694: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 2.8349 GB | max_mem_allocated: 4.7419 GB | cache_allocated: 6.3555 GB | max_cache_allocated: 6.3555 GB
+Time taken template embedder: 2.8104701042175293
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 3.4331 GB | max_mem_allocated: 6.3215 GB | cache_allocated: 8.0449 GB | max_cache_allocated: 8.0449 GB
+Memory usage before msamodule:  | mem_allocated: 3.4331 GB | max_mem_allocated: 6.3215 GB | cache_allocated: 8.0449 GB | max_cache_allocated: 8.0449 GB
+Time taken msa module: 2.366149663925171
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 4.3603 GB | max_mem_allocated: 6.3215 GB | cache_allocated: 8.0449 GB | max_cache_allocated: 8.0449 GB
+Memory usage before pairformer:  | mem_allocated: 4.3603 GB | max_mem_allocated: 6.3215 GB | cache_allocated: 8.0449 GB | max_cache_allocated: 8.0449 GB
+Time taken pairformer: 3.774207830429077
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 7.7880 GB | max_mem_allocated: 8.2833 GB | cache_allocated: 8.6738 GB | max_cache_allocated: 8.6738 GB
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before diffusion module:  | mem_allocated: 7.6741 GB | max_mem_allocated: 8.2833 GB | cache_allocated: 8.6738 GB | max_cache_allocated: 8.6738 GB
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/variables/functions.py:2056: UserWarning: Dynamo detected a call to a `functools.lru_cache`-wrapped function. Dynamo ignores the cache wrapper and directly traces the wrapped function. Silent incorrectness is only a *potential* risk, not something we have observed. Enable TORCH_LOGS="+dynamo" for a DEBUG stack trace.
+  torch._dynamo.utils.warn_once(msg)
+Time taken diffusionmodule: 14.676072835922241
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after diffusion module:  | mem_allocated: 32.8080 GB | max_mem_allocated: 32.9319 GB | cache_allocated: 33.3125 GB | max_cache_allocated: 33.3125 GB
+MSAModule forward time over the steps: [2.3661465644836426]
+TemplateEmbedder forward time over the steps: [2.810466766357422]
+Pairformer forward time over the steps: [3.774205207824707]
+DiffusionModule forward time over the steps: [14.67607069015503]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 33.3648 GB | max_mem_allocated: 35.5330 GB | cache_allocated: 36.2441 GB | max_cache_allocated: 36.2441 GB
+{
+  "graph_count": 123,
+  "graph_break_count": 122,
+  "op_count": 862,
+  "top_reasons": [
+    [
+      "Attempted to inline function marked as skipped",
+      35
+    ],
+    [
+      "Data dependent operator",
+      21
+    ],
+    [
+      "torch.* op returned non-Tensor",
+      2
+    ],
+    [
+      "unimplemented builtin op on tensor arguments",
+      2
+    ],
+    [
+      "Attempted to wrap sparse Tensor with VariableTracker",
+      1
+    ],
+    [
+      "Dynamic shape operator",
+      1
+    ],
+    [
+      "step_unsupported",
+      1
+    ],
+    [
+      "generic_jump TensorVariable()",
+      1
+    ],
+    [
+      "SKIPPED INLINING <code object calculate_diffusion_loss at 0xaaab160bfb70, file \"/u/akadam2/MegaFold-pdl/megafold/utils/model_utils.py\", line 1945>: ",
+      1
+    ]
+  ],
+  "top_locations": [
+    [
+      "fused_layernorm_linear.py:43 is_cuda",
+      35
+    ],
+    [
+      "model_utils.py:459 lens_to_mask",
+      16
+    ],
+    [
+      "model_utils.py:601 batch_repeat_interleave",
+      4
+    ],
+    [
+      "frame_averaging.py:125 forward",
+      3
+    ],
+    [
+      "cuda_accelerator.py:132 memory_allocated",
+      2
+    ],
+    [
+      "megafold.py:8965 run_trunk",
+      1
+    ],
+    [
+      "model_utils.py:1167 create_uid_tensor",
+      1
+    ],
+    [
+      "megafold.py:9607 forward",
+      1
+    ],
+    [
+      "model_utils.py:919 weighted_rigid_align",
+      1
+    ],
+    [
+      "model_utils.py:2571 forward",
+      1
+    ]
+  ]
+}
+[rank0]:[W1119 22:11:46.069708344 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())

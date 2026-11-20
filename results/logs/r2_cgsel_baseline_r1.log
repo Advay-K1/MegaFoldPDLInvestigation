@@ -1,0 +1,345 @@
+name, driver_version, memory.total [MiB], clocks.max.sm [MHz]
+NVIDIA GH200 120GB, 595.71.05, 97871 MiB, 1980 MHz
+[2026-11-19 22:15:48,502] [INFO] [real_accelerator.py:239:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+df: /tmp/triton_cache_baseline_3638598_1225154_1795148142: No such file or directory
+Type checking is disabled.
+Debugging is disabled.
+Loading CCD component SMILES strings from data/ccd_data/components_smiles.json.
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+  accum.append(directions[dim_slice])
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:357.)
+  accum.append(directions[dim_slice])
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 2.7709 GB | max_mem_allocated: 6.1894 GB | cache_allocated: 6.3535 GB | max_cache_allocated: 6.3535 GB
+[rank0]:W1119 22:16:04.244000 1225176 site-packages/torch/_inductor/debug.py:518] [2/0_1] model__0_inference_0 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__0_inference_0.0
+[rank0]:W1119 22:16:04.692000 1225176 site-packages/torch/_inductor/debug.py:518] [4/0_1] model__1_inference_1 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__1_inference_1.1
+[rank0]:W1119 22:16:05.216000 1225176 site-packages/torch/_inductor/debug.py:518] [5/0] model__2_inference_2 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__2_inference_2.2
+[rank0]:W1119 22:16:06.199000 1225176 site-packages/torch/_inductor/debug.py:518] [7/0_1] model__3_forward_4 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__3_forward_4.3
+[rank0]:W1119 22:16:09.896000 1225176 site-packages/torch/_inductor/debug.py:518] [12/0] model__4_forward_7 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__4_forward_7.4
+Time taken template embedder: 8.604695558547974
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 3.2319 GB | max_mem_allocated: 6.2580 GB | cache_allocated: 6.9453 GB | max_cache_allocated: 6.9453 GB
+Memory usage before msamodule:  | mem_allocated: 3.2319 GB | max_mem_allocated: 6.2580 GB | cache_allocated: 6.9453 GB | max_cache_allocated: 6.9453 GB
+[rank0]:W1119 22:16:11.274000 1225176 site-packages/torch/_inductor/debug.py:518] [13/0_1] model__5_forward_10 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__5_forward_10.5
+[rank0]:W1119 22:16:13.674000 1225176 site-packages/torch/_inductor/debug.py:518] [20/0] model__6_forward_13 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__6_forward_13.6
+Time taken msa module: 3.622606039047241
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 4.1588 GB | max_mem_allocated: 6.2580 GB | cache_allocated: 7.0977 GB | max_cache_allocated: 7.0977 GB
+Memory usage before pairformer:  | mem_allocated: 4.1588 GB | max_mem_allocated: 6.2580 GB | cache_allocated: 7.0977 GB | max_cache_allocated: 7.0977 GB
+[rank0]:W1119 22:16:14.813000 1225176 site-packages/torch/_inductor/debug.py:518] [21/0_1] model__7_forward_16 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__7_forward_16.7
+Time taken pairformer: 2.9051132202148438
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 7.6187 GB | max_mem_allocated: 8.1141 GB | cache_allocated: 8.6406 GB | max_cache_allocated: 8.6406 GB
+Memory usage before diffusion module:  | mem_allocated: 7.5689 GB | max_mem_allocated: 8.1141 GB | cache_allocated: 8.6406 GB | max_cache_allocated: 8.6406 GB
+Time taken diffusionmodule: 5.560085773468018
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after diffusion module:  | mem_allocated: 32.7024 GB | max_mem_allocated: 32.8319 GB | cache_allocated: 33.4844 GB | max_cache_allocated: 33.4844 GB
+MSAModule forward time over the steps: [3.622603416442871]
+TemplateEmbedder forward time over the steps: [8.604693174362183]
+Pairformer forward time over the steps: [2.9051105976104736]
+DiffusionModule forward time over the steps: [5.56008243560791]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 33.2590 GB | max_mem_allocated: 35.4293 GB | cache_allocated: 36.3438 GB | max_cache_allocated: 36.3438 GB
+[rank0]:W1119 22:16:38.381000 1225176 site-packages/torch/_inductor/debug.py:518] [21/0_1] model__7_backward_18 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__7_backward_18.8
+[rank0]:W1119 22:16:38.755000 1225176 site-packages/torch/_inductor/debug.py:518] [20/0] model__6_backward_19 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__6_backward_19.9
+[rank0]:W1119 22:16:40.146000 1225176 site-packages/torch/_inductor/debug.py:518] [13/0_1] model__5_backward_20 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__5_backward_20.10
+[rank0]:W1119 22:16:41.565000 1225176 site-packages/torch/_inductor/debug.py:518] [12/0] model__4_backward_21 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__4_backward_21.11
+[rank0]:W1119 22:16:43.716000 1225176 site-packages/torch/_inductor/debug.py:518] [7/0_1] model__3_backward_22 debug trace: /u/akadam2/MegaFold/results/compile_debug/cgsel_baseline_r1/torch_compile_debug/run_2026_11_19_22_16_01_496273-pid_1225176/torchinductor/model__3_backward_22.12
+[baseline] step   0    44678.2 ms  loss 7.65581
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 6.6743 GB | max_mem_allocated: 10.0930 GB | cache_allocated: 41.5449 GB | max_cache_allocated: 41.5449 GB
+Time taken template embedder: 0.12513136863708496
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 7.1041 GB | max_mem_allocated: 10.1301 GB | cache_allocated: 8.0859 GB | max_cache_allocated: 41.5449 GB
+Memory usage before msamodule:  | mem_allocated: 7.1041 GB | max_mem_allocated: 10.1301 GB | cache_allocated: 8.0859 GB | max_cache_allocated: 41.5449 GB
+Time taken msa module: 0.07162165641784668
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 8.0309 GB | max_mem_allocated: 10.1301 GB | cache_allocated: 8.7188 GB | max_cache_allocated: 41.5449 GB
+Memory usage before pairformer:  | mem_allocated: 8.0309 GB | max_mem_allocated: 10.1301 GB | cache_allocated: 8.7188 GB | max_cache_allocated: 41.5449 GB
+Time taken pairformer: 0.5968222618103027
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.4909 GB | max_mem_allocated: 11.9865 GB | cache_allocated: 12.8105 GB | max_cache_allocated: 41.5449 GB
+Memory usage before diffusion module:  | mem_allocated: 11.4413 GB | max_mem_allocated: 11.9865 GB | cache_allocated: 12.8105 GB | max_cache_allocated: 41.5449 GB
+Time taken diffusionmodule: 2.1632189750671387
+Memory usage after diffusion module:  | mem_allocated: 36.5531 GB | max_mem_allocated: 36.6827 GB | cache_allocated: 37.5117 GB | max_cache_allocated: 41.5449 GB
+MSAModule forward time over the steps: [3.622603416442871, 0.07161903381347656]
+TemplateEmbedder forward time over the steps: [8.604693174362183, 0.12512898445129395]
+Pairformer forward time over the steps: [2.9051105976104736, 0.5968201160430908]
+DiffusionModule forward time over the steps: [5.56008243560791, 2.1632168292999268]
+Memory usage after fwd pass:  | mem_allocated: 37.1084 GB | max_mem_allocated: 39.2780 GB | cache_allocated: 40.3730 GB | max_cache_allocated: 41.5449 GB
+[baseline] step   1     8723.6 ms  loss 7.35599
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 6.6754 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 16.6953 GB | max_cache_allocated: 43.5312 GB
+Time taken template embedder: 0.027430295944213867
+Memory usage after templateembedder:  | mem_allocated: 6.7809 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.3828 GB | max_cache_allocated: 43.5312 GB
+Memory usage before msamodule:  | mem_allocated: 6.7809 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.3828 GB | max_cache_allocated: 43.5312 GB
+Time taken msa module: 0.0767812728881836
+Memory usage after msamodule:  | mem_allocated: 7.4606 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.3828 GB | max_cache_allocated: 43.5312 GB
+Memory usage before pairformer:  | mem_allocated: 7.4606 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.3828 GB | max_cache_allocated: 43.5312 GB
+Time taken pairformer: 0.6212136745452881
+Memory usage after pairformer:  | mem_allocated: 10.8174 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.3828 GB | max_cache_allocated: 43.5312 GB
+Memory usage before templateembedder:  | mem_allocated: 7.5328 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.3828 GB | max_cache_allocated: 43.5312 GB
+Time taken template embedder: 0.09008002281188965
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 8.5275 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 9.2168 GB | max_cache_allocated: 43.5312 GB
+Memory usage before msamodule:  | mem_allocated: 8.5275 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 9.2168 GB | max_cache_allocated: 43.5312 GB
+Time taken msa module: 0.07156229019165039
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 8.1046 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 10.1309 GB | max_cache_allocated: 43.5312 GB
+Memory usage before pairformer:  | mem_allocated: 8.1046 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 10.1309 GB | max_cache_allocated: 43.5312 GB
+Time taken pairformer: 0.6103706359863281
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.5645 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.1504 GB | max_cache_allocated: 43.5312 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1725 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.1504 GB | max_cache_allocated: 43.5312 GB
+Time taken template embedder: 0.07729959487915039
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 8.5632 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 9.7559 GB | max_cache_allocated: 43.5312 GB
+Memory usage before msamodule:  | mem_allocated: 8.5632 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 9.7559 GB | max_cache_allocated: 43.5312 GB
+Time taken msa module: 0.07679963111877441
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 8.1043 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 10.3184 GB | max_cache_allocated: 43.5312 GB
+Memory usage before pairformer:  | mem_allocated: 8.1043 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 10.3184 GB | max_cache_allocated: 43.5312 GB
+Time taken pairformer: 0.6302518844604492
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.5643 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.5527 GB | max_cache_allocated: 43.5312 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1723 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.5527 GB | max_cache_allocated: 43.5312 GB
+Time taken template embedder: 0.07841968536376953
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 8.5625 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 9.9941 GB | max_cache_allocated: 43.5312 GB
+Memory usage before msamodule:  | mem_allocated: 8.5625 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 9.9941 GB | max_cache_allocated: 43.5312 GB
+Time taken msa module: 0.07973337173461914
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 8.1038 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 10.2051 GB | max_cache_allocated: 43.5312 GB
+Memory usage before pairformer:  | mem_allocated: 8.1038 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 10.2051 GB | max_cache_allocated: 43.5312 GB
+Time taken pairformer: 0.6309130191802979
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.5638 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.3418 GB | max_cache_allocated: 43.5312 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3716 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.3418 GB | max_cache_allocated: 43.5312 GB
+Time taken diffusionmodule: 2.244666814804077
+Memory usage after diffusion module:  | mem_allocated: 36.4903 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 38.0801 GB | max_cache_allocated: 43.5312 GB
+MSAModule forward time over the steps: [3.622603416442871, 0.07161903381347656, 0.07677912712097168, 0.07155919075012207, 0.07679486274719238, 0.07972931861877441]
+TemplateEmbedder forward time over the steps: [8.604693174362183, 0.12512898445129395, 0.02742767333984375, 0.09007835388183594, 0.07729721069335938, 0.07841753959655762]
+Pairformer forward time over the steps: [2.9051105976104736, 0.5968201160430908, 0.6212115287780762, 0.6103692054748535, 0.6302497386932373, 0.630911111831665]
+DiffusionModule forward time over the steps: [5.56008243560791, 2.1632168292999268, 2.244663953781128]
+Memory usage after fwd pass:  | mem_allocated: 37.0456 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 40.9414 GB | max_cache_allocated: 43.5312 GB
+[baseline] step   2    11325.7 ms  loss 7.22098
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 6.6754 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 17.2520 GB | max_cache_allocated: 44.0996 GB
+Time taken template embedder: 0.02433323860168457
+Memory usage after templateembedder:  | mem_allocated: 6.7809 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.9395 GB | max_cache_allocated: 44.0996 GB
+Memory usage before msamodule:  | mem_allocated: 6.7809 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.9395 GB | max_cache_allocated: 44.0996 GB
+Time taken msa module: 0.06652092933654785
+Memory usage after msamodule:  | mem_allocated: 7.4606 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.9395 GB | max_cache_allocated: 44.0996 GB
+Memory usage before pairformer:  | mem_allocated: 7.4606 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.9395 GB | max_cache_allocated: 44.0996 GB
+Time taken pairformer: 0.6117258071899414
+Memory usage after pairformer:  | mem_allocated: 10.8174 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.9395 GB | max_cache_allocated: 44.0996 GB
+Memory usage before templateembedder:  | mem_allocated: 7.5328 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.9395 GB | max_cache_allocated: 44.0996 GB
+Time taken template embedder: 0.022166967391967773
+Memory usage after templateembedder:  | mem_allocated: 7.6383 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.9395 GB | max_cache_allocated: 44.0996 GB
+Memory usage before msamodule:  | mem_allocated: 7.6383 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.9395 GB | max_cache_allocated: 44.0996 GB
+Time taken msa module: 0.062116146087646484
+Memory usage after msamodule:  | mem_allocated: 8.3180 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.9395 GB | max_cache_allocated: 44.0996 GB
+Memory usage before pairformer:  | mem_allocated: 8.3180 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.9395 GB | max_cache_allocated: 44.0996 GB
+Time taken pairformer: 0.6795253753662109
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.5645 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.5254 GB | max_cache_allocated: 44.0996 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1725 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.5254 GB | max_cache_allocated: 44.0996 GB
+Time taken template embedder: 0.07771062850952148
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 8.5632 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 9.5762 GB | max_cache_allocated: 44.0996 GB
+Memory usage before msamodule:  | mem_allocated: 8.5632 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 9.5762 GB | max_cache_allocated: 44.0996 GB
+Time taken msa module: 0.08197331428527832
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 8.1043 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 10.3027 GB | max_cache_allocated: 44.0996 GB
+Memory usage before pairformer:  | mem_allocated: 8.1043 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 10.3027 GB | max_cache_allocated: 44.0996 GB
+Time taken pairformer: 0.6613121032714844
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.5643 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.5000 GB | max_cache_allocated: 44.0996 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3721 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.5000 GB | max_cache_allocated: 44.0996 GB
+Time taken diffusionmodule: 2.182131290435791
+Memory usage after diffusion module:  | mem_allocated: 36.4760 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 38.1133 GB | max_cache_allocated: 44.0996 GB
+MSAModule forward time over the steps: [3.622603416442871, 0.07161903381347656, 0.07677912712097168, 0.07155919075012207, 0.07679486274719238, 0.07972931861877441, 0.06651973724365234, 0.06211447715759277, 0.08196568489074707]
+TemplateEmbedder forward time over the steps: [8.604693174362183, 0.12512898445129395, 0.02742767333984375, 0.09007835388183594, 0.07729721069335938, 0.07841753959655762, 0.024332046508789062, 0.02216482162475586, 0.07770824432373047]
+Pairformer forward time over the steps: [2.9051105976104736, 0.5968201160430908, 0.6212115287780762, 0.6103692054748535, 0.6302497386932373, 0.630911111831665, 0.6117241382598877, 0.6795234680175781, 0.6613099575042725]
+DiffusionModule forward time over the steps: [5.56008243560791, 2.1632168292999268, 2.244663953781128, 2.18212890625]
+Memory usage after fwd pass:  | mem_allocated: 37.0313 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 40.9746 GB | max_cache_allocated: 44.0996 GB
+[baseline] step   3    10156.1 ms  loss 6.86645
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 6.6761 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 16.9316 GB | max_cache_allocated: 44.1328 GB
+Time taken template embedder: 0.023933887481689453
+Memory usage after templateembedder:  | mem_allocated: 6.7816 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.6191 GB | max_cache_allocated: 44.1328 GB
+Memory usage before msamodule:  | mem_allocated: 6.7816 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.6191 GB | max_cache_allocated: 44.1328 GB
+Time taken msa module: 0.06453061103820801
+Memory usage after msamodule:  | mem_allocated: 7.4613 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.6191 GB | max_cache_allocated: 44.1328 GB
+Memory usage before pairformer:  | mem_allocated: 7.4613 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.6191 GB | max_cache_allocated: 44.1328 GB
+Time taken pairformer: 0.5967202186584473
+Memory usage after pairformer:  | mem_allocated: 10.8181 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.6191 GB | max_cache_allocated: 44.1328 GB
+Memory usage before diffusion module:  | mem_allocated: 10.9091 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 18.6191 GB | max_cache_allocated: 44.1328 GB
+Time taken diffusionmodule: 1.8472962379455566
+Memory usage after diffusion module:  | mem_allocated: 36.0290 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 38.2793 GB | max_cache_allocated: 44.1328 GB
+MSAModule forward time over the steps: [3.622603416442871, 0.07161903381347656, 0.07677912712097168, 0.07155919075012207, 0.07679486274719238, 0.07972931861877441, 0.06651973724365234, 0.06211447715759277, 0.08196568489074707, 0.0645287036895752]
+TemplateEmbedder forward time over the steps: [8.604693174362183, 0.12512898445129395, 0.02742767333984375, 0.09007835388183594, 0.07729721069335938, 0.07841753959655762, 0.024332046508789062, 0.02216482162475586, 0.07770824432373047, 0.02393174171447754]
+Pairformer forward time over the steps: [2.9051105976104736, 0.5968201160430908, 0.6212115287780762, 0.6103692054748535, 0.6302497386932373, 0.630911111831665, 0.6117241382598877, 0.6795234680175781, 0.6613099575042725, 0.5967183113098145]
+DiffusionModule forward time over the steps: [5.56008243560791, 2.1632168292999268, 2.244663953781128, 2.18212890625, 1.8472940921783447]
+Memory usage after fwd pass:  | mem_allocated: 36.5844 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 41.1309 GB | max_cache_allocated: 44.1328 GB
+[baseline] step   4     7998.7 ms  loss 7.00981
+Memory usage before templateembedder:  | mem_allocated: 6.6771 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 47.6602 GB | max_cache_allocated: 47.6602 GB
+Time taken template embedder: 0.024574995040893555
+Memory usage after templateembedder:  | mem_allocated: 6.7826 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 47.6602 GB | max_cache_allocated: 47.6602 GB
+Memory usage before msamodule:  | mem_allocated: 6.7826 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 47.6602 GB | max_cache_allocated: 47.6602 GB
+Time taken msa module: 0.0684976577758789
+Memory usage after msamodule:  | mem_allocated: 7.4622 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 47.6602 GB | max_cache_allocated: 47.6602 GB
+Memory usage before pairformer:  | mem_allocated: 7.4622 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 47.6602 GB | max_cache_allocated: 47.6602 GB
+Time taken pairformer: 1.2242050170898438
+Memory usage after pairformer:  | mem_allocated: 10.8191 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 47.6602 GB | max_cache_allocated: 47.6602 GB
+Memory usage before templateembedder:  | mem_allocated: 7.5345 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 47.6602 GB | max_cache_allocated: 47.6602 GB
+Time taken template embedder: 0.020382404327392578
+Memory usage after templateembedder:  | mem_allocated: 7.6400 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 47.6602 GB | max_cache_allocated: 47.6602 GB
+Memory usage before msamodule:  | mem_allocated: 7.6400 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 47.6602 GB | max_cache_allocated: 47.6602 GB
+Time taken msa module: 0.05774879455566406
+Memory usage after msamodule:  | mem_allocated: 8.3197 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 47.6602 GB | max_cache_allocated: 47.6602 GB
+Memory usage before pairformer:  | mem_allocated: 8.3197 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 47.6602 GB | max_cache_allocated: 47.6602 GB
+Time taken pairformer: 0.6925833225250244
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.5652 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.4609 GB | max_cache_allocated: 47.6602 GB
+Memory usage before templateembedder:  | mem_allocated: 8.1732 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.4609 GB | max_cache_allocated: 47.6602 GB
+Time taken template embedder: 0.07848072052001953
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 8.5639 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 9.6523 GB | max_cache_allocated: 47.6602 GB
+Memory usage before msamodule:  | mem_allocated: 8.5639 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 9.6523 GB | max_cache_allocated: 47.6602 GB
+Time taken msa module: 0.07959318161010742
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 8.1050 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 10.2148 GB | max_cache_allocated: 47.6602 GB
+Memory usage before pairformer:  | mem_allocated: 8.1050 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 10.2148 GB | max_cache_allocated: 47.6602 GB
+Time taken pairformer: 0.6397280693054199
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.5650 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.4766 GB | max_cache_allocated: 47.6602 GB
+Memory usage before diffusion module:  | mem_allocated: 11.3728 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 13.4766 GB | max_cache_allocated: 47.6602 GB
+Time taken diffusionmodule: 2.240211248397827
+Memory usage after diffusion module:  | mem_allocated: 36.4870 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 38.0762 GB | max_cache_allocated: 47.6602 GB
+MSAModule forward time over the steps: [3.622603416442871, 0.07161903381347656, 0.07677912712097168, 0.07155919075012207, 0.07679486274719238, 0.07972931861877441, 0.06651973724365234, 0.06211447715759277, 0.08196568489074707, 0.0645287036895752, 0.0684959888458252, 0.05774664878845215, 0.0795891284942627]
+TemplateEmbedder forward time over the steps: [8.604693174362183, 0.12512898445129395, 0.02742767333984375, 0.09007835388183594, 0.07729721069335938, 0.07841753959655762, 0.024332046508789062, 0.02216482162475586, 0.07770824432373047, 0.02393174171447754, 0.02457284927368164, 0.02038097381591797, 0.07847809791564941]
+Pairformer forward time over the steps: [2.9051105976104736, 0.5968201160430908, 0.6212115287780762, 0.6103692054748535, 0.6302497386932373, 0.630911111831665, 0.6117241382598877, 0.6795234680175781, 0.6613099575042725, 0.5967183113098145, 1.22420334815979, 0.6925811767578125, 0.6397261619567871]
+DiffusionModule forward time over the steps: [5.56008243560791, 2.1632168292999268, 2.244663953781128, 2.18212890625, 1.8472940921783447, 2.240208625793457]
+Memory usage after fwd pass:  | mem_allocated: 37.0423 GB | max_mem_allocated: 40.9925 GB | cache_allocated: 40.9375 GB | max_cache_allocated: 47.6602 GB
+[baseline] step   5    10966.8 ms  loss 6.93408
+{
+  "mode": "baseline",
+  "pdl_enabled": false,
+  "inductor_enable_pdl": false,
+  "torch_compile_debug": "1",
+  "compile_mode": "cg-selective",
+  "seq_len": 384,
+  "num_atoms": 3481,
+  "msa_depth": 512,
+  "num_templates": 4,
+  "batch_size": 1,
+  "confidence_head": false,
+  "num_params": 509004585,
+  "warmup": 2,
+  "iters": 4,
+  "first_step_s": 44.67815744000836,
+  "step_ms_mean": 10111.839210010658,
+  "step_ms_median": 10561.45654701686,
+  "step_ms_stdev": 1491.2940203088613,
+  "step_ms_min": 7998.698584007798,
+  "peak_mem_gib": 40.99253177642822,
+  "gpu": "NVIDIA GH200 120GB",
+  "torch": "2.10.0+cu129",
+  "cuda": "12.9",
+  "triton": "3.6.0",
+  "host": "gh037.hsn.cm.delta.internal.ncsa.edu",
+  "source_tree": "/u/akadam2/MegaFold",
+  "git_commit": "0c97c88",
+  "slurm_job": "3638598"
+}

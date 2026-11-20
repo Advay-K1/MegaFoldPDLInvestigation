@@ -1,0 +1,85 @@
+{
+  "graph_count": 100,
+  "graph_break_count": 99,
+  "op_count": 861,
+  "top_reasons": [
+    [
+      "Data dependent operator",
+      24
+    ],
+    [
+      "torch.* op returned non-Tensor",
+      13
+    ],
+    [
+      "Unsupported Tensor.item() call with capture_scalar_outputs=False",
+      5
+    ],
+    [
+      "unimplemented builtin op on tensor arguments",
+      2
+    ],
+    [
+      "Attempted to wrap sparse Tensor with VariableTracker",
+      1
+    ],
+    [
+      "Dynamic shape operator",
+      1
+    ],
+    [
+      "step_unsupported",
+      1
+    ],
+    [
+      "generic_jump TensorVariable()",
+      1
+    ],
+    [
+      "SKIPPED INLINING <code object calculate_diffusion_loss at 0xaaaadb399b50, file \"/u/akadam2/MegaFold-pdl/megafold/utils/model_utils.py\", line 1945>: ",
+      1
+    ]
+  ],
+  "top_locations": [
+    [
+      "model_utils.py:459 lens_to_mask",
+      19
+    ],
+    [
+      "cuda_accelerator.py:132 memory_allocated",
+      13
+    ],
+    [
+      "comm.py:271 backward",
+      5
+    ],
+    [
+      "model_utils.py:601 batch_repeat_interleave",
+      4
+    ],
+    [
+      "frame_averaging.py:125 forward",
+      3
+    ],
+    [
+      "megafold.py:8965 run_trunk",
+      1
+    ],
+    [
+      "model_utils.py:1167 create_uid_tensor",
+      1
+    ],
+    [
+      "megafold.py:9607 forward",
+      1
+    ],
+    [
+      "model_utils.py:919 weighted_rigid_align",
+      1
+    ],
+    [
+      "model_utils.py:2571 forward",
+      1
+    ]
+  ]
+}

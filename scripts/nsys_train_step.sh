@@ -31,12 +31,13 @@ if [ "$MODE" = "pdl" ]; then export MEGAFOLD_PDL=1; else unset MEGAFOLD_PDL; fi
 
 mkdir -p results/nsys
 OUT=results/nsys/${OUT_TAG:-$MODE}
-nsys profile --trace=cuda,nvtx --sample=none --cpuctxsw=none \
+nsys profile --trace=cuda,nvtx --sample=none --cpuctxsw=none --cuda-graph-trace=node \
   --capture-range=cudaProfilerApi --capture-range-end=stop \
   --force-overwrite=true -o "$OUT" \
-  python benchmarks/train_step_bench.py --mode "$MODE" --warmup 2 --iters 1 --nvtx-step 2 \
+  python benchmarks/train_step_bench.py --mode "$MODE" --warmup 2 --iters 1 --nvtx-step 2 ${EXTRA_ARGS:-} \
     --out "results/nsys/${OUT_TAG:-$MODE}_run.json"
 
 nsys stats --force-export=true --report cuda_gpu_trace --format csv --output "$OUT" "$OUT.nsys-rep" >/dev/null
 nsys stats --report cuda_api_sum --format csv --output "$OUT" "$OUT.nsys-rep" >/dev/null
+nsys stats --report nvtx_kern_sum --format csv --output "$OUT" "$OUT.nsys-rep" >/dev/null || true
 python benchmarks/analyze_nsys.py "${OUT}_cuda_gpu_trace.csv" --out "results/nsys/${OUT_TAG:-$MODE}_gaps.json"

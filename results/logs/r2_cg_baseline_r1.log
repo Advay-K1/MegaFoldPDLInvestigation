@@ -1,0 +1,495 @@
+name, driver_version, memory.total [MiB], clocks.max.sm [MHz]
+NVIDIA GH200 120GB, 595.71.05, 97871 MiB, 1980 MHz
+[2026-11-19 22:11:32,952] [INFO] [real_accelerator.py:239:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+df: /tmp/triton_cache_baseline_3638598_1218900_1795147888: No such file or directory
+Type checking is disabled.
+Debugging is disabled.
+Loading CCD component SMILES strings from data/ccd_data/components_smiles.json.
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:347.)
+  accum.append(directions[dim_slice])
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/frame_averaging_pytorch/frame_averaging.py:50: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at /pytorch/torch/csrc/autograd/python_variable_indexing.cpp:357.)
+  accum.append(directions[dim_slice])
+[rank0]:W1119 22:11:46.934000 1218922 site-packages/torch/_inductor/debug.py:518] [0/0_1] model__0_inference_0 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__0_inference_0.0
+[rank0]:W1119 22:11:49.572000 1218922 site-packages/torch/_inductor/debug.py:518] [2/0_1] model__1_forward_2 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__1_forward_2.1
+[rank0]:W1119 22:11:51.038000 1218922 site-packages/torch/_inductor/debug.py:518] [5/0_1] model__2_forward_5 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__2_forward_5.2
+[rank0]:W1119 22:11:51.588000 1218922 site-packages/torch/_inductor/debug.py:518] [8/0_1] model__3_inference_7 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__3_inference_7.3
+[rank0]:W1119 22:11:52.168000 1218922 site-packages/torch/_inductor/debug.py:518] [10/0_1] model__4_inference_8 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__4_inference_8.4
+[rank0]:W1119 22:11:53.088000 1218922 site-packages/torch/_inductor/debug.py:518] [11/0] model__5_inference_9 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__5_inference_9.5
+[rank0]:W1119 22:11:53.251000 1218922 site-packages/torch/_inductor/debug.py:518] [13/0] model__6_inference_10 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__6_inference_10.6
+[rank0]:W1119 22:11:53.576000 1218922 site-packages/torch/_inductor/debug.py:518] [14/0_1] model__7_forward_12 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__7_forward_12.7
+[rank0]:W1119 22:11:54.360000 1218922 site-packages/torch/_inductor/debug.py:518] [15/0_1] model__8_forward_15 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__8_forward_15.8
+[rank0]:W1119 22:11:56.780000 1218922 site-packages/torch/_inductor/debug.py:518] [17/0] model__9_forward_18 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__9_forward_18.9
+[rank0]:W1119 22:11:57.339000 1218922 site-packages/torch/_inductor/debug.py:518] [19/0] model__10_forward_21 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__10_forward_21.10
+[rank0]:W1119 22:11:58.862000 1218922 site-packages/torch/_inductor/debug.py:518] [5/1] model__11_forward_24 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__11_forward_24.11
+[rank0]:W1119 22:12:00.305000 1218922 site-packages/torch/_inductor/debug.py:518] [5/2_1] model__12_forward_27 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__12_forward_27.12
+[rank0]:W1119 22:12:02.596000 1218922 site-packages/torch/_inductor/debug.py:518] [21/0] model__13_forward_30 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__13_forward_30.13
+[rank0]:W1119 22:12:04.303000 1218922 site-packages/torch/_inductor/debug.py:518] [22/0_1] model__14_forward_33 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__14_forward_33.14
+[rank0]:W1119 22:12:04.969000 1218922 site-packages/torch/_inductor/debug.py:518] [24/0] model__15_inference_35 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__15_inference_35.15
+[rank0]:W1119 22:12:05.103000 1218922 site-packages/torch/_inductor/debug.py:518] [25/0] model__16_inference_36 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__16_inference_36.16
+[rank0]:W1119 22:12:06.825000 1218922 site-packages/torch/_inductor/debug.py:518] [26/0] model__17_forward_38 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__17_forward_38.17
+[rank0]:W1119 22:12:07.425000 1218922 site-packages/torch/_inductor/debug.py:518] [27/0] model__18_inference_40 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__18_inference_40.18
+[rank0]:W1119 22:12:07.567000 1218922 site-packages/torch/_inductor/debug.py:518] [28/0] model__19_inference_41 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__19_inference_41.19
+[rank0]:W1119 22:12:08.024000 1218922 site-packages/torch/_inductor/debug.py:518] [13/1] model__20_inference_42 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__20_inference_42.20
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/utils.py:3694: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/utils.py:3694: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return node.target(*args, **kwargs)  # type: ignore[operator]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 2.7890 GB | max_mem_allocated: 4.0061 GB | cache_allocated: 4.5039 GB | max_cache_allocated: 4.5039 GB
+[rank0]:W1119 22:12:08.466000 1218922 site-packages/torch/_inductor/debug.py:518] [8/1_1] model__21_inference_43 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__21_inference_43.21
+[rank0]:W1119 22:12:08.819000 1218922 site-packages/torch/_inductor/debug.py:518] [10/1_1] model__22_inference_44 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__22_inference_44.22
+[rank0]:W1119 22:12:09.379000 1218922 site-packages/torch/_inductor/debug.py:518] [11/1] model__23_inference_45 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__23_inference_45.23
+[rank0]:W1119 22:12:10.002000 1218922 site-packages/torch/_inductor/debug.py:518] [37/0_1] model__24_forward_47 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__24_forward_47.24
+[rank0]:W1119 22:12:13.073000 1218922 site-packages/torch/_inductor/debug.py:518] [42/0] model__25_forward_50 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__25_forward_50.25
+Time taken template embedder: 5.137120246887207
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 3.2517 GB | max_mem_allocated: 6.2766 GB | cache_allocated: 8.2520 GB | max_cache_allocated: 8.2520 GB
+Memory usage before msamodule:  | mem_allocated: 3.2517 GB | max_mem_allocated: 6.2766 GB | cache_allocated: 8.2520 GB | max_cache_allocated: 8.2520 GB
+[rank0]:W1119 22:12:14.724000 1218922 site-packages/torch/_inductor/debug.py:518] [43/0_1] model__26_forward_53 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__26_forward_53.26
+[rank0]:W1119 22:12:17.432000 1218922 site-packages/torch/_inductor/debug.py:518] [50/0] model__27_forward_56 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__27_forward_56.27
+Time taken msa module: 4.160822153091431
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 4.1785 GB | max_mem_allocated: 6.2766 GB | cache_allocated: 8.2520 GB | max_cache_allocated: 8.2520 GB
+Memory usage before pairformer:  | mem_allocated: 4.2489 GB | max_mem_allocated: 6.2766 GB | cache_allocated: 8.2520 GB | max_cache_allocated: 8.2520 GB
+[rank0]:W1119 22:12:18.618000 1218922 site-packages/torch/_inductor/debug.py:518] [51/0_1] model__28_forward_59 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__28_forward_59.28
+Time taken pairformer: 3.9609549045562744
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 7.6385 GB | max_mem_allocated: 8.1338 GB | cache_allocated: 9.4453 GB | max_cache_allocated: 9.4453 GB
+[rank0]:W1119 22:12:21.874000 1218922 site-packages/torch/_inductor/debug.py:518] [7/2] model__29_forward_62 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__29_forward_62.29
+[rank0]:W1119 22:12:22.159000 1218922 site-packages/torch/_inductor/debug.py:518] [8/2_1] model__30_inference_64 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__30_inference_64.30
+[rank0]:W1119 22:12:22.455000 1218922 site-packages/torch/_inductor/debug.py:518] [10/2_1] model__31_inference_65 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__31_inference_65.31
+[rank0]:W1119 22:12:23.074000 1218922 site-packages/torch/_inductor/debug.py:518] [11/2] model__32_inference_66 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__32_inference_66.32
+[rank0]:W1119 22:12:23.753000 1218922 site-packages/torch/_inductor/debug.py:518] [58/0_1] model__33_inference_67 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__33_inference_67.33
+[rank0]:W1119 22:12:24.318000 1218922 site-packages/torch/_inductor/debug.py:518] [60/0_1] model__34_inference_68 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__34_inference_68.34
+[rank0]:W1119 22:12:24.666000 1218922 site-packages/torch/_inductor/debug.py:518] [62/0_1] model__35_inference_69 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__35_inference_69.35
+[rank0]:W1119 22:12:24.959000 1218922 site-packages/torch/_inductor/debug.py:518] [63/0] model__36_inference_70 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__36_inference_70.36
+[rank0]:W1119 22:12:25.402000 1218922 site-packages/torch/_inductor/debug.py:518] [64/0_1] model__37_inference_71 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__37_inference_71.37
+[rank0]:W1119 22:12:25.659000 1218922 site-packages/torch/_inductor/debug.py:518] [62/1_1] model__38_inference_72 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__38_inference_72.38
+[rank0]:W1119 22:12:25.824000 1218922 site-packages/torch/_inductor/debug.py:518] [63/1] model__39_inference_73 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__39_inference_73.39
+[rank0]:W1119 22:12:25.985000 1218922 site-packages/torch/_inductor/debug.py:518] [65/0_1] model__40_inference_74 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__40_inference_74.40
+[rank0]:W1119 22:12:26.357000 1218922 site-packages/torch/_inductor/debug.py:518] [66/0] model__41_inference_75 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__41_inference_75.41
+[rank0]:W1119 22:12:26.545000 1218922 site-packages/torch/_inductor/debug.py:518] [67/0_1] model__42_inference_76 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__42_inference_76.42
+[rank0]:W1119 22:12:27.089000 1218922 site-packages/torch/_inductor/debug.py:518] [66/1] model__43_inference_77 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__43_inference_77.43
+[rank0]:W1119 22:12:27.287000 1218922 site-packages/torch/_inductor/debug.py:518] [68/0_1] model__44_inference_78 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__44_inference_78.44
+[rank0]:W1119 22:12:27.902000 1218922 site-packages/torch/_inductor/debug.py:518] [70/0] model__45_forward_80 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__45_forward_80.45
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before diffusion module:  | mem_allocated: 7.4575 GB | max_mem_allocated: 8.1338 GB | cache_allocated: 9.4453 GB | max_cache_allocated: 9.4453 GB
+[rank0]:W1119 22:12:28.769000 1218922 site-packages/torch/_inductor/debug.py:518] [70/1_1] model__46_forward_83 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__46_forward_83.46
+[rank0]:W1119 22:12:29.475000 1218922 site-packages/torch/_inductor/debug.py:518] [71/0_1] model__47_inference_85 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__47_inference_85.47
+[rank0]:W1119 22:12:31.689000 1218922 site-packages/torch/_inductor/debug.py:518] [73/0] model__48_inference_86 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__48_inference_86.48
+[rank0]:W1119 22:12:32.171000 1218922 site-packages/torch/_inductor/debug.py:518] [74/0] model__49_inference_87 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__49_inference_87.49
+[rank0]:W1119 22:12:32.274000 1218922 site-packages/torch/_inductor/debug.py:518] [28/1] model__50_inference_88 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__50_inference_88.50
+[rank0]:W1119 22:12:32.466000 1218922 site-packages/torch/_inductor/debug.py:518] [75/0] model__51_inference_89 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__51_inference_89.51
+[rank0]:W1119 22:12:33.100000 1218922 site-packages/torch/_inductor/debug.py:518] [76/0_1] model__52_inference_90 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__52_inference_90.52
+[rank0]:W1119 22:12:36.497000 1218922 site-packages/torch/_inductor/debug.py:518] [77/0_1] model__53_forward_92 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__53_forward_92.53
+[rank0]:W1119 22:12:37.020000 1218922 site-packages/torch/_inductor/debug.py:518] [8/3_1] model__54_inference_94 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__54_inference_94.54
+[rank0]:W1119 22:12:37.382000 1218922 site-packages/torch/_inductor/debug.py:518] [10/3_1] model__55_inference_95 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__55_inference_95.55
+[rank0]:W1119 22:12:38.320000 1218922 site-packages/torch/_inductor/debug.py:518] [11/3] model__56_inference_96 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__56_inference_96.56
+[rank0]:W1119 22:12:38.653000 1218922 site-packages/torch/_inductor/debug.py:518] [80/0] model__57_forward_98 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__57_forward_98.57
+[rank0]:W1119 22:12:40.054000 1218922 site-packages/torch/_inductor/debug.py:518] [81/0_1] model__58_forward_101 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__58_forward_101.58
+[rank0]:W1119 22:12:40.207000 1218922 site-packages/torch/_inductor/debug.py:518] [62/2_1] model__59_inference_103 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__59_inference_103.59
+[rank0]:W1119 22:12:40.279000 1218922 site-packages/torch/_inductor/debug.py:518] [63/2] model__60_inference_104 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__60_inference_104.60
+[rank0]:W1119 22:12:40.383000 1218922 site-packages/torch/_inductor/debug.py:518] [64/1_1] model__61_inference_105 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__61_inference_105.61
+[rank0]:W1119 22:12:40.455000 1218922 site-packages/torch/_inductor/debug.py:518] [62/3_1] model__62_inference_106 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__62_inference_106.62
+[rank0]:W1119 22:12:40.527000 1218922 site-packages/torch/_inductor/debug.py:518] [63/3] model__63_inference_107 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__63_inference_107.63
+[rank0]:W1119 22:12:40.602000 1218922 site-packages/torch/_inductor/debug.py:518] [65/1_1] model__64_inference_108 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__64_inference_108.64
+[rank0]:W1119 22:12:41.057000 1218922 site-packages/torch/_inductor/debug.py:518] [66/2] model__65_forward_110 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__65_forward_110.65
+[rank0]:W1119 22:12:41.656000 1218922 site-packages/torch/_inductor/debug.py:518] [82/0_1] model__66_forward_113 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__66_forward_113.66
+[rank0]:W1119 22:12:41.880000 1218922 site-packages/torch/_inductor/debug.py:518] [8/4_1] model__67_inference_115 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__67_inference_115.67
+[rank0]:W1119 22:12:42.150000 1218922 site-packages/torch/_inductor/debug.py:518] [10/4_1] model__68_inference_116 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__68_inference_116.68
+[rank0]:W1119 22:12:42.706000 1218922 site-packages/torch/_inductor/debug.py:518] [11/4] model__69_inference_117 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__69_inference_117.69
+[rank0]:W1119 22:12:42.899000 1218922 site-packages/torch/_inductor/debug.py:518] [83/0_1] model__70_inference_118 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__70_inference_118.70
+[rank0]:W1119 22:12:43.162000 1218922 site-packages/torch/_inductor/debug.py:518] [66/3] model__72_inference_119 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__72_inference_119.71
+[rank0]:W1119 22:12:45.273000 1218922 site-packages/torch/_inductor/debug.py:518] [84/0_1] model__73_forward_121 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__73_forward_121.72
+[rank0]:W1119 22:12:47.365000 1218922 site-packages/torch/_inductor/debug.py:518] [88/0_1] model__74_forward_124 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__74_forward_124.73
+[rank0]:W1119 22:12:48.861000 1218922 site-packages/torch/_inductor/debug.py:518] [89/0_1] model__75_forward_127 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__75_forward_127.74
+[rank0]:W1119 22:12:49.919000 1218922 site-packages/torch/_inductor/debug.py:518] [90/0_1] model__76_forward_130 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__76_forward_130.75
+[rank0]:W1119 22:12:51.155000 1218922 site-packages/torch/_inductor/debug.py:518] [91/0] model__77_forward_133 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__77_forward_133.76
+[rank0]:W1119 22:12:51.675000 1218922 site-packages/torch/_inductor/debug.py:518] [92/0] model__78_forward_136 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__78_forward_136.77
+[rank0]:W1119 22:12:55.338000 1218922 site-packages/torch/_inductor/debug.py:518] [76/1_1] model__79_inference_138 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__79_inference_138.78
+[rank0]:W1119 22:12:57.489000 1218922 site-packages/torch/_inductor/debug.py:518] [77/1_1] model__80_forward_140 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__80_forward_140.79
+[rank0]:W1119 22:12:58.368000 1218922 site-packages/torch/_inductor/debug.py:518] [81/1_1] model__81_forward_143 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__81_forward_143.80
+[rank0]:W1119 22:12:58.855000 1218922 site-packages/torch/_inductor/debug.py:518] [66/4] model__82_forward_146 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__82_forward_146.81
+[rank0]:W1119 22:12:59.406000 1218922 site-packages/torch/_inductor/debug.py:518] [82/1_1] model__83_forward_149 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__83_forward_149.82
+[rank0]:W1119 22:13:02.188000 1218922 site-packages/torch/_inductor/debug.py:518] [84/1_1] model__84_forward_152 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__84_forward_152.83
+[rank0]:W1119 22:13:04.055000 1218922 site-packages/torch/_inductor/debug.py:518] [88/1_1] model__85_forward_155 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__85_forward_155.84
+[rank0]:W1119 22:13:04.909000 1218922 site-packages/torch/_inductor/debug.py:518] [89/1_1] model__86_forward_158 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__86_forward_158.85
+[rank0]:W1119 22:13:05.208000 1218922 site-packages/torch/_inductor/debug.py:518] [90/1_1] model__87_forward_161 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__87_forward_161.86
+[rank0]:W1119 22:13:06.012000 1218922 site-packages/torch/_inductor/debug.py:518] [91/1] model__88_forward_164 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__88_forward_164.87
+[rank0]:W1119 22:13:06.436000 1218922 site-packages/torch/_inductor/debug.py:518] [92/1] model__89_forward_167 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__89_forward_167.88
+[rank0]:W1119 22:13:06.587000 1218922 site-packages/torch/_inductor/debug.py:518] [62/4_1] model__90_inference_169 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__90_inference_169.89
+[rank0]:W1119 22:13:06.671000 1218922 site-packages/torch/_inductor/debug.py:518] [63/4] model__91_inference_170 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__91_inference_170.90
+[rank0]:W1119 22:13:06.786000 1218922 site-packages/torch/_inductor/debug.py:518] [64/2_1] model__92_inference_171 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__92_inference_171.91
+[rank0]:W1119 22:13:06.868000 1218922 site-packages/torch/_inductor/debug.py:518] [62/5_1] model__93_inference_172 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__93_inference_172.92
+[rank0]:W1119 22:13:06.952000 1218922 site-packages/torch/_inductor/debug.py:518] [63/5] model__94_inference_173 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__94_inference_173.93
+[rank0]:W1119 22:13:07.035000 1218922 site-packages/torch/_inductor/debug.py:518] [65/3_1] model__95_inference_174 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__95_inference_174.94
+[rank0]:W1119 22:13:07.422000 1218922 site-packages/torch/_inductor/debug.py:518] [66/5] model__96_inference_175 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__96_inference_175.95
+[rank0]:W1119 22:13:08.232000 1218922 site-packages/torch/_inductor/debug.py:518] [95/0] model__97_inference_176 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__97_inference_176.96
+[rank0]:W1119 22:13:09.045000 1218922 site-packages/torch/_inductor/debug.py:518] [96/0] model__98_inference_177 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__98_inference_177.97
+[rank0]:W1119 22:13:09.144000 1218922 site-packages/torch/_inductor/debug.py:518] [97/0] model__99_inference_178 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__99_inference_178.98
+Time taken diffusionmodule: 41.15836977958679
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after diffusion module:  | mem_allocated: 31.8183 GB | max_mem_allocated: 31.9993 GB | cache_allocated: 32.7070 GB | max_cache_allocated: 32.7070 GB
+[rank0]:W1119 22:13:09.334000 1218922 site-packages/torch/_inductor/debug.py:518] [70/2_1] model__100_inference_179 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__100_inference_179.99
+[rank0]:W1119 22:13:09.954000 1218922 site-packages/torch/_inductor/debug.py:518] [98/0_1] model__101_forward_181 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__101_forward_181.100
+[rank0]:W1119 22:13:10.156000 1218922 site-packages/torch/_inductor/debug.py:518] [8/5_1] model__102_inference_183 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__102_inference_183.101
+[rank0]:W1119 22:13:10.436000 1218922 site-packages/torch/_inductor/debug.py:518] [10/5_1] model__103_inference_184 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__103_inference_184.102
+[rank0]:W1119 22:13:11.076000 1218922 site-packages/torch/_inductor/debug.py:518] [11/5] model__104_inference_185 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__104_inference_185.103
+[rank0]:W1119 22:13:12.229000 1218922 site-packages/torch/_inductor/debug.py:518] [99/0_1] model__105_forward_187 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__105_forward_187.104
+[rank0]:W1119 22:13:12.566000 1218922 site-packages/torch/_inductor/debug.py:518] [51/1_1] model__106_forward_190 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__106_forward_190.105
+[rank0]:W1119 22:13:14.205000 1218922 site-packages/torch/_inductor/debug.py:518] [66/6] model__107_forward_193 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__107_forward_193.106
+[rank0]:W1119 22:13:14.594000 1218922 site-packages/torch/_inductor/debug.py:518] [102/0] model__108_forward_196 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__108_forward_196.107
+[rank0]:W1119 22:13:14.763000 1218922 site-packages/torch/_inductor/debug.py:518] [13/2] model__109_inference_198 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__109_inference_198.108
+[rank0]:W1119 22:13:14.903000 1218922 site-packages/torch/_inductor/debug.py:518] [13/3] model__110_inference_199 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__110_inference_199.109
+[rank0]:W1119 22:13:15.855000 1218922 site-packages/torch/_inductor/debug.py:518] [13/4] model__111_inference_200 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__111_inference_200.110
+[rank0]:W1119 22:13:16.242000 1218922 site-packages/torch/_inductor/debug.py:518] [103/0] model__112_forward_202 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__112_forward_202.111
+[rank0]:W1119 22:13:16.367000 1218922 site-packages/torch/_inductor/debug.py:518] [97/1] model__113_inference_204 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__113_inference_204.112
+[rank0]:W1119 22:13:18.253000 1218922 site-packages/torch/_inductor/debug.py:518] [104/0_1] model__114_forward_206 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__114_forward_206.113
+[rank0]:W1119 22:13:18.668000 1218922 site-packages/torch/_inductor/debug.py:518] [27/1] model__115_inference_208 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__115_inference_208.114
+[rank0]:W1119 22:13:18.904000 1218922 site-packages/torch/_inductor/debug.py:518] [66/7] model__116_inference_209 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__116_inference_209.115
+[rank0]:W1119 22:13:19.693000 1218922 site-packages/torch/_inductor/debug.py:518] [106/0] model__117_forward_211 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__117_forward_211.116
+MSAModule forward time over the steps: [4.160820484161377]
+TemplateEmbedder forward time over the steps: [5.137117862701416]
+Pairformer forward time over the steps: [3.9609522819519043]
+DiffusionModule forward time over the steps: [41.15836763381958]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 32.3405 GB | max_mem_allocated: 34.5400 GB | cache_allocated: 35.6387 GB | max_cache_allocated: 35.6387 GB
+[rank0]:W1119 22:13:20.001000 1218922 site-packages/torch/_inductor/debug.py:518] [106/0] model__117_backward_213 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__117_backward_213.117
+[rank0]:W1119 22:13:20.797000 1218922 site-packages/torch/_inductor/debug.py:518] [104/0_1] model__114_backward_214 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__114_backward_214.118
+[rank0]:W1119 22:13:21.086000 1218922 site-packages/torch/_inductor/debug.py:518] [103/0] model__112_backward_215 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__112_backward_215.119
+[rank0]:W1119 22:13:21.220000 1218922 site-packages/torch/_inductor/debug.py:518] [102/0] model__108_backward_216 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__108_backward_216.120
+[rank0]:W1119 22:13:21.466000 1218922 site-packages/torch/_inductor/debug.py:518] [66/6] model__107_backward_217 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__107_backward_217.121
+[rank0]:W1119 22:13:27.383000 1218922 site-packages/torch/_inductor/debug.py:518] [51/1_1] model__106_backward_218 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__106_backward_218.122
+[rank0]:W1119 22:13:28.389000 1218922 site-packages/torch/_inductor/debug.py:518] [99/0_1] model__105_backward_219 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__105_backward_219.123
+[rank0]:W1119 22:13:29.070000 1218922 site-packages/torch/_inductor/debug.py:518] [98/0_1] model__101_backward_220 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__101_backward_220.124
+[rank0]:W1119 22:13:29.273000 1218922 site-packages/torch/_inductor/debug.py:518] [92/1] model__89_backward_221 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__89_backward_221.125
+[rank0]:W1119 22:13:29.849000 1218922 site-packages/torch/_inductor/debug.py:518] [91/1] model__88_backward_222 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__88_backward_222.126
+[rank0]:W1119 22:13:30.379000 1218922 site-packages/torch/_inductor/debug.py:518] [90/1_1] model__87_backward_223 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__87_backward_223.127
+[rank0]:W1119 22:13:30.592000 1218922 site-packages/torch/_inductor/debug.py:518] [66/4] model__82_backward_224 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__82_backward_224.128
+[rank0]:W1119 22:13:30.947000 1218922 site-packages/torch/_inductor/debug.py:518] [89/1_1] model__86_backward_225 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__86_backward_225.129
+[rank0]:W1119 22:13:31.782000 1218922 site-packages/torch/_inductor/debug.py:518] [88/1_1] model__85_backward_226 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__85_backward_226.130
+[rank0]:W1119 22:13:32.870000 1218922 site-packages/torch/_inductor/debug.py:518] [84/1_1] model__84_backward_227 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__84_backward_227.131
+[rank0]:W1119 22:13:33.085000 1218922 site-packages/torch/_inductor/debug.py:518] [82/1_1] model__83_backward_228 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__83_backward_228.132
+[rank0]:W1119 22:13:33.424000 1218922 site-packages/torch/_inductor/debug.py:518] [81/1_1] model__81_backward_229 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__81_backward_229.133
+[rank0]:W1119 22:13:33.604000 1218922 site-packages/torch/_inductor/debug.py:518] [80/0] model__57_backward_230 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__57_backward_230.134
+[rank0]:W1119 22:13:34.981000 1218922 site-packages/torch/_inductor/debug.py:518] [77/1_1] model__80_backward_231 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__80_backward_231.135
+[rank0]:W1119 22:13:35.314000 1218922 site-packages/torch/_inductor/debug.py:518] [92/0] model__78_backward_232 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__78_backward_232.136
+[rank0]:W1119 22:13:36.139000 1218922 site-packages/torch/_inductor/debug.py:518] [91/0] model__77_backward_233 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__77_backward_233.137
+[rank0]:W1119 22:13:36.597000 1218922 site-packages/torch/_inductor/debug.py:518] [90/0_1] model__76_backward_234 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__76_backward_234.138
+[rank0]:W1119 22:13:36.829000 1218922 site-packages/torch/_inductor/debug.py:518] [66/2] model__65_backward_235 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__65_backward_235.139
+[rank0]:W1119 22:13:37.217000 1218922 site-packages/torch/_inductor/debug.py:518] [89/0_1] model__75_backward_236 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__75_backward_236.140
+[rank0]:W1119 22:13:38.493000 1218922 site-packages/torch/_inductor/debug.py:518] [88/0_1] model__74_backward_237 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__74_backward_237.141
+[rank0]:W1119 22:13:39.882000 1218922 site-packages/torch/_inductor/debug.py:518] [84/0_1] model__73_backward_238 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__73_backward_238.142
+[rank0]:W1119 22:13:40.282000 1218922 site-packages/torch/_inductor/debug.py:518] [82/0_1] model__66_backward_239 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__66_backward_239.143
+[rank0]:W1119 22:13:40.708000 1218922 site-packages/torch/_inductor/debug.py:518] [81/0_1] model__58_backward_240 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__58_backward_240.144
+[rank0]:W1119 22:13:41.893000 1218922 site-packages/torch/_inductor/debug.py:518] [77/0_1] model__53_backward_241 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__53_backward_241.145
+[rank0]:W1119 22:13:45.346000 1218922 site-packages/torch/_inductor/debug.py:518] [70/1_1] model__46_backward_242 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__46_backward_242.146
+[rank0]:W1119 22:13:45.623000 1218922 site-packages/torch/_inductor/debug.py:518] [70/0] model__45_backward_243 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__45_backward_243.147
+[rank0]:W1119 22:13:46.496000 1218922 site-packages/torch/_inductor/debug.py:518] [7/2] model__29_backward_244 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__29_backward_244.148
+[rank0]:W1119 22:13:49.175000 1218922 site-packages/torch/_inductor/debug.py:518] [51/0_1] model__28_backward_245 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__28_backward_245.149
+[rank0]:W1119 22:13:49.428000 1218922 site-packages/torch/_inductor/debug.py:518] [50/0] model__27_backward_246 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__27_backward_246.150
+[rank0]:W1119 22:13:50.771000 1218922 site-packages/torch/_inductor/debug.py:518] [43/0_1] model__26_backward_247 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__26_backward_247.151
+[rank0]:W1119 22:13:52.297000 1218922 site-packages/torch/_inductor/debug.py:518] [42/0] model__25_backward_248 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__25_backward_248.152
+[rank0]:W1119 22:13:54.379000 1218922 site-packages/torch/_inductor/debug.py:518] [37/0_1] model__24_backward_249 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__24_backward_249.153
+[rank0]:W1119 22:13:54.553000 1218922 site-packages/torch/_inductor/debug.py:518] [26/0] model__17_backward_250 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__17_backward_250.154
+[rank0]:W1119 22:13:55.188000 1218922 site-packages/torch/_inductor/debug.py:518] [22/0_1] model__14_backward_251 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__14_backward_251.155
+[rank0]:W1119 22:13:56.930000 1218922 site-packages/torch/_inductor/debug.py:518] [21/0] model__13_backward_252 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__13_backward_252.156
+[rank0]:W1119 22:13:59.310000 1218922 site-packages/torch/_inductor/debug.py:518] [5/1] model__11_backward_253 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__11_backward_253.157
+[rank0]:W1119 22:13:59.711000 1218922 site-packages/torch/_inductor/debug.py:518] [19/0] model__10_backward_254 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__10_backward_254.158
+[rank0]:W1119 22:14:00.667000 1218922 site-packages/torch/_inductor/debug.py:518] [17/0] model__9_backward_255 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__9_backward_255.159
+[rank0]:W1119 22:14:01.325000 1218922 site-packages/torch/_inductor/debug.py:518] [15/0_1] model__8_backward_256 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__8_backward_256.160
+[rank0]:W1119 22:14:01.437000 1218922 site-packages/torch/_inductor/debug.py:518] [14/0_1] model__7_backward_257 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__7_backward_257.161
+[rank0]:W1119 22:14:02.660000 1218922 site-packages/torch/_inductor/debug.py:518] [5/2_1] model__12_backward_258 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__12_backward_258.162
+[rank0]:W1119 22:14:03.776000 1218922 site-packages/torch/_inductor/debug.py:518] [5/0_1] model__2_backward_259 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__2_backward_259.163
+[rank0]:W1119 22:14:04.699000 1218922 site-packages/torch/_inductor/debug.py:518] [2/0_1] model__1_backward_260 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__1_backward_260.164
+[baseline] step   0   142341.6 ms  loss 7.66252
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 6.7279 GB | max_mem_allocated: 7.8865 GB | cache_allocated: 25.2285 GB | max_cache_allocated: 44.4219 GB
+Time taken template embedder: 0.12279820442199707
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 7.1901 GB | max_mem_allocated: 10.2160 GB | cache_allocated: 25.3691 GB | max_cache_allocated: 44.4219 GB
+Memory usage before msamodule:  | mem_allocated: 7.1901 GB | max_mem_allocated: 10.2160 GB | cache_allocated: 25.3691 GB | max_cache_allocated: 44.4219 GB
+Time taken msa module: 0.08235526084899902
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 8.1170 GB | max_mem_allocated: 10.2160 GB | cache_allocated: 25.9316 GB | max_cache_allocated: 44.4219 GB
+Memory usage before pairformer:  | mem_allocated: 8.1170 GB | max_mem_allocated: 10.2160 GB | cache_allocated: 25.9316 GB | max_cache_allocated: 44.4219 GB
+Time taken pairformer: 0.6080100536346436
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.5769 GB | max_mem_allocated: 12.0724 GB | cache_allocated: 29.9941 GB | max_cache_allocated: 44.4219 GB
+[rank0]:W1119 22:14:07.089000 1218922 site-packages/torch/_inductor/debug.py:518] [107/0] model__118_forward_262 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__118_forward_262.165
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before diffusion module:  | mem_allocated: 11.4303 GB | max_mem_allocated: 12.0724 GB | cache_allocated: 29.2891 GB | max_cache_allocated: 44.4219 GB
+Time taken diffusionmodule: 4.365159511566162
+Memory usage after diffusion module:  | mem_allocated: 35.7818 GB | max_mem_allocated: 35.9395 GB | cache_allocated: 38.4941 GB | max_cache_allocated: 44.4219 GB
+[rank0]:W1119 22:14:11.972000 1218922 site-packages/torch/_inductor/debug.py:518] [103/1] model__119_forward_265 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__119_forward_265.166
+MSAModule forward time over the steps: [4.160820484161377, 0.0823516845703125]
+TemplateEmbedder forward time over the steps: [5.137117862701416, 0.12279510498046875]
+Pairformer forward time over the steps: [3.9609522819519043, 0.6080076694488525]
+DiffusionModule forward time over the steps: [41.15836763381958, 4.365157127380371]
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after fwd pass:  | mem_allocated: 36.3041 GB | max_mem_allocated: 38.5035 GB | cache_allocated: 41.2148 GB | max_cache_allocated: 44.4219 GB
+[rank0]:W1119 22:14:12.597000 1218922 site-packages/torch/_inductor/debug.py:518] [103/1] model__119_backward_267 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__119_backward_267.167
+[rank0]:W1119 22:14:16.796000 1218922 site-packages/torch/_inductor/debug.py:518] [107/0] model__118_backward_268 debug trace: /u/akadam2/MegaFold/results/compile_debug/cg_baseline_r1/torch_compile_debug/run_2026_11_19_22_11_42_901317-pid_1218922/torchinductor/model__118_backward_268.168
+[baseline] step   1    13227.8 ms  loss 7.40616
+Memory usage before templateembedder:  | mem_allocated: 6.3643 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 47.9004 GB | max_cache_allocated: 47.9004 GB
+Time taken template embedder: 0.025259733200073242
+Memory usage after templateembedder:  | mem_allocated: 6.4707 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 47.9004 GB | max_cache_allocated: 47.9004 GB
+Memory usage before msamodule:  | mem_allocated: 6.4707 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 47.9004 GB | max_cache_allocated: 47.9004 GB
+Time taken msa module: 0.06100320816040039
+Memory usage after msamodule:  | mem_allocated: 7.1504 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 47.9004 GB | max_cache_allocated: 47.9004 GB
+Memory usage before pairformer:  | mem_allocated: 7.1504 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 47.9004 GB | max_cache_allocated: 47.9004 GB
+Time taken pairformer: 0.579477071762085
+Memory usage after pairformer:  | mem_allocated: 10.5073 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 47.9004 GB | max_cache_allocated: 47.9004 GB
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 8.1892 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.2285 GB | max_cache_allocated: 47.9004 GB
+Time taken template embedder: 0.12906527519226074
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 8.6117 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.2285 GB | max_cache_allocated: 47.9004 GB
+Memory usage before msamodule:  | mem_allocated: 8.6117 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.2285 GB | max_cache_allocated: 47.9004 GB
+Time taken msa module: 0.0838925838470459
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 8.1886 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.7910 GB | max_cache_allocated: 47.9004 GB
+Memory usage before pairformer:  | mem_allocated: 8.1886 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.7910 GB | max_cache_allocated: 47.9004 GB
+Time taken pairformer: 1.4924509525299072
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.6485 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 30.1055 GB | max_cache_allocated: 47.9004 GB
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 8.2243 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.0801 GB | max_cache_allocated: 47.9004 GB
+Time taken template embedder: 0.13648295402526855
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 8.6474 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.1504 GB | max_cache_allocated: 47.9004 GB
+Memory usage before msamodule:  | mem_allocated: 8.6474 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.1504 GB | max_cache_allocated: 47.9004 GB
+Time taken msa module: 0.08630967140197754
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 8.1892 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.9941 GB | max_cache_allocated: 47.9004 GB
+Memory usage before pairformer:  | mem_allocated: 8.1892 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.9941 GB | max_cache_allocated: 47.9004 GB
+Time taken pairformer: 0.6176004409790039
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.6492 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 30.0391 GB | max_cache_allocated: 47.9004 GB
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before templateembedder:  | mem_allocated: 8.2250 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.7129 GB | max_cache_allocated: 47.9004 GB
+Time taken template embedder: 0.14109206199645996
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after templateembedder:  | mem_allocated: 8.6474 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.7129 GB | max_cache_allocated: 47.9004 GB
+Memory usage before msamodule:  | mem_allocated: 8.6474 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.7129 GB | max_cache_allocated: 47.9004 GB
+Time taken msa module: 0.08608293533325195
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after msamodule:  | mem_allocated: 8.1886 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.9941 GB | max_cache_allocated: 47.9004 GB
+Memory usage before pairformer:  | mem_allocated: 8.1886 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 26.9941 GB | max_cache_allocated: 47.9004 GB
+Time taken pairformer: 0.6190488338470459
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage after pairformer:  | mem_allocated: 11.6485 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 29.9688 GB | max_cache_allocated: 47.9004 GB
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:141: FutureWarning: `torch.cuda.memory_cached` has been renamed to `torch.cuda.memory_reserved`
+  return torch.cuda.memory_cached(device_index)
+/u/akadam2/venvs/megafold/lib/python3.12/site-packages/deepspeed/accelerator/cuda_accelerator.py:144: FutureWarning: `torch.cuda.max_memory_cached` has been renamed to `torch.cuda.max_memory_reserved`
+  return torch.cuda.max_memory_cached(device_index)
+Memory usage before diffusion module:  | mem_allocated: 11.3593 GB | max_mem_allocated: 40.2208 GB | cache_allocated: 29.4707 GB | max_cache_allocated: 47.9004 GB
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/cudagraph_trees.py", line 1285, in _record
+[rank0]:     static_outputs = model(inputs)
+[rank0]:                      ^^^^^^^^^^^^^
+[rank0]:   File "/tmp/inductor_cache_baseline_3638598_1218900_1795147888/uq/cuqifmdrb4v5vxzbxtd76zix2zxwyhk76xss4hgdsbh6pxacmwmm.py", line 521, in partition_0
+[rank0]:     buf11 = torch.ops.aten._linalg_svd.default(buf10)
+[rank0]:             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_ops.py", line 819, in __call__
+[rank0]:     return self._op(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: torch.AcceleratorError: CUDA error: operation not permitted when stream is capturing
+[rank0]: Search for `cudaErrorStreamCaptureUnsupported' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+[rank0]: CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+[rank0]: For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+[rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+
+[rank0]: During handling of the above exception, another exception occurred:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/u/akadam2/MegaFold/benchmarks/train_step_bench.py", line 212, in <module>
+[rank0]:     loss = train_step(step)
+[rank0]:            ^^^^^^^^^^^^^^^^
+[rank0]:   File "/u/akadam2/MegaFold/benchmarks/train_step_bench.py", line 170, in train_step
+[rank0]:     loss, breakdown = compiled(
+[rank0]:                       ^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 465, in __call__
+[rank0]:     return super().__call__(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 953, in compile_wrapper
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/u/akadam2/MegaFold/megafold/model/megafold.py", line 9568, in forward
+[rank0]:     ) = self.run_trunk(
+[rank0]:   File "/u/akadam2/MegaFold/megafold/model/megafold.py", line 9600, in torch_dynamo_resume_in_forward_at_9568
+[rank0]:     chain_res_idx = create_uid_tensor(chain_idx, res_idx)
+[rank0]:   File "/u/akadam2/MegaFold/megafold/model/megafold.py", line 9601, in torch_dynamo_resume_in_forward_at_9600
+[rank0]:     atom_chain_res_idx = batch_repeat_interleave(chain_res_idx, molecule_atom_lens)
+[rank0]:   File "/u/akadam2/MegaFold/megafold/model/megafold.py", line 9603, in torch_dynamo_resume_in_forward_at_9601
+[rank0]:     is_ligand_res_atom = batch_repeat_interleave(
+[rank0]:   File "/u/akadam2/MegaFold/megafold/model/megafold.py", line 9607, in torch_dynamo_resume_in_forward_at_9603
+[rank0]:     is_ligand_atom_res_idx[is_ligand_res_atom] = atom_chain_res_idx[is_ligand_res_atom]
+[rank0]:   File "/u/akadam2/MegaFold/megafold/model/megafold.py", line 9794, in torch_dynamo_resume_in_forward_at_9607
+[rank0]:     additional_molecule_feats=additional_molecule_feats,
+[rank0]:   File "/u/akadam2/MegaFold/megafold/utils/model_utils.py", line 1198, in new_func
+[rank0]:     return func(
+[rank0]:            ^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/u/akadam2/MegaFold/megafold/model/megafold.py", line 3110, in forward
+[rank0]:     fa_atom_pos = self.frame_average(
+[rank0]:   File "/u/akadam2/MegaFold/megafold/model/megafold.py", line 3221, in torch_dynamo_resume_in_forward_at_3110
+[rank0]:     true_coords=aug_atom_pos.float(),
+[rank0]:                        ^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+[rank0]:     return func(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/u/akadam2/MegaFold/megafold/utils/model_utils.py", line 850, in weighted_rigid_align
+[rank0]:     @typecheck
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1181, in _fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/aot_autograd.py", line 1148, in forward
+[rank0]:     return compiled_fn(full_args)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 357, in runtime_wrapper
+[rank0]:     all_outs = call_func_at_runtime_with_args(
+[rank0]:                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/utils.py", line 134, in call_func_at_runtime_with_args
+[rank0]:     out = normalize_as_list(f(args))
+[rank0]:                             ^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 531, in wrapper
+[rank0]:     return compiled_fn(runtime_args)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 729, in inner_fn
+[rank0]:     outs = compiled_fn(args)
+[rank0]:            ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/output_code.py", line 638, in __call__
+[rank0]:     return self.current_callable(inputs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/tmp/inductor_cache_baseline_3638598_1218900_1795147888/uq/cuqifmdrb4v5vxzbxtd76zix2zxwyhk76xss4hgdsbh6pxacmwmm.py", line 560, in call
+[rank0]:     (buf7, buf3, buf12, buf14, buf15) = self.partitions[0](partition0_args)
+[rank0]:                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/compile_fx.py", line 1843, in run
+[rank0]:     return compiled_fn(new_inputs)  # type: ignore[arg-type]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/cudagraph_trees.py", line 388, in deferred_cudagraphify
+[rank0]:     return fn(inputs)
+[rank0]:            ^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/utils.py", line 3220, in run
+[rank0]:     out = model(new_inputs)
+[rank0]:           ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/cudagraph_trees.py", line 2033, in run
+[rank0]:     out = self._run(new_inputs, function_id)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/cudagraph_trees.py", line 2203, in _run
+[rank0]:     return self.record_function(new_inputs, function_id)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/cudagraph_trees.py", line 2240, in record_function
+[rank0]:     node = CUDAGraphNode(
+[rank0]:            ^^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/cudagraph_trees.py", line 1046, in __init__
+[rank0]:     self.recording_outputs: Optional[OutputType] = self._record(
+[rank0]:                                                    ^^^^^^^^^^^^^
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/cudagraph_trees.py", line 1277, in _record
+[rank0]:     torch.cuda.graph(
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/cuda/graphs.py", line 268, in __exit__
+[rank0]:     self.cuda_graph.capture_end()
+[rank0]:   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/cuda/graphs.py", line 130, in capture_end
+[rank0]:     super().capture_end()
+[rank0]: torch.AcceleratorError: CUDA error: operation failed due to a previous error during capture
+[rank0]: Search for `cudaErrorStreamCaptureInvalidated' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+[rank0]: CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+[rank0]: For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+[rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank0]:[W1119 22:14:43.937254510 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+srun: error: gh037: task 0: Exited with exit code 1
