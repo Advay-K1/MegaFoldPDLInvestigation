@@ -1,0 +1,16 @@
+WORK=0 | implicit trigger | ATen add + shim (no wait) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=0 | implicit trigger | CUDA C++ PDL-aware (waits) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=0 | early trigger | ATen add + shim (no wait) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=0 | early trigger | CUDA C++ PDL-aware (waits) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=64 | implicit trigger | ATen add + shim (no wait) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=64 | implicit trigger | CUDA C++ PDL-aware (waits) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=64 | early trigger | ATen add + shim (no wait) {'bad_trials': 200, 'trials': 200, 'worst_frac_wrong_elements': 0.0585}
+WORK=64 | early trigger | CUDA C++ PDL-aware (waits) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=512 | implicit trigger | ATen add + shim (no wait) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=512 | implicit trigger | CUDA C++ PDL-aware (waits) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=512 | early trigger | ATen add + shim (no wait) {'bad_trials': 200, 'trials': 200, 'worst_frac_wrong_elements': 0.0848}
+WORK=512 | early trigger | CUDA C++ PDL-aware (waits) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=4096 | implicit trigger | ATen add + shim (no wait) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=4096 | implicit trigger | CUDA C++ PDL-aware (waits) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}
+WORK=4096 | early trigger | ATen add + shim (no wait) {'bad_trials': 200, 'trials': 200, 'worst_frac_wrong_elements': 0.1503}
+WORK=4096 | early trigger | CUDA C++ PDL-aware (waits) {'bad_trials': 0, 'trials': 200, 'worst_frac_wrong_elements': 0.0}

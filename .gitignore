@@ -7,3 +7,5 @@ results/**/*_cuda_gpu_trace.csv
 results/compile_debug/
 outputs/
 logs/
+benchmarks/pdl_xlang/build/
+benchmarks/pdl_xlang/*.so

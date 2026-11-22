@@ -1,0 +1,332 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx,booktabs,float,amsmath,amssymb,textcomp,xcolor}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single,columns=fullflexible,keepspaces=true}
+\setlength{\parskip}{0.5em}\setlength{\parindent}{0pt}
+\title{Report 3: Cross-language PDL (Triton, ATen, cuBLAS, CUDA C++) for a MegaFold Training Step}
+\author{MegaFold PDL investigation --- NCSA DeltaAI, 1$\times$ NVIDIA GH200}
+\date{November 2026}
+\begin{document}
+\maketitle
+
+\textbf{Question.} Only 3.6\% of the training step's adjacent kernel pairs are Triton $\rightarrow$ Triton, the only pairs Report 1 made PDL-capable. Most boundaries involve PyTorch's eager ATen kernels (C++/CUDA) or cuBLAS. Can PDL cross from one kernel language to another, e.g. Triton $\rightarrow$ ATen? Triton's \texttt{gdc\_wait()} and \texttt{gdc\_launch\_dependents()} already lower to inline asm, so could an agent inline-asm its way across?
+
+
+\textbf{Short answer.}
+
+
+\begin{enumerate}
+\item \textbf{Yes, PDL works across kernel languages.} It is a driver and hardware mechanism, not a Triton feature. A Triton kernel and a hand-written CUDA C++ kernel form a correct PDL pair in either direction: in a CUDA graph, a Triton $\rightarrow$ CUDA C++ boundary got 40--51\% faster for few-\textmu{}s kernels, with bitwise-identical results over 100 randomized trials.
+\item \textbf{The obstacle for ATen is not the language, but where the two required pieces live.} A PDL boundary needs (a) the PDL attribute on the \emph{next} kernel's launch call and (b) a \texttt{griddepcontrol.wait} instruction \emph{inside the next kernel's code}. ATen kernels are precompiled into \texttt{libtorch\_cuda.so} and launched with plain \texttt{cudaLaunchKernel}, so they have neither. Inline asm in the \emph{Triton} kernel cannot supply (b), because the missing instruction has to be in the ATen kernel.
+\item \textbf{I could add (a) from outside PyTorch, but not (b).} An \texttt{LD\_PRELOAD} shim rewrites every ATen launch into a PDL launch, and ATen kernels then really do start early. But they cannot wait. With an early trigger in the preceding kernel (MegaFold's early mode, and Inductor's PDL code, which triggers right after its last load), the ATen kernel read stale data in \textbf{200 of 200 trials}. With implicit triggers only, it was correct in every trial (4 $\times$ 200), but CUDA does not guarantee that.
+\item \textbf{cuBLAS} contains internal PDL machinery but, as PyTorch calls it, neither starts early nor triggers early, and it has no public switch for PDL.
+\item \textbf{It would not speed up MegaFold anyway.} Even the most aggressive version --- every ATen kernel made PDL-capable on the real step --- gives \textbf{no speedup: the step was 1.5\% slower} (paired ratio 1.015, 95\% CI 1.006--1.025, with losses equal to PDL off). The boundary census shows why:
+\end{enumerate}
+\begin{itemize}
+\item Only 39\% of boundaries have the next kernel already queued when the previous one finishes; the rest are CPU-bound.
+\item The queued boundaries before an ATen kernel hold \textbf{52 ms of GPU idle gap out of 9.36 s (0.56\%)}. That is the most cross-language PDL could remove.
+\end{itemize}
+
+The 3.6\% is a symptom. The cause is that the step is launch-bound (Report 2).
+
+
+Setup: as in Reports 1--2 (1$\times$ GH200 on DeltaAI, PyTorch 2.10.0+cu129, Triton 3.6.0, driver 595.71, bs = 1, 384 tokens). New code: \texttt{benchmarks/pdl\_xlang/} (the CUDA C++ extension and the shim), \texttt{benchmarks/pdl\_cross\_language.py}, \texttt{benchmarks/pdl\_xlang\_hazard.py}, \texttt{benchmarks/boundary\_census.py}.
+
+
+
+\section{What a PDL boundary actually needs}
+
+For consecutive kernels P (the \emph{primary}) $\rightarrow$ S (the \emph{secondary}) on one stream:
+
+
+\begin{table}[H]\centering\small
+\resizebox{\ifdim\width>\textwidth\textwidth\else\width\fi}{!}{%
+\begin{tabular}{llllll}
+\toprule
+piece & where it lives & Triton & CUDA C++ & ATen (precompiled) & cuBLAS \\
+\midrule
+(a) \texttt{cudaLaunchAttributeProgrammaticStreamSerialization} on \textbf{S's launch} & host, per launch call & \texttt{launch\_pdl=True} (via \texttt{cuLaunchKernelEx}) & \texttt{cudaLaunchKernelEx} + attribute & $\times$ plain \texttt{cudaLaunchKernel} (108,514 launches/step) & internal; not enabled by default \\
+(b) \texttt{griddepcontrol.wait} in \textbf{S's code} before reading P's output & device, inside S & \texttt{tl.extra.cuda.gdc\_wait()} = inline asm & \texttt{asm volatile("griddepcontrol.wait;" ::: "memory")} & $\times$ not in the binary & internal (\texttt{ProgrammaticGridSync} in \texttt{libcublasLt}) \\
+(c) optional \texttt{griddepcontrol.launch\_dependents} in \textbf{P's code} & device, inside P & \texttt{gdc\_launch\_dependents()} & \texttt{asm volatile("griddepcontrol.launch\_dependents;")} & $\times$ (implicit trigger at completion) & not observed \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+PDL never involves the two kernels' languages, only these three pieces. The secondary needs both (a) and (b); the primary needs nothing, because without (c) it triggers implicitly as its blocks finish. So:
+
+
+\begin{itemize}
+\item \textbf{ATen $\rightarrow$ Triton} already works today and is exercised in Reports 1--2: the Triton secondary brings
+\end{itemize}
+(a) and (b).
+
+\begin{itemize}
+\item \textbf{Triton $\rightarrow$ ATen} needs (a) and (b) on the ATen kernel. Making the Triton side smarter (inline asm or
+\end{itemize}
+anything else) cannot help, because nothing in P can stand in for the \texttt{griddepcontrol.wait} that S lacks.
+
+
+\texttt{cudaStreamSetAttribute(stream, ProgrammaticStreamSerialization)} is rejected (\texttt{cudaErrorInvalidValue}): the attribute is per launch only, so there is no stream-wide switch.
+
+
+\section{Experiment E1: which secondaries actually start early?}
+
+The primary P is a 1-block Triton kernel that executes \texttt{gdc\_launch\_dependents()} first and then computes for 13.7 \textmu{}s. S is an \emph{independent} kernel of each kind, and 20 (P; S) pairs are captured in a CUDA graph. If S's launch carries the PDL attribute, S runs underneath P and the pair costs about max(P, S) instead of P + S.
+
+
+\begin{table}[H]\centering\small
+\resizebox{\ifdim\width>\textwidth\textwidth\else\width\fi}{!}{%
+\begin{tabular}{llll}
+\toprule
+secondary S & S alone & P then S & S overlapped with P? \\
+\midrule
+Triton, \texttt{launch\_pdl=True} & 38.8 \textmu{}s & 40.2 \textmu{}s & \textbf{yes} (90\% of P hidden) \\
+Triton, \texttt{launch\_pdl=False} & 39.0 \textmu{}s & 52.9 \textmu{}s & no \\
+CUDA C++, \texttt{cudaLaunchKernelEx} + PDL attribute & 68.3 \textmu{}s & 69.8 \textmu{}s & \textbf{yes} (89\%) \\
+CUDA C++, no attribute & 68.5 \textmu{}s & 82.4 \textmu{}s & no \\
+ATen \texttt{add} (\texttt{vectorized\_elementwise\_kernel}) & 39.2 \textmu{}s & 52.8 \textmu{}s & no \\
+ATen \texttt{sum} (\texttt{reduce\_kernel}) & 23.8 \textmu{}s & 37.5 \textmu{}s & no \\
+ATen \texttt{copy\_} & 38.9 \textmu{}s & 52.5 \textmu{}s & no; it is a \texttt{cudaMemcpyAsync}, not a kernel \\
+cuBLAS bf16 GEMM 4096$^3$ / fp32 GEMM 2048$^3$ & 218 / 347 \textmu{}s & 261 / 367 \textmu{}s & no$^1$ \\
+\textbf{ATen \texttt{add} + \texttt{LD\_PRELOAD} shim} & 38.9 \textmu{}s & 40.3 \textmu{}s & \textbf{yes} (90\%) \\
+\textbf{ATen \texttt{sum} + \texttt{LD\_PRELOAD} shim} & 23.6 \textmu{}s & 27.2 \textmu{}s & \textbf{yes} (74\%) \\
+ATen \texttt{copy\_} / cuBLAS GEMM + shim &  &  & no; memcpy, or cuBLAS launches through the driver API \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+$^1$ P + S is exceeded because the 1-block P occupies an SM that the persistent GEMM wants.
+
+
+\textbf{The shim} (\texttt{benchmarks/pdl\_xlang/pdl\_shim.c}, about 40 lines of C) interposes \texttt{cudaLaunchKernel}, which is what every \texttt{<<<>>>} launch in \texttt{libtorch\_cuda.so} calls. When it is switched on, it re-issues the launch as \texttt{cudaLaunchKernelExC} with the PDL attribute. This needs no rebuild of PyTorch, but it supplies only piece (a).
+
+
+\section{Experiment E2: which primaries trigger early?}
+
+The primary P is a long kernel of each kind. The secondary S is a PDL-launched CUDA C++ probe that records \texttt{\%globaltimer} on entry and again after \texttt{griddepcontrol.wait}. A long wait means the probe was already running while P was still running, i.e. P triggered early.
+
+
+\begin{table}[H]\centering\small
+\resizebox{\ifdim\width>\textwidth\textwidth\else\width\fi}{!}{%
+\begin{tabular}{llll}
+\toprule
+primary P & P duration & probe's wait & triggers early? \\
+\midrule
+Triton, \texttt{gdc\_launch\_dependents} first (positive control) & 83 \textmu{}s & 51 \textmu{}s & \textbf{yes} \\
+Triton, no trigger (negative control) & 80 \textmu{}s & 0.0 \textmu{}s & no \\
+CUDA C++, \texttt{launch\_dependents} first & 73 \textmu{}s & 62 \textmu{}s & \textbf{yes} \\
+ATen \texttt{add} (512 MiB), ATen \texttt{sum} & 309 \textmu{}s, 172 \textmu{}s & 0.13 \textmu{}s & no \\
+cuBLAS bf16 GEMM 8192$^3$ & 1,520 \textmu{}s & 0.13 \textmu{}s & no \\
+cuBLAS bf16 GEMM 256$\times$256, K = 65,536 (few blocks) & 54 \textmu{}s & 0.0 \textmu{}s & no \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+ATen kernels can only ever be implicit-trigger primaries. As PyTorch calls it, cuBLAS behaves the same way: its internal PDL support is not active.
+
+
+\section{Experiment E3: dependent chains across languages, in a CUDA graph}
+
+The chain has 256 kernels, each reading the previous kernel's output (132 blocks $\times$ 512 floats, so the kernels take a few \textmu{}s). Kernel kinds alternate per pattern, and the chain is captured in a CUDA graph. Each configuration was checked against PDL off on 100 random inputs.
+
+
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{figures/r3_cross_language_chains.png}
+\caption{cross-language chains}
+\end{figure}
+
+\begin{table}[H]\centering\small
+\resizebox{\ifdim\width>\textwidth\textwidth\else\width\fi}{!}{%
+\begin{tabular}{lllll}
+\toprule
+chain & PDL off & implicit trigger & early trigger & bitwise equal to PDL off \\
+\midrule
+Triton $\rightarrow$ Triton & 1.30 \textmu{}s & 0.97 \textmu{}s (+33\%) & 0.76 \textmu{}s (+71\%) & 100/100 \\
+\textbf{Triton $\rightarrow$ CUDA C++ (PDL-aware)} & 1.43 \textmu{}s & 1.02 \textmu{}s (\textbf{+40\%}) & 0.95 \textmu{}s (\textbf{+51\%}) & 100/100 \\
+CUDA C++ $\rightarrow$ CUDA C++ (PDL-aware) & 1.48 \textmu{}s & 1.25 \textmu{}s (+18\%) & 1.14 \textmu{}s (+29\%) & 100/100 \\
+Triton $\rightarrow$ ATen (unmodified) & 1.28 \textmu{}s & 1.39 \textmu{}s ($-$8\%) & 1.39 \textmu{}s ($-$8\%) & 100/100 \\
+Triton $\rightarrow$ ATen (shim, no wait) & 1.28 \textmu{}s & 1.05 \textmu{}s (+22\%) & 0.86 \textmu{}s (+48\%), \textbf{unsafe}, see below & 100/100 (*) \\
+ATen $\rightarrow$ ATen (shim, no wait) & 1.25 \textmu{}s & 1.00 \textmu{}s (+25\%) & n/a & 100/100 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{itemize}
+\item \textbf{Cross-language PDL is real.} The Triton $\rightarrow$ CUDA C++ boundary gains as much as Triton $\rightarrow$ Triton.
+\item \textbf{Unmodified ATen in the chain: no gain.} Turning PDL on for only the Triton half of a Triton $\leftrightarrow$ ATen
+\end{itemize}
+chain made it 8\% \emph{slower}: the ATen $\rightarrow$ Triton boundaries should benefit, but the net effect was negative. I did not isolate the cause.
+
+\begin{itemize}
+\item \textbf{(*) The shim's early-trigger result is a coincidence of timing.} Here the primary's stores land
+\end{itemize}
+within about 1 \textmu{}s of its trigger, which is less than the secondary's launch latency. The hazard test below widens that window.
+
+
+\subsection{Hazard test: an ATen kernel that cannot wait}
+
+The Triton primary performs WORK dependent FMAs per element \emph{before} its stores, so it writes late. The output buffer is pre-filled with NaN, so any read of not-yet-written data shows up as a wrong result. 200 trials per cell (\texttt{benchmarks/pdl\_xlang\_hazard.py}):
+
+
+\begin{table}[H]\centering\small
+\resizebox{\ifdim\width>\textwidth\textwidth\else\width\fi}{!}{%
+\begin{tabular}{llll}
+\toprule
+primary's trigger & WORK & ATen \texttt{add} + shim (no wait) & CUDA C++ PDL-aware (waits) \\
+\midrule
+early & 0 & 0/200 wrong & 0/200 \\
+early & 64 & \textbf{200/200 wrong} (5.9\% of elements) & 0/200 \\
+early & 512 & \textbf{200/200 wrong} (8.5\%) & 0/200 \\
+early & 4096 & \textbf{200/200 wrong} (15.0\%) & 0/200 \\
+implicit & 0 / 64 / 512 / 4096 & 0/200 each & 0/200 each \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{itemize}
+\item \textbf{Early trigger: wrong every time.} Forcing PDL onto a kernel that cannot wait is a data race as soon
+\end{itemize}
+as any predecessor triggers early.
+
+\begin{itemize}
+\item \textbf{Implicit trigger: correct in every trial, but not guaranteed.} The trigger then fires only as the
+\end{itemize}
+primary's blocks exit, and it never failed here. But the CUDA programming model guarantees that the primary's writes are visible only after \texttt{griddepcontrol.wait} (\texttt{cudaGridDependencySynchronize}), so this is unsupported behaviour that merely worked on this driver and GPU.
+
+\begin{itemize}
+\item \textbf{Inductor is affected by default:} its PDL code generation emits \texttt{gdc\_launch\_dependents()} right after
+\end{itemize}
+a kernel's last load (\texttt{torch/\_inductor/codegen/triton.py}, \texttt{\_handle\_pdl\_after\_load}). So the shim is never safe together with Inductor's PDL.
+
+
+\section{The real training step: the boundary census, and every ATen kernel made PDL-capable}
+
+\subsection{Where PDL could act at all (\texttt{benchmarks/boundary\_census.py})}
+
+For every same-stream boundary in one traced step, the census records whether the CPU had already enqueued the secondary when the primary finished. If it had not, the GPU is waiting for the CPU, and no form of PDL, in any language, can help.
+
+
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{figures/r3_boundary_reachability.png}
+\caption{boundary reachability}
+\end{figure}
+
+Baseline trace, one step (168,273 boundaries, 9.36 s of total gap while traced):
+
+
+\begin{table}[H]\centering\small
+\resizebox{\ifdim\width>\textwidth\textwidth\else\width\fi}{!}{%
+\begin{tabular}{lll}
+\toprule
+boundary class & boundaries & GPU idle gap \\
+\midrule
+CPU-bound: secondary not yet enqueued & 103,051 (61.2\%) & \textbf{9,273 ms (99.1\%)} \\
+queued, secondary ATen (needs cross-language PDL) & 40,032 (23.8\%) & \textbf{52.0 ms (0.56\%)} \\
+queued, secondary cuBLAS (closed source) & 9,992 (5.9\%) & 12.0 ms \\
+queued, memcpy/memset involved (never PDL) & 9,081 (5.4\%) & 13.1 ms \\
+queued, secondary Triton (PDL-capable today) & 6,117 (3.6\%) & 7.5 ms \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{itemize}
+\item \textbf{Report 1's PDL already did its job where it could reach.} In the PDL-all trace, the gap before
+\end{itemize}
+queued Triton secondaries falls from 7.5 ms to \textbf{0.33 ms}.
+
+\begin{itemize}
+\item \textbf{Cross-language PDL would raise PDL-capable boundaries from about 4\% to about 28\%,} but those
+\end{itemize}
+boundaries carry only 52 ms of gap. PDL can also hide some tail time beyond the gap: at the \textasciitilde{}0.3--0.5 \textmu{}s per boundary measured above, that is at most another \textasciitilde{}15--20 ms. The ceiling is therefore below 1\% of the 8.9 s step.
+
+
+\subsection{End to end: every ATen kernel as a PDL secondary}
+
+Configuration (\texttt{scripts/run\_report3\_e2e.sh}):
+
+
+\begin{itemize}
+\item MegaFold's Triton kernels use PDL with the \textbf{implicit} trigger;
+\item Inductor's PDL code generation is \textbf{off}, because it triggers early;
+\item the shim is switched on for the whole run, so \textbf{every} \texttt{cudaLaunchKernel} is a PDL launch;
+\item compared with PDL fully off, alternating runs on the same node, 2 runs each, 8 timed steps per run.
+\end{itemize}
+
+\begin{table}[H]\centering\small
+\resizebox{\ifdim\width>\textwidth\textwidth\else\width\fi}{!}{%
+\begin{tabular}{llll}
+\toprule
+run (2 repetitions $\times$ 8 timed steps) & median step & paired ratio vs PDL off (95\% bootstrap CI) & final losses (steps 7--9) \\
+\midrule
+PDL off, rep 1 / rep 2 & 8,989 / 9,104 ms & (rep 2 / rep 1: 1.006) & 6.7321, 6.6445, 6.7789 \\
+MegaFold PDL (implicit) + \textbf{every ATen launch PDL via shim}, rep 1 / rep 2 & 9,279 / 9,178 ms & \textbf{1.015 [1.006, 1.025]} & 6.7320, 6.6445, 6.7789 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{itemize}
+\item \textbf{The shim was really active.} It converted 87k--109k launches per step, essentially all of the ATen
+\end{itemize}
+launches (108.5k per step in the census).
+
+\begin{itemize}
+\item \textbf{No speedup; slightly slower.} The cross-language step was 1.5\% \emph{slower}.
+\item Part of that is drift: the cross-language run always ran second in each repetition, and the second baseline run was itself 0.6\% slower than the first.
+\item The rest is plausibly the extra CPU work of re-issuing \textasciitilde{}100k launches per step through \texttt{cudaLaunchKernelExC}, in a step that is limited by the CPU. That explanation is not measured separately.
+\item \textbf{No sign of corruption.} The losses differ from PDL off by at most 1.5e-4 over all 10 steps. That is
+\end{itemize}
+the same as the difference between the two PDL-off runs (1.5e-4), which comes from nondeterministic kernels.
+
+\begin{itemize}
+\item \textbf{This matches the census.} About 100k extra PDL launches buy nothing, because 99\% of the step's idle
+\end{itemize}
+gap is the GPU waiting for the CPU to issue the next launch.
+
+
+\section{How to get cross-language PDL properly, and whether it is worth it}
+
+\begin{enumerate}
+\item \textbf{Replace the ATen kernels with Triton kernels by compiling the checkpointed regions} (Report 2, modification 1). This is the recommended route.
+\end{enumerate}
+\begin{itemize}
+\item Inductor's kernels are PDL-capable out of the box, so the language problem disappears.
+\item The \textasciitilde{}100k eager ATen launches fuse into far fewer kernels.
+\item It removes the CPU bottleneck that makes PDL irrelevant today.
+\end{itemize}
+\begin{enumerate}
+\item \textbf{Build PyTorch with PDL in the ATen kernel templates.}
+\end{enumerate}
+\begin{itemize}
+\item Add \texttt{griddepcontrol.wait} at the top of \texttt{vectorized\_elementwise\_kernel}, \texttt{unrolled\_elementwise\_kernel}, \texttt{elementwise\_kernel} (\texttt{ATen/native/cuda/CUDALoops.cuh}) and \texttt{reduce\_kernel} (\texttt{Reduce.cuh}), and launch them with \texttt{cudaLaunchKernelEx} plus the attribute. Those four templates account for about 97k of the roughly 109k ATen launches per step (Report 1's kernel histogram).
+\item The wait costs nothing when a kernel is not launched with PDL, so correctness is preserved regardless of what precedes it.
+\item This is a PyTorch source build (not attempted here), and the most it can buy MegaFold is the 52 ms measured above.
+\end{itemize}
+\begin{enumerate}
+\item \textbf{The \texttt{LD\_PRELOAD} shim} is a demonstration tool, not something to deploy. It is only "correct" when no kernel triggers early, which rules out Inductor's PDL and MegaFold's early mode, and even then it relies on behaviour CUDA does not guarantee.
+\item \textbf{cuBLAS} would need NVIDIA to expose its internal PDL support.
+\end{enumerate}
+\begin{itemize}
+\item The alternative is Triton or CUTLASS GEMMs: Inductor \texttt{max-autotune} (Report 2, modification 7), or CUTLASS 3.x, which has explicit PDL support.
+\end{itemize}
+
+\textbf{Bottom line.} Cross-language PDL is possible, and I demonstrated it working, but the boundaries it unlocks hold under 1\% of MegaFold's idle time. Today the GPU waits for the CPU, not for the previous kernel. The modifications that make the step GPU-bound (Report 2) are what would make any form of PDL matter.
+
+
+\section{Reproduce}
+
+\begin{lstlisting}
+# login node: build the shim (the CUDA extension builds on first use)
+gcc -O2 -shared -fPIC -I$CUDA_HOME/include benchmarks/pdl_xlang/pdl_shim.c -o benchmarks/pdl_xlang/libpdl_shim.so -ldl
+srun --jobid=<holder> --overlap -n1 bash scripts/run_report3.sh            # E1-E4 -> results/report3/cross_language.json
+LD_PRELOAD=$PWD/benchmarks/pdl_xlang/libpdl_shim.so python benchmarks/pdl_xlang_hazard.py --out results/report3/hazard.json
+srun --jobid=<holder> --overlap -n1 bash scripts/run_report3_e2e.sh        # training step, ATen via shim
+python benchmarks/boundary_census.py results/nsys/iscuda_fix_baseline.sqlite --out results/report3/census_iscuda_fix_baseline.json
+python benchmarks/make_report3_figs.py
+\end{lstlisting}
+Raw data: \texttt{results/report3/}; logs: \texttt{results/logs/report3\_*.log}, \texttt{results/logs/r3\_e2e\_*.log}.
+
+\end{document}

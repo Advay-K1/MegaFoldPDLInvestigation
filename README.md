@@ -11,8 +11,12 @@ for a MegaFold training step on a single NVIDIA GH200 (NCSA DeltaAI).
 * **[Report 2 — What would make PDL impactful](reports/REPORT_2_MAKING_PDL_IMPACTFUL.md)**: PDL regime
   sweep (eager vs CUDA graphs), graph-break census, CUDA-graph experiments, attribution of the ~100k
   eager kernels per step, ranked modifications.
+* **[Report 3 — Cross-language PDL](reports/REPORT_3_CROSS_LANGUAGE_PDL.md)**: can PDL cross from Triton to
+  ATen / cuBLAS / CUDA C++? Triton <-> CUDA C++ PDL pairs, an `LD_PRELOAD` shim that makes unmodified ATen
+  kernels PDL secondaries (and the data race it causes), a reachability census of the real step's boundaries,
+  and the training step with every ATen kernel PDL-launched.
 
-**Overleaf:** LaTeX versions of both reports are in `reports/overleaf/` (`report1.tex`, `report2.tex`, `figures/`);
+**Overleaf:** LaTeX versions of the reports are in `reports/overleaf/` (`report1.tex`, `report2.tex`, `report3.tex`, `figures/`);
 upload `reports/overleaf_project.zip` to Overleaf (New Project → Upload Project) and compile with pdfLaTeX.
 
 Code added for the investigation: `megafold/model/pdl.py` (PDL switch, policies, Inductor fix),

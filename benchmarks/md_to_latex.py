@@ -19,7 +19,7 @@ UNI = {
     "≲": r"$\lesssim$", "±": r"$\pm$", "−": r"$-$", "—": "---", "–": "--", "σ": r"$\sigma$", "²": r"$^2$",
     "¹": r"$^1$", "⁴": r"$^4$", "⁵": r"$^5$", "⁰": r"$^0$", "✅": r"\checkmark{}", "〃": r"\textquotedbl{}",
     "∘": r"$\circ$", "’": "'", "“": "``", "”": "''", "…": r"\ldots{}", "↔": r"$\leftrightarrow$",
-    "ᵀ": r"$^{T}$", "≥": r"$\geq$", "≤": r"$\leq$", "·": r"$\cdot$", "…": r"\ldots{}",
+    "ᵀ": r"$^{T}$", "✗": r"$\times$", "³": r"$^3$", "↔": r"$\leftrightarrow$", "≥": r"$\geq$", "≤": r"$\leq$", "·": r"$\cdot$", "…": r"\ldots{}",
 }
 SPECIAL = {"\\": r"\textbackslash{}", "&": r"\&", "%": r"\%", "$": r"\$", "#": r"\#", "_": r"\_",
            "{": r"\{", "}": r"\}", "~": r"\textasciitilde{}", "^": r"\textasciicircum{}"}
@@ -189,7 +189,9 @@ if __name__ == "__main__":
     jobs = [("REPORT_1_PDL_INVESTIGATION.md", "report1.tex",
              "Report 1: CUDA Programmatic Dependent Launch for a MegaFold Training Step on one GH200"),
             ("REPORT_2_MAKING_PDL_IMPACTFUL.md", "report2.tex",
-             "Report 2: What Would Make PDL Impactful for MegaFold?")]
+             "Report 2: What Would Make PDL Impactful for MegaFold?"),
+            ("REPORT_3_CROSS_LANGUAGE_PDL.md", "report3.tex",
+             "Report 3: Cross-language PDL (Triton, ATen, cuBLAS, CUDA C++) for a MegaFold Training Step")]
     for src, dst, title in jobs:
         md = (ROOT / "reports" / src).read_text()
         (OUT / dst).write_text(convert(md, title))

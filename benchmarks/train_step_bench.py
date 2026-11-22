@@ -296,6 +296,19 @@ if args.explain:
     print(json.dumps(rep, indent=2)[:4000])
     sys.exit(0)
 
+# Report 3: force the PDL launch attribute onto every runtime (<<<>>>) launch, i.e. every eager ATen kernel,
+# via the LD_PRELOAD shim benchmarks/pdl_xlang/libpdl_shim.so. ATen kernels cannot griddepcontrol.wait, so
+# this is only defensible when no kernel triggers early (MEGAFOLD_PDL_TRIGGER=implicit, --inductor-pdl 0).
+_shim = None
+if os.environ.get("MEGAFOLD_PDL_SHIM_ATEN") == "1":
+    import ctypes
+    assert "libpdl_shim" in os.environ.get("LD_PRELOAD", ""), "MEGAFOLD_PDL_SHIM_ATEN=1 needs LD_PRELOAD shim"
+    assert not (want_pdl and args.inductor_pdl), "Inductor PDL kernels trigger early: use --inductor-pdl 0"
+    _shim = ctypes.CDLL(str(ROOT / "benchmarks" / "pdl_xlang" / "libpdl_shim.so"))
+    _shim.pdl_shim_count.restype = ctypes.c_long
+    _shim.pdl_shim_set(1)
+shim_counts = []
+
 step_times, losses = [], []
 total = args.warmup + args.iters
 for step in range(total):
@@ -313,6 +326,8 @@ for step in range(total):
         torch.cuda.profiler.stop()
     step_times.append(dt)
     losses.append(float(loss))
+    if _shim is not None:
+        shim_counts.append(_shim.pdl_shim_count())
     print(f"[{args.mode}] step {step:3d}  {dt * 1e3:9.1f} ms  loss {float(loss):.5f}", flush=True)
     if step == 0:
         torch.cuda.reset_peak_memory_stats()
@@ -351,6 +366,8 @@ result = dict(
     git_commit=__import__('subprocess').run(['git', '-C', str(ROOT), 'rev-parse', '--short', 'HEAD'],
                                             capture_output=True, text=True).stdout.strip(),
     slurm_job=os.environ.get("SLURM_JOB_ID"),
+    aten_pdl_shim=_shim is not None,
+    aten_pdl_shim_launches_per_step=[b - a for a, b in zip(shim_counts, shim_counts[1:])],
 )
 Path(args.out).parent.mkdir(parents=True, exist_ok=True)
 Path(args.out).write_text(json.dumps(result, indent=2))

@@ -1,0 +1,31 @@
+NVIDIA GH200 120GB, 595.71.05
+stream attr: {'cudaError': 1, 'note': '0 = accepted as a stream attribute; non-zero = only valid per launch'} shim: True
+E1 Triton, launch_pdl=True {'S_us': 38.77, 'P_then_S_us': 40.18, 'overlap_frac_of_shorter': 0.896, 'runs_under_P': True, 'shim_converted_launches': None}
+E1 Triton, launch_pdl=False {'S_us': 38.98, 'P_then_S_us': 52.86, 'overlap_frac_of_shorter': -0.016, 'runs_under_P': False, 'shim_converted_launches': None}
+E1 CUDA C++, cudaLaunchKernelEx + PDL attr {'S_us': 68.32, 'P_then_S_us': 69.77, 'overlap_frac_of_shorter': 0.894, 'runs_under_P': True, 'shim_converted_launches': None}
+E1 CUDA C++, no attr {'S_us': 68.45, 'P_then_S_us': 82.38, 'overlap_frac_of_shorter': -0.019, 'runs_under_P': False, 'shim_converted_launches': None}
+E1 ATen add (vectorized_elementwise_kernel) {'S_us': 39.2, 'P_then_S_us': 52.81, 'overlap_frac_of_shorter': 0.004, 'runs_under_P': False, 'shim_converted_launches': None}
+E1 ATen sum over rows (reduce_kernel) {'S_us': 23.79, 'P_then_S_us': 37.5, 'overlap_frac_of_shorter': -0.003, 'runs_under_P': False, 'shim_converted_launches': None}
+E1 ATen copy_ {'S_us': 38.88, 'P_then_S_us': 52.54, 'overlap_frac_of_shorter': 0.0, 'runs_under_P': False, 'shim_converted_launches': None}
+E1 cuBLAS bf16 GEMM 4096^3 {'S_us': 218.34, 'P_then_S_us': 260.5, 'overlap_frac_of_shorter': -2.086, 'runs_under_P': False, 'shim_converted_launches': None}
+E1 cuBLAS fp32 GEMM 2048^3 {'S_us': 346.74, 'P_then_S_us': 367.03, 'overlap_frac_of_shorter': -0.484, 'runs_under_P': False, 'shim_converted_launches': None}
+E1 ATen add (vectorized_elementwise_kernel) + LD_PRELOAD PDL shim {'S_us': 38.9, 'P_then_S_us': 40.32, 'overlap_frac_of_shorter': 0.897, 'runs_under_P': True, 'shim_converted_launches': 84}
+E1 ATen sum over rows (reduce_kernel) + LD_PRELOAD PDL shim {'S_us': 23.63, 'P_then_S_us': 27.21, 'overlap_frac_of_shorter': 0.739, 'runs_under_P': True, 'shim_converted_launches': 84}
+E1 ATen copy_ + LD_PRELOAD PDL shim {'S_us': 38.85, 'P_then_S_us': 52.77, 'overlap_frac_of_shorter': -0.019, 'runs_under_P': False, 'shim_converted_launches': 4}
+E1 cuBLAS bf16 GEMM 4096^3 + LD_PRELOAD PDL shim {'S_us': 236.13, 'P_then_S_us': 261.01, 'overlap_frac_of_shorter': -0.821, 'runs_under_P': False, 'shim_converted_launches': 4}
+E2 Triton 1-CTA, gdc_launch_dependents first (positive control) {'P_us': 83.4, 'probe_wait_us_median': 51.17, 'triggers_early': True}
+E2 Triton 1-CTA, no trigger (negative control) {'P_us': 79.5, 'probe_wait_us_median': 0.0, 'triggers_early': False}
+E2 CUDA C++ 1-CTA, launch_dependents first {'P_us': 72.6, 'probe_wait_us_median': 61.62, 'triggers_early': True}
+E2 ATen add, 512 MiB {'P_us': 308.7, 'probe_wait_us_median': 0.13, 'triggers_early': False}
+E2 ATen sum over rows, 512 MiB {'P_us': 171.9, 'probe_wait_us_median': 0.13, 'triggers_early': False}
+E2 cuBLAS bf16 GEMM 8192^3 {'P_us': 1519.5, 'probe_wait_us_median': 0.13, 'triggers_early': False}
+E2 cuBLAS bf16 GEMM 256x256, K=65536 (few CTAs) {'P_us': 53.9, 'probe_wait_us_median': 0.0, 'triggers_early': False}
+E3 Triton -> Triton {"off": {"us_per_kernel": 1.298, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 0.0}, "on, implicit trigger": {"us_per_kernel": 0.973, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 33.4}, "on, early trigger": {"us_per_kernel": 0.761, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 70.6}}
+E3 Triton -> CUDA C++ (PDL-aware) {"off": {"us_per_kernel": 1.428, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 0.0}, "on, implicit trigger": {"us_per_kernel": 1.02, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 40.0}, "on, early trigger": {"us_per_kernel": 0.947, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 50.8}}
+E3 CUDA C++ -> CUDA C++ (PDL-aware) {"off": {"us_per_kernel": 1.48, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 0.0}, "on, implicit trigger": {"us_per_kernel": 1.25, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 18.4}, "on, early trigger": {"us_per_kernel": 1.144, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 29.4}}
+E3 Triton -> ATen (unmodified) {"off": {"us_per_kernel": 1.279, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 0.0}, "on, implicit trigger": {"us_per_kernel": 1.388, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": -7.9}, "on, early trigger": {"us_per_kernel": 1.39, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": -8.0}}
+E3 Triton -> ATen (unmodified, PDL attr forced by shim, no wait) {"off": {"us_per_kernel": 1.278, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 0.0}, "on, implicit trigger": {"us_per_kernel": 1.046, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 22.2}, "on, early trigger": {"us_per_kernel": 0.861, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 48.4}}
+E3 ATen -> ATen (PDL attr forced by shim, no wait) {"off": {"us_per_kernel": 1.245, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 0.0}, "on, implicit trigger": {"us_per_kernel": 0.995, "mismatching_trials": 0, "trials": 100, "speedup_vs_off_pct": 25.1}}
+E4 Triton -> CUDA C++ (PDL-aware) {'off': 7.782, 'on, implicit trigger': 7.643, 'on, early trigger': 7.685}
+E4 Triton -> Triton {'off': 10.968, 'on, implicit trigger': 11.056, 'on, early trigger': 10.977}
+wrote results/report3/cross_language.json
