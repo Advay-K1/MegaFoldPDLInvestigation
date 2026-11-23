@@ -1,0 +1,51 @@
+{
+  "mode": "baseline",
+  "pdl_enabled": false,
+  "inductor_enable_pdl": false,
+  "megafold_pdl": {
+    "enabled": false,
+    "kernels": null,
+    "launch": null,
+    "trigger": null,
+    "opaque_kernels": false
+  },
+  "torch_compile_debug": "1",
+  "compile_mode": "default",
+  "seq_len": 384,
+  "num_atoms": 3481,
+  "msa_depth": 512,
+  "num_templates": 4,
+  "batch_size": 1,
+  "confidence_head": false,
+  "num_params": 509004585,
+  "warmup": 1,
+  "iters": 2,
+  "first_step_s": 137.03906823002035,
+  "step_ms_mean": 9424.105794983916,
+  "step_ms_median": 9424.105794983916,
+  "step_ms_stdev": 1868.6178058893154,
+  "step_ms_min": 8102.793472993653,
+  "step_ms_all": [
+    137039.06823002035,
+    8102.793472993653,
+    10745.418116974179
+  ],
+  "losses": [
+    7.748301982879639,
+    7.342828750610352,
+    7.0939507484436035
+  ],
+  "peak_mem_gib": 40.20278882980347,
+  "gpu": "NVIDIA GH200 120GB",
+  "torch": "2.10.0+cu129",
+  "cuda": "12.9",
+  "triton": "3.6.0",
+  "host": "gh005.hsn.cm.delta.internal.ncsa.edu",
+  "source_tree": "/u/akadam2/MegaFold-pdl",
+  "git_commit": "d74e713",
+  "slurm_job": "3660015",
+  "ac_compile": "none",
+  "ac_compile_info": null,
+  "aten_pdl_shim": false,
+  "aten_pdl_shim_launches_per_step": []
+}

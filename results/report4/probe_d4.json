@@ -1,0 +1,53 @@
+{
+ "depth": 4,
+ "n": 384,
+ "torch": "2.10.0+cu129",
+ "gpu": "NVIDIA GH200 120GB",
+ "eager": {
+  "first_call_s": 8.6,
+  "ms_per_fwd_bwd": 134.8,
+  "kernels_per_fwd_bwd": 2919,
+  "kernels_by_kind": {
+   "memcpy/memset": 215,
+   "ATen eager": 2152,
+   "triton (MegaFold)": 256,
+   "cuBLAS/CUTLASS": 296
+  },
+  "peak_mem_gib": 3.34,
+  "graph_breaks": 0,
+  "graph_break_reasons": {},
+  "max_abs_diff_vs_eager": {
+   "single": 0.0,
+   "pairwise": 0.0,
+   "grad_max": 0.0
+  }
+ },
+ "compile_outer": {
+  "first_call_s": 4.3,
+  "ms_per_fwd_bwd": 142.3,
+  "kernels_per_fwd_bwd": 2919,
+  "kernels_by_kind": {
+   "memcpy/memset": 210,
+   "triton (Inductor)": 5,
+   "ATen eager": 2152,
+   "triton (MegaFold)": 256,
+   "cuBLAS/CUTLASS": 296
+  },
+  "peak_mem_gib": 3.55,
+  "graph_breaks": 1,
+  "graph_break_reasons": {
+   "Unsupported Tensor.item() call with capture_scalar_outputs=False\n  Explanation: Dynamo does not support tracing `Tensor.item()` with config.capture_scalar_outputs=False.\n  Hint: Set `torch._dynamo.config.capture_scalar_outputs = True` or `export TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS=1` to include these operations in the captured graph.\n\n  Developer debug context: call_method TensorVariable() item () {}\n\n For more details about this graph break, please visit: https://meta-pytorch.github.io/compile-graph-break-site/gb/gb0124.html": 1
+  },
+  "max_abs_diff_vs_eager": {
+   "single": 0.0,
+   "pairwise": 0.0,
+   "grad_max": 0.000244140625
+  }
+ },
+ "compile_inner": {
+  "error": "BackendCompilerFailed: backend='inductor' raised:\nRuntimeError: a leaf Variable that requires grad is being used in an in-place operation.\n\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS=\"+dynamo\"\n"
+ },
+ "compile_no_ac": {
+  "error": "BackendCompilerFailed: backend='inductor' raised:\nRuntimeError: a leaf Variable that requires grad is being used in an in-place operation.\n\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS=\"+dynamo\"\n"
+ }
+}

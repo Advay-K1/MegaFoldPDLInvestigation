@@ -44,6 +44,9 @@ parser.add_argument("--confidence-head", action="store_true",
 parser.add_argument("--seed", type=int, default=42)
 parser.add_argument("--nvtx-step", type=int, default=-1,
                     help="if >=0, wrap this step index in cudaProfilerStart/Stop (for nsys --capture-range)")
+parser.add_argument("--ac-compile", choices=["none", "inner"], default="none",
+                    help="inner: torch.compile every layer of each activation-checkpointed stack and keep the "
+                         "checkpoint loops eager (needs MEGAFOLD_OPAQUE_KERNELS=1); Report 4")
 parser.add_argument("--inductor-pdl", type=int, default=1, help="with --mode pdl: also enable Inductor PDL codegen")
 parser.add_argument("--compile-mode", default="default", choices=["default", "reduce-overhead", "cg-selective"],
                     help="reduce-overhead = Inductor CUDA graphs (cudagraph trees)")
@@ -204,6 +207,18 @@ if args.no_checkpoint:
               "checkpoint_distogram_head", "checkpoint_confidence_head"):
         setattr(cfg, k, False)
 model = cfg.create_instance().cuda().train()
+if os.environ.get("MEGAFOLD_FALLBACK_RANDOM") == "1":
+    # compiled code otherwise draws its own seeds from the global generator, shifting every later random
+    # draw (diffusion noise, augmentation) -> eager and compiled runs see different noise. With fallback_random
+    # Inductor calls the same ATen random ops as eager, so losses are comparable step by step.
+    import torch._inductor.config as _ic
+    _ic.fallback_random = True
+if os.environ.get("MEGAFOLD_NO_DROPOUT") == "1":
+    # numerical comparisons between eager and compiled layers: their dropout RNG streams differ. p = 1e-12
+    # keeps the dropout ops in the graph (p = 0 changes the graph) while never dropping anything.
+    for _d in model.modules():
+        if isinstance(_d, torch.nn.Dropout):
+            _d.p = 1e-12
 num_params = sum(p.numel() for p in model.parameters())
 
 batch = collate_inputs_to_batched_atom_input(
@@ -213,6 +228,44 @@ batch = collate_inputs_to_batched_atom_input(
 batch = batch.cuda() if hasattr(batch, "cuda") else batch
 batch_kwargs = {k: (v.cuda() if torch.is_tensor(v) else v) for k, v in batch.dict().items()}
 num_atoms = int(batch_kwargs["molecule_atom_lens"].sum())
+
+def compile_checkpointed_layers(model):
+    """Report 4: compile the layers *inside* MegaFold's activation checkpoints. Each checkpointed stack
+    (MSAModule, PairformerStack, TemplateEmbedder, DiffusionTransformer, ...) loops over `self.layers` /
+    `self.pairformer_stack` and wraps every layer call in torch.utils.checkpoint. We replace each leaf layer
+    module with torch.compile(layer) and mark the to_checkpointed_* loop itself torch.compiler.disable, so
+    the outer compiled model does not trace through the checkpoints (doing so keeps ~1.8x the activations
+    and runs out of memory on the full model) while every layer still runs as compiled Inductor code."""
+    from torch import nn
+    stacks = []
+    for m in model.modules():
+        meths = [a for a in dir(type(m)) if a.startswith("to_checkpointed")]
+        if meths and getattr(m, "checkpoint", False):
+            stacks.append((m, meths))
+    n = 0
+
+    def comp(ml):
+        nonlocal n
+        for i, ch in enumerate(ml):
+            if isinstance(ch, nn.ModuleList):
+                comp(ch)
+            elif ch is not None:
+                ml[i] = torch.compile(ch, dynamic=False); n += 1
+
+    for m, meths in stacks:
+        for attr in ("layers", "pairformer_stack"):
+            if isinstance(getattr(m, attr, None), nn.ModuleList):
+                comp(getattr(m, attr))
+        for a in meths:
+            setattr(m, a, torch.compiler.disable(getattr(m, a)))
+    return dict(stacks=[type(m).__name__ for m, _ in stacks], compiled_layers=n)
+
+
+ac_compile_info = None
+if args.ac_compile == "inner":
+    assert megafold_pdl.OPAQUE_KERNELS, "--ac-compile inner requires MEGAFOLD_OPAQUE_KERNELS=1"
+    ac_compile_info = compile_checkpointed_layers(model)
+    print("[ac-compile]", ac_compile_info, flush=True)
 
 if args.compile_mode == "reduce-overhead":
     # CUDA graphs: the stochastic frame averaging in the diffusion module runs a 3x3 torch.linalg.eigh
@@ -366,6 +419,7 @@ result = dict(
     git_commit=__import__('subprocess').run(['git', '-C', str(ROOT), 'rev-parse', '--short', 'HEAD'],
                                             capture_output=True, text=True).stdout.strip(),
     slurm_job=os.environ.get("SLURM_JOB_ID"),
+    ac_compile=args.ac_compile, ac_compile_info=ac_compile_info,
     aten_pdl_shim=_shim is not None,
     aten_pdl_shim_launches_per_step=[b - a for a, b in zip(shim_counts, shim_counts[1:])],
 )

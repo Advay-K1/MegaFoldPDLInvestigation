@@ -1,0 +1,229 @@
+[2026-11-22 17:32:24,441] [INFO] [real_accelerator.py:239:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+df: /tmp/tc_r4_231369: No such file or directory
+Type checking is disabled.
+Debugging is disabled.
+Loading CCD component SMILES strings from data/ccd_data/components_smiles.json.
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/profiler/profiler.py:217: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+eager {"first_call_s": 8.6, "ms_per_fwd_bwd": 134.8, "kernels_per_fwd_bwd": 2919, "kernels_by_kind": {"memcpy/memset": 215, "ATen eager": 2152, "triton (MegaFold)": 256, "cuBLAS/CUTLASS": 296}, "peak_mem_gib": 3.34, "graph_breaks": 0, "graph_break_reasons": {}, "max_abs_diff_vs_eager": {"single": 0.0, "pairwise": 0.0, "grad_max": 0.0}}
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0] Graph break from `Tensor.item()`, consider setting:
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]     torch._dynamo.config.capture_scalar_outputs = True
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0] or:
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]     env TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS=1
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0] to include these operations in the captured graph.
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0] 
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0] Graph break: from user code at:
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]   File "/u/akadam2/MegaFold-pdl/megafold/model/megafold.py", line 1518, in forward
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]     single_repr, pairwise_repr = to_layers_fn(
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]   File "/u/akadam2/MegaFold-pdl/megafold/model/megafold.py", line 1449, in to_checkpointed_layers
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]     inputs = checkpoint(layer, inputs)
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]   File "/u/akadam2/MegaFold-pdl/megafold/model/megafold.py", line 1416, in inner
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]     pairwise_repr = layer(pairwise_repr=pairwise_repr, mask=mask, **kwargs)
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]   File "/u/akadam2/MegaFold-pdl/megafold/model/megafold.py", line 804, in forward
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]     pairwise_repr = row_to_col(pairwise_repr) # [b, n1, n2/2, dp]
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]   File "/u/akadam2/MegaFold-pdl/megafold/distributed/comm.py", line 255, in row_to_col
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]     input_ = All_to_All.apply(input_, 2, 1)
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]   File "/u/akadam2/MegaFold-pdl/megafold/distributed/comm.py", line 271, in backward
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0]     return _all_to_all(grad_output, in_dim=int(saved_tensors[1]),
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0] 
+[rank0]:W1122 17:32:45.128000 231388 site-packages/torch/_dynamo/variables/tensor.py:1079] [0/0] 
+compile_outer {"first_call_s": 4.3, "ms_per_fwd_bwd": 142.3, "kernels_per_fwd_bwd": 2919, "kernels_by_kind": {"memcpy/memset": 210, "triton (Inductor)": 5, "ATen eager": 2152, "triton (MegaFold)": 256, "cuBLAS/CUTLASS": 296}, "peak_mem_gib": 3.55, "graph_breaks": 1, "graph_break_reasons": {"Unsupported Tensor.item() call with capture_scalar_outputs=False\n  Explanation: Dynamo does not support tracing `Tensor.item()` with config.capture_scalar_outputs=False.\n  Hint: Set `torch._dynamo.config.capture_scalar_outputs = True` or `export TORCHDYNAMO_CAPTURE_SCALAR_OUTPUTS=1` to include these operations in the captured graph.\n\n  Developer debug context: call_method TensorVariable() item () {}\n\n For more details about this graph break, please visit: https://meta-pytorch.github.io/compile-graph-break-site/gb/gb0124.html": 1}, "max_abs_diff_vs_eager": {"single": 0.0, "pairwise": 0.0, "grad_max": 0.000244140625}}
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] Traceback (most recent call last):
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1354, in call_Function
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     ret = fn(*args, **extra_kwargs, **kws)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/language/core.py", line 43, in wrapper
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     return fn(*args, **kwargs)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]            ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/language/core.py", line 2054, in dot
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     res = _semantic.dot(input, other, acc, input_precision, max_num_imprecise_acc, out_dtype)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/language/semantic.py", line 1492, in dot
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     assert lhs.dtype == rhs.dtype, f"Both operands must be same dtype. Got {lhs.dtype} and {rhs.dtype}"
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]            ^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] AssertionError: Both operands must be same dtype. Got fp32 and bf16
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] 
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] The above exception was the direct cause of the following exception:
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] 
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] Traceback (most recent call last):
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 962, in identify_mutated_tensors
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]                                         ^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 509, in generate_ttir
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     ttir_module = src.make_ir(target, options, codegen_fns, module_map, context)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/compiler.py", line 80, in make_ir
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1631, in ast_to_ttir
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     generator.visit(fn.parse())
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1536, in visit
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     ret = super().visit(node)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]           ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 407, in visit
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     return visitor(node)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]            ^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 521, in visit_Module
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     ast.NodeVisitor.generic_visit(self, node)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 415, in generic_visit
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     self.visit(item)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1536, in visit
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     ret = super().visit(node)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]           ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 407, in visit
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     return visitor(node)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]            ^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 612, in visit_FunctionDef
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     self.visit_compound_statement(node.body)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 514, in visit_compound_statement
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     self.visit(stmt)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1536, in visit
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     ret = super().visit(node)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]           ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 407, in visit
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     return visitor(node)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]            ^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1211, in visit_For
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     names, init_handles, init_tys = self._find_carries(node, liveins, ignore={node.target.id})
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 472, in _find_carries
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     self.visit_compound_statement(node.body)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 514, in visit_compound_statement
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     self.visit(stmt)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1536, in visit
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     ret = super().visit(node)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]           ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 407, in visit
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     return visitor(node)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]            ^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 695, in visit_Assign
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     values = _sanitize_value(self.visit(node.value))
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]                              ^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1536, in visit
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     ret = super().visit(node)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]           ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 407, in visit
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     return visitor(node)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]            ^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1412, in visit_Call
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     return self.call_Function(node, fn, args, kws)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1368, in call_Function
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     raise CompilationError(self.jit_fn.src, node, str(e)) from e
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] triton.compiler.errors.CompilationError: at 52:13:
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]         bias = tl.load(BIAS + offs_k, mask = offs_k < K, other= 0.0) # [(BLOCK_SIZE_K, )]
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]         y_T = tl.trans((x_hat * weight[None, :]) + bias[None, :]) # [(BLOCK_SIZE_K, BLOCK_SIZE_M)]
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     else:
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]         y_T = tl.trans((x_hat * weight[None, :]))
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] 
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     dy = tl.zeros((BLOCK_SIZE_M, BLOCK_SIZE_K), dtype=tl.float32)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] 
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]     for n in range(0, tl.cdiv(N, BLOCK_SIZE_N)): # , num_stages=1, loop_unroll_factor=1
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]         dOUT = tl.load(dOUT_ptrs, mask=(offs_m[:, None] < M) & (offs_n[None, :] < N), other=0.0)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] 
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]         # add-ons here to atomic add on dB: contention across M-blocks to write to the same address
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]         db = tl.dot(y_T, dOUT)
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1]              ^
+[rank0]:W1122 17:32:51.439000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [0/0_1] Both operands must be same dtype. Got fp32 and bf16
+compile_inner {'error': 'BackendCompilerFailed: backend=\'inductor\' raised:\nRuntimeError: a leaf Variable that requires grad is being used in an in-place operation.\n\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you\'re reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"\n'}
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] Traceback (most recent call last):
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1354, in call_Function
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     ret = fn(*args, **extra_kwargs, **kws)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/language/core.py", line 43, in wrapper
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     return fn(*args, **kwargs)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]            ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/language/core.py", line 2054, in dot
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     res = _semantic.dot(input, other, acc, input_precision, max_num_imprecise_acc, out_dtype)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/language/semantic.py", line 1492, in dot
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     assert lhs.dtype == rhs.dtype, f"Both operands must be same dtype. Got {lhs.dtype} and {rhs.dtype}"
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]            ^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] AssertionError: Both operands must be same dtype. Got fp32 and bf16
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] 
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] The above exception was the direct cause of the following exception:
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] 
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] Traceback (most recent call last):
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 962, in identify_mutated_tensors
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]                                         ^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 509, in generate_ttir
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     ttir_module = src.make_ir(target, options, codegen_fns, module_map, context)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/compiler.py", line 80, in make_ir
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1631, in ast_to_ttir
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     generator.visit(fn.parse())
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1536, in visit
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     ret = super().visit(node)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]           ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 407, in visit
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     return visitor(node)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]            ^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 521, in visit_Module
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     ast.NodeVisitor.generic_visit(self, node)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 415, in generic_visit
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     self.visit(item)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1536, in visit
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     ret = super().visit(node)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]           ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 407, in visit
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     return visitor(node)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]            ^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 612, in visit_FunctionDef
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     self.visit_compound_statement(node.body)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 514, in visit_compound_statement
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     self.visit(stmt)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1536, in visit
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     ret = super().visit(node)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]           ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 407, in visit
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     return visitor(node)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]            ^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1211, in visit_For
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     names, init_handles, init_tys = self._find_carries(node, liveins, ignore={node.target.id})
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 472, in _find_carries
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     self.visit_compound_statement(node.body)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 514, in visit_compound_statement
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     self.visit(stmt)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1536, in visit
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     ret = super().visit(node)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]           ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 407, in visit
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     return visitor(node)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]            ^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 695, in visit_Assign
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     values = _sanitize_value(self.visit(node.value))
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]                              ^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1536, in visit
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     ret = super().visit(node)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]           ^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/ast.py", line 407, in visit
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     return visitor(node)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]            ^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1412, in visit_Call
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     return self.call_Function(node, fn, args, kws)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]   File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/triton/compiler/code_generator.py", line 1368, in call_Function
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     raise CompilationError(self.jit_fn.src, node, str(e)) from e
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] triton.compiler.errors.CompilationError: at 52:13:
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]         bias = tl.load(BIAS + offs_k, mask = offs_k < K, other= 0.0) # [(BLOCK_SIZE_K, )]
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]         y_T = tl.trans((x_hat * weight[None, :]) + bias[None, :]) # [(BLOCK_SIZE_K, BLOCK_SIZE_M)]
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     else:
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]         y_T = tl.trans((x_hat * weight[None, :]))
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] 
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     dy = tl.zeros((BLOCK_SIZE_M, BLOCK_SIZE_K), dtype=tl.float32)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] 
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]     for n in range(0, tl.cdiv(N, BLOCK_SIZE_N)): # , num_stages=1, loop_unroll_factor=1
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]         dOUT = tl.load(dOUT_ptrs, mask=(offs_m[:, None] < M) & (offs_n[None, :] < N), other=0.0)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] 
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]         # add-ons here to atomic add on dB: contention across M-blocks to write to the same address
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]         db = tl.dot(y_T, dOUT)
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1]              ^
+[rank0]:W1122 17:32:53.275000 231388 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:987] [2/0_1] Both operands must be same dtype. Got fp32 and bf16
+compile_no_ac {'error': 'BackendCompilerFailed: backend=\'inductor\' raised:\nRuntimeError: a leaf Variable that requires grad is being used in an in-place operation.\n\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you\'re reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"\n'}
+[rank0]:[W1122 17:32:54.208350626 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())

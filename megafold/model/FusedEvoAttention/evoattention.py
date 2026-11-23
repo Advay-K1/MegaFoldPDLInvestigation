@@ -30,7 +30,7 @@ import torch
 import triton
 import triton.language as tl
 
-from megafold.model.pdl import LAUNCH_PDL, pdl_prologue
+from megafold.model.pdl import LAUNCH_PDL, OPAQUE_KERNELS, SavedCtx, pdl_prologue
 
 def is_hip():
     return triton.runtime.driver.active.get_current_target().backend == "hip"
@@ -930,7 +930,56 @@ class EvoformerAttention(torch.autograd.Function):
 
         return dQ, dK, dV, None, d_pair_bias.to(dO.dtype)
 
-TritonEvoformer = EvoformerAttention.apply
+# ---- opaque custom-op path (MEGAFOLD_OPAQUE_KERNELS=1): same kernels, but torch.compile sees two opaque
+# ops with no mutated inputs instead of tracing the Triton launches (see megafold/model/pdl.py).
+@torch.library.custom_op("megafold::evo_attn_fwd", mutates_args=())
+def evo_attn_fwd(Q: torch.Tensor, K: torch.Tensor, V: torch.Tensor, res_mask: torch.Tensor,
+                 pair_bias: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+    ctx = SavedCtx()
+    O = EvoformerAttention.forward(ctx, Q, K, V, res_mask, pair_bias)
+    return O, ctx.saved_tensors[6]  # output (orig layout), logsumexp M
+
+
+@evo_attn_fwd.register_fake
+def _(Q, K, V, res_mask, pair_bias):
+    B, S, N, H, _ = Q.shape
+    return torch.empty_like(Q), Q.new_empty((B, S, H, N), dtype=torch.float32)
+
+
+@torch.library.custom_op("megafold::evo_attn_bwd", mutates_args=())
+def evo_attn_bwd(dO: torch.Tensor, Q: torch.Tensor, K: torch.Tensor, V: torch.Tensor, res_mask: torch.Tensor,
+                 pair_bias: torch.Tensor, O: torch.Tensor, M: torch.Tensor
+                 ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+    ctx = SavedCtx()
+    ws = lambda t: t.transpose(-2, -3).contiguous()  # noqa: E731  (workspace layout used by the kernels)
+    ctx.saved_tensors = (ws(Q), ws(K), ws(V), res_mask, pair_bias, ws(O), M)
+    ctx.DIM = Q.shape[-1]
+    ctx.softmax_scale = ctx.DIM ** -0.5
+    dQ, dK, dV, _, d_pair_bias = EvoformerAttention.backward(ctx, dO)
+    return dQ, dK, dV, d_pair_bias
+
+
+@evo_attn_bwd.register_fake
+def _(dO, Q, K, V, res_mask, pair_bias, O, M):
+    B, S, N, H, _ = Q.shape
+    return (torch.empty_like(Q), torch.empty_like(K), torch.empty_like(V),
+            pair_bias.new_empty((B, 1, H, N, N), dtype=dO.dtype))
+
+
+class EvoformerAttentionOpaque(torch.autograd.Function):
+    @staticmethod
+    def forward(ctx, Q, K, V, res_mask, pair_bias):
+        O, M = evo_attn_fwd(Q, K, V, res_mask, pair_bias)
+        ctx.save_for_backward(Q, K, V, res_mask, pair_bias, O, M)
+        return O
+
+    @staticmethod
+    def backward(ctx, dO):
+        dQ, dK, dV, d_pair_bias = evo_attn_bwd(dO.contiguous(), *ctx.saved_tensors)
+        return dQ, dK, dV, None, d_pair_bias
+
+
+TritonEvoformer = (EvoformerAttentionOpaque if OPAQUE_KERNELS else EvoformerAttention).apply
 
 
 if __name__ == "__main__":

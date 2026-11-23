@@ -32,7 +32,8 @@ from torch.nn import functional as F, init
 import triton
 import triton.language as tl
 
-from megafold.model.pdl import LAUNCH_PDL, LAUNCH_PDL_ROWWISE, pdl_prologue, pdl_prologue_rowwise
+from typing import List, Optional
+from megafold.model.pdl import LAUNCH_PDL, LAUNCH_PDL_ROWWISE, OPAQUE_KERNELS, pdl_prologue, pdl_prologue_rowwise
 from liger_kernel.ops.utils import calculate_settings
 from liger_kernel.utils import infer_device
 from liger_kernel.ops.utils import ensure_contiguous
@@ -526,6 +527,77 @@ class LayernormLinearFunction(torch.autograd.Function):
         return dX, dB, dLinearBias, dWEIGHT, dBIAS, None, None, None
 
 
+# ---- opaque custom-op path (MEGAFOLD_OPAQUE_KERNELS=1), see megafold/model/pdl.py
+def _cfg_enc(cfg):  # kernel config tuples may hold None (e.g. maxnreg); custom-op schemas need List[int]
+    return [-1 if v is None else int(v) for v in cfg]
+
+
+def _cfg_dec(cfg):
+    return tuple(None if v == -1 else v for v in cfg)
+
+
+@torch.library.custom_op("megafold::layernorm_linear_fwd", mutates_args=())
+def layernorm_linear_fwd_op(X: torch.Tensor, B: torch.Tensor, linear_bias: Optional[torch.Tensor], WEIGHT: torch.Tensor,
+                            BIAS: Optional[torch.Tensor], has_layernorm_bias: bool, has_linear_bias: bool,
+                            cfg: List[int]) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    c, _, _, Mean, RSTD = layernorm_linear_forward(X, B, linear_bias, WEIGHT, BIAS, has_layernorm_bias,
+                                                   has_linear_bias, _cfg_dec(cfg))
+    return c, Mean, RSTD
+
+
+@layernorm_linear_fwd_op.register_fake
+def _(X, B, linear_bias, WEIGHT, BIAS, has_layernorm_bias, has_linear_bias, cfg):
+    M = X.numel() // X.shape[-1]
+    return X.new_empty(X.shape[:-1] + (B.shape[1],)), X.new_empty((M,)), X.new_empty((M,))
+
+
+@torch.library.custom_op("megafold::layernorm_linear_bwd", mutates_args=())
+def layernorm_linear_bwd_op(dOUT: torch.Tensor, X: torch.Tensor, B: torch.Tensor, Mean: torch.Tensor, RSTD: torch.Tensor,
+                            WEIGHT: torch.Tensor, BIAS: Optional[torch.Tensor], has_layernorm_bias: bool,
+                            has_linear_bias: bool, cfg: List[int]
+                            ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+    dX, dB, dLB, dW, dBi = layernorm_linear_backward(dOUT, X.reshape(-1, X.shape[-1]), B, Mean, RSTD, WEIGHT, BIAS,
+                                                     has_layernorm_bias, has_linear_bias, _cfg_dec(cfg))
+    return (dX, dB, dLB if dLB is not None else X.new_empty(0), dW,
+            dBi if dBi is not None else X.new_empty(0))
+
+
+@layernorm_linear_bwd_op.register_fake
+def _(dOUT, X, B, Mean, RSTD, WEIGHT, BIAS, has_layernorm_bias, has_linear_bias, cfg):
+    K, N = B.shape
+    return (X.new_empty(dOUT.shape[:-1] + (K,)), X.new_empty((K, N)),
+            dOUT.new_empty((N,)) if has_linear_bias else X.new_empty(0), X.new_empty((K,)),
+            X.new_empty((K,)) if has_layernorm_bias else X.new_empty(0))
+
+
+class LayernormLinearFunctionOpaque(torch.autograd.Function):
+    @staticmethod
+    @ensure_contiguous
+    @torch.amp.custom_fwd(device_type=infer_device(), cast_inputs=torch.bfloat16)
+    def forward(ctx, X, linear_weight, linear_bias, WEIGHT, BIAS, has_layernorm_bias=True, has_linear_bias=False,
+                supported_configs=(DEFAULT_CONFIG, DEFAULT_CONFIG)):
+        c, Mean, RSTD = layernorm_linear_fwd_op(X, linear_weight, linear_bias, WEIGHT, BIAS, has_layernorm_bias,
+                                                has_linear_bias, _cfg_enc(supported_configs[0]))
+        ctx.save_for_backward(X, linear_weight, Mean, RSTD, WEIGHT, BIAS)
+        ctx.backward_config = _cfg_enc(supported_configs[1])
+        ctx.has_layernorm_bias = has_layernorm_bias
+        ctx.has_linear_bias = has_linear_bias
+        return c
+
+    @staticmethod
+    @ensure_contiguous
+    @torch.amp.custom_bwd(device_type=infer_device())
+    def backward(ctx, dOUT):
+        X, linear_weight, Mean, RSTD, WEIGHT, BIAS = ctx.saved_tensors
+        dX, dB, dLB, dW, dBi = layernorm_linear_bwd_op(dOUT, X, linear_weight, Mean, RSTD, WEIGHT, BIAS,
+                                                       ctx.has_layernorm_bias, ctx.has_linear_bias, ctx.backward_config)
+        return (dX, dB, dLB if ctx.has_linear_bias else None, dW, dBi if ctx.has_layernorm_bias else None,
+                None, None, None)
+
+
+_LNL_FUNCTION = LayernormLinearFunctionOpaque if OPAQUE_KERNELS else LayernormLinearFunction
+
+
 class LayernormLinear(nn.Module):
     def __init__(self, K, N, has_layernorm_bias=True, has_linear_bias=True, device=None, dtype=None): 
         factory_kwargs = {"device": device, "dtype": dtype}
@@ -570,7 +642,7 @@ class LayernormLinear(nn.Module):
         supported_configs = calculate_config_layernorm_linear(M, self.N, self.K, 2)
         if supported_configs is None: # revert back to standard torch 
             return F.linear(F.layer_norm(X, (self.K, ), self.WEIGHT, self.BIAS), self.linear_weight.T, self.linear_bias)
-        return LayernormLinearFunction.apply(X, self.linear_weight, self.linear_bias, self.WEIGHT, self.BIAS, self.has_layernorm_bias, self.has_linear_bias, supported_configs)
+        return _LNL_FUNCTION.apply(X, self.linear_weight, self.linear_bias, self.WEIGHT, self.BIAS, self.has_layernorm_bias, self.has_linear_bias, supported_configs)
 
     def extra_repr(self):
         return f"K={self.K}, N={self.N}, has_linear_bias={self.has_linear_bias}"

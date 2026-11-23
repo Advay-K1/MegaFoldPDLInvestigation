@@ -1,0 +1,144 @@
+[2026-11-22 17:43:39,295] [INFO] [real_accelerator.py:239:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+df: /tmp/tc_r4_246520: No such file or directory
+Type checking is disabled.
+Debugging is disabled.
+Loading CCD component SMILES strings from data/ccd_data/components_smiles.json.
+/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/profiler/profiler.py:217: UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+eager {"first_call_s": 8.5, "ms_per_fwd_bwd": 136.13, "kernels_per_fwd_bwd": 2923, "kernels_by_kind": {"memcpy/memset": 211, "ATen eager": 2164, "triton (MegaFold)": 256, "cuBLAS/CUTLASS": 292}, "peak_mem_gib": 3.35, "graph_breaks": 0, "graph_break_reasons": {}, "max_abs_diff_vs_eager": {"single_max_abs": 0.0, "pairwise_max_abs": 0.0, "single_rel_l2": 0.0, "pairwise_rel_l2": 0.0, "pairwise_max_abs_ref": 7.624632835388184, "grads_rel_l2_worst": 0.0, "grads_rel_l2_median": 0.0}}
+Traceback (most recent call last):
+  File "/u/akadam2/MegaFold-pdl/benchmarks/compile_checkpoint_probe.py", line 120, in <module>
+    out = step(fn, mod); torch.cuda.synchronize()
+          ^^^^^^^^^^^^^
+  File "/u/akadam2/MegaFold-pdl/benchmarks/compile_checkpoint_probe.py", line 83, in step
+    so, po = fn(single_repr=s, pairwise_repr=p, mask=MASK, use_optimized_evo="triton")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 465, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 967, in compile_wrapper
+    raise e.remove_dynamo_frames() from None  # see TORCHDYNAMO_VERBOSE=1
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 953, in compile_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 2202, in __call__
+    result = self._torchdynamo_orig_backend(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1945, in __call__
+    result = self._inner_convert(
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 707, in __call__
+    result = _compile(
+             ^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1752, in _compile
+    guarded_code, tracer_output = compile_inner(code, one_graph, hooks)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_utils_internal.py", line 97, in wrapper_function
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1433, in compile_inner
+    return _compile_inner(code, one_graph, hooks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1467, in _compile_inner
+    dynamo_output = compile_frame(
+                    ^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1341, in compile_frame
+    bytecode, tracer_output = transform_code_object(code, transform)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/bytecode_transformation.py", line 1600, in transform_code_object
+    tracer_output = transformations(instructions, code_options)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1313, in transform
+    tracer_output = trace_frame(
+                    ^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 328, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 838, in trace_frame
+    run_tracer()
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 819, in run_tracer
+    tracer.run()
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1654, in run
+    while self.step():
+          ^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1334, in step
+    self.dispatch_table[inst.opcode](self, inst)
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 4692, in RETURN_VALUE
+    self._return(inst)
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 4674, in _return
+    all_stack_locals_metadata = self.output.compile_subgraph(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/output_graph.py", line 1700, in compile_subgraph
+    self.compile_and_call_fx_graph(tx, pass2.graph_output_vars(), root)
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/output_graph.py", line 2225, in compile_and_call_fx_graph
+    compiled_fn = self.call_user_compiler(gm, self.example_inputs())
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/output_graph.py", line 2377, in call_user_compiler
+    return self._call_user_compiler(gm, example_inputs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/output_graph.py", line 2437, in _call_user_compiler
+    raise BackendCompilerFailed(
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/output_graph.py", line 2412, in _call_user_compiler
+    compiled_fn = compiler_fn(gm, example_inputs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/repro/after_dynamo.py", line 156, in __call__
+    compiled_gm = compiler_fn(gm, example_inputs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/__init__.py", line 2435, in __call__
+    return compile_fx(model_, inputs_, config_patches=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/compile_fx.py", line 2537, in compile_fx
+    return _maybe_wrap_and_compile_fx_main(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/compile_fx.py", line 2614, in _maybe_wrap_and_compile_fx_main
+    return _compile_fx_main(
+           ^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/compile_fx.py", line 2809, in _compile_fx_main
+    return aot_autograd(
+           ^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_dynamo/backends/common.py", line 123, in __call__
+    cg = aot_module_simplified(gm, example_inputs, **self.kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/aot_autograd.py", line 1115, in aot_module_simplified
+    compiled_fn, _ = aot_stage2_compile(
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/graph_compile.py", line 355, in aot_stage2_compile
+    return aot_stage2_autograd(aot_state, aot_graph_capture)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/graph_compile.py", line 1994, in aot_stage2_autograd
+    ) = _aot_stage2a_partition(
+        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/graph_compile.py", line 1611, in _aot_stage2a_partition
+    fw_module, bw_module = aot_config.partition_fn(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_inductor/compile_fx.py", line 2193, in partition_fn
+    return min_cut_rematerialization_partition(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/partitioners.py", line 3016, in min_cut_rematerialization_partition
+    saved_values = choose_saved_values_set(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/partitioners.py", line 2496, in choose_saved_values_set
+    runtime_optimized_saved_values, _ = solve_min_cut(
+                                        ^^^^^^^^^^^^^^
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/partitioners.py", line 2151, in solve_min_cut
+    visualize_min_cut_graph(nx_graph)
+  File "/sw/user/python/miniforge3-pytorch-2.10.0/lib/python3.12/site-packages/torch/_functorch/partitioners.py", line 2176, in visualize_min_cut_graph
+    import pydot
+torch._dynamo.exc.BackendCompilerFailed: backend='inductor' raised:
+ModuleNotFoundError: No module named 'pydot'
+
+compile_outer {'error': "BackendCompilerFailed: backend='inductor' raised:\nModuleNotFoundError: No module named 'pydot'\n"}
+[rank0]:[W1122 17:44:10.302642269 ProcessGroupNCCL.cpp:1553] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())

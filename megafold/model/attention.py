@@ -55,6 +55,7 @@ from megafold.utils.model_utils import (
 )
 from megafold.utils.utils import default, exists, not_exists
 import deepspeed
+from megafold.model.pdl import OPAQUE_KERNELS
 
 def get_mem():
     return deepspeed.accelerator.get_accelerator().memory_allocated() / (1024 * 1024 * 1024)
@@ -221,7 +222,9 @@ class Attention(Module):
         
         # attention
         # note: q, k, v, attn_bias here is not contiguous already
-        before = get_mem()
+        # debug-only host query; it is also a graph break that (without opaque kernels) keeps the checkpointed
+        # layers out of torch.compile -- the original behaviour, kept unless MEGAFOLD_OPAQUE_KERNELS=1
+        before = get_mem() if (attentionMemory or not OPAQUE_KERNELS) else 0.0
         out = self.attend(
             q,
             k,

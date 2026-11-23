@@ -1,0 +1,10 @@
+rep 1 off exit=1
+rep 1 opaque exit=0
+rep 1 opaque_pdl exit=0
+rep 2 off exit=0
+rep 2 opaque exit=0
+rep 2 opaque_pdl exit=0
+##### done
+nodrop off exit=0
+nodrop opaque exit=0
+##### all done

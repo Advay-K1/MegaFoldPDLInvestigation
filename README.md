@@ -15,8 +15,11 @@ for a MegaFold training step on a single NVIDIA GH200 (NCSA DeltaAI).
   ATen / cuBLAS / CUDA C++? Triton <-> CUDA C++ PDL pairs, an `LD_PRELOAD` shim that makes unmodified ATen
   kernels PDL secondaries (and the data race it causes), a reachability census of the real step's boundaries,
   and the training step with every ATen kernel PDL-launched.
+* **[Report 4 — Compiling the activation-checkpointed layers](reports/REPORT_4_COMPILING_CHECKPOINTED_LAYERS.md)**:
+  MegaFold's kernels as opaque custom ops + graph-break fixes + per-layer compile inside the checkpoints:
+  the step gets ~16% faster at equal memory (ATen launches -69%); PDL on top still unmeasurable.
 
-**Overleaf:** LaTeX versions of the reports are in `reports/overleaf/` (`report1.tex`, `report2.tex`, `report3.tex`, `figures/`);
+**Overleaf:** LaTeX versions of the reports are in `reports/overleaf/` (`report1.tex` ... `report4.tex`, `figures/`);
 upload `reports/overleaf_project.zip` to Overleaf (New Project → Upload Project) and compile with pdfLaTeX.
 
 Code added for the investigation: `megafold/model/pdl.py` (PDL switch, policies, Inductor fix),

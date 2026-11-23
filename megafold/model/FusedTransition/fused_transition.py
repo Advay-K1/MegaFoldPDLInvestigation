@@ -31,7 +31,7 @@ import torch.nn as nn
 import triton 
 import triton.language as tl
 
-from megafold.model.pdl import LAUNCH_PDL, LAUNCH_PDL_ROWWISE, pdl_prologue, pdl_prologue_rowwise
+from megafold.model.pdl import LAUNCH_PDL, LAUNCH_PDL_ROWWISE, OPAQUE_KERNELS, pdl_prologue, pdl_prologue_rowwise
 from liger_kernel.ops.utils import calculate_settings, ensure_contiguous
 from liger_kernel.utils import infer_device
 from megafold.model.FusedLayernormLinear.fused_layernorm_linear import LayernormLinear
@@ -143,9 +143,46 @@ class FusedSwiGLUFunction(torch.autograd.Function):
         return grad_input
     
 
+# ---- opaque custom-op path (MEGAFOLD_OPAQUE_KERNELS=1), see megafold/model/pdl.py
+@torch.library.custom_op("megafold::swiglu_fwd", mutates_args=())
+def swiglu_fwd_op(x: torch.Tensor) -> torch.Tensor:
+    return swiglu_forward(x)[1]
+
+
+@swiglu_fwd_op.register_fake
+def _(x):
+    return x.new_empty(x.shape[:-1] + (x.shape[-1] // 2,))
+
+
+@torch.library.custom_op("megafold::swiglu_bwd", mutates_args=())
+def swiglu_bwd_op(x: torch.Tensor, dy: torch.Tensor) -> torch.Tensor:
+    return swiglu_backward(x.reshape(-1, x.shape[-1]), dy)
+
+
+@swiglu_bwd_op.register_fake
+def _(x, dy):
+    return x.new_empty(dy.shape[:-1] + (dy.shape[-1] * 2,))
+
+
+class FusedSwiGLUFunctionOpaque(torch.autograd.Function):
+    @staticmethod
+    @ensure_contiguous
+    @torch.amp.custom_fwd(device_type=infer_device(), cast_inputs=torch.bfloat16)
+    def forward(ctx, input):
+        ctx.save_for_backward(input)
+        return swiglu_fwd_op(input)
+
+    @staticmethod
+    @ensure_contiguous
+    @torch.amp.custom_bwd(device_type=infer_device())
+    def backward(ctx, grad_output):
+        input, = ctx.saved_tensors
+        return swiglu_bwd_op(input, grad_output)
+
+
 class FusedSwiGLU(nn.Module):
     def forward(self, x):
-        return FusedSwiGLUFunction.apply(x)
+        return (FusedSwiGLUFunctionOpaque if OPAQUE_KERNELS else FusedSwiGLUFunction).apply(x)
 
 class FusedTransition(nn.Module):
     def __init__(self, dim, expansion_factor=4, include_ln=True, use_layernormlinear=True, device=None, dtype=None): 

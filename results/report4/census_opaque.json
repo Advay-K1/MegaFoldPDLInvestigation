@@ -1,0 +1,135 @@
+{
+ "trace": "results/nsys/r4_opaque.sqlite",
+ "boundaries": 132781,
+ "queued_boundaries": 60866,
+ "queued_frac": 0.4583938967171508,
+ "gap_ms_total": 5884.434719,
+ "gap_ms_on_queued": 79.192704,
+ "median_gap_us_queued": 1.184,
+ "scenario_frac_all_vs_queued": {
+  "triton->triton (Report 1 eligibility)": [
+   0.25536786136570744,
+   0.252751946899747
+  ],
+  "any kernel -> triton (implicit trigger, today's launches)": [
+   0.42916531732702723,
+   0.3704038379390793
+  ],
+  "triton -> aten (needs PDL-aware ATen secondary)": [
+   0.05837431560238287,
+   0.0628101074491506
+  ],
+  "aten -> aten": [
+   0.18231524088536763,
+   0.24516150231656425
+  ],
+  "any kernel -> any kernel (every kernel PDL-aware)": [
+   0.8979070800792281,
+   0.8592646140702527
+  ]
+ },
+ "reachability": {
+  "CPU-bound: secondary not yet enqueued when primary ended": {
+   "boundaries": 71915,
+   "gap_ms": 5805.24
+  },
+  "queued, secondary Triton (reachable today)": {
+   "boundaries": 22545,
+   "gap_ms": 29.23
+  },
+  "queued, secondary cuBLAS/other library (closed source)": {
+   "boundaries": 10755,
+   "gap_ms": 13.3
+  },
+  "queued, secondary ATen (needs cross-language PDL)": {
+   "boundaries": 19000,
+   "gap_ms": 24.25
+  },
+  "queued, memcpy/memset involved (never PDL)": {
+   "boundaries": 8566,
+   "gap_ms": 12.41
+  }
+ },
+ "pairs_top": {
+  "aten -> aten": 24208,
+  "triton_inductor -> triton_inductor": 24206,
+  "cublas -> cublas": 17275,
+  "cublas -> triton_inductor": 13950,
+  "triton_inductor -> cublas": 9486,
+  "memset -> cublas": 5739,
+  "triton_inductor -> aten": 4796,
+  "triton_megafold -> triton_megafold": 4693,
+  "aten -> triton_inductor": 4602,
+  "triton_inductor -> memset": 3682,
+  "triton_megafold -> aten": 2955,
+  "triton_inductor -> triton_megafold": 2830,
+  "aten -> triton_megafold": 2708,
+  "triton_megafold -> triton_inductor": 2179,
+  "cublas -> triton_megafold": 1817,
+  "triton_megafold -> cublas": 1783,
+  "cublas -> memset": 1077,
+  "aten -> memset": 973,
+  "cublas -> aten": 947,
+  "aten -> cublas": 780,
+  "triton_megafold -> memset": 438,
+  "memset -> aten": 431,
+  "memcpy -> memcpy": 388,
+  "aten -> memcpy": 252,
+  "memcpy -> triton_inductor": 223
+ },
+ "queued_top": {
+  "aten -> aten": 14922,
+  "triton_inductor -> triton_inductor": 9465,
+  "cublas -> cublas": 8364,
+  "cublas -> triton_inductor": 5045,
+  "triton_megafold -> triton_megafold": 3959,
+  "memset -> cublas": 3810,
+  "triton_megafold -> aten": 2438,
+  "triton_inductor -> memset": 2385,
+  "triton_inductor -> cublas": 1967,
+  "triton_inductor -> aten": 1385,
+  "aten -> triton_inductor": 1317,
+  "triton_megafold -> triton_inductor": 1170,
+  "aten -> memset": 960,
+  "triton_inductor -> triton_megafold": 790,
+  "cublas -> memset": 754,
+  "aten -> triton_megafold": 676,
+  "memset -> aten": 430,
+  "triton_megafold -> cublas": 272,
+  "cublas -> aten": 255,
+  "aten -> cublas": 152,
+  "triton_megafold -> memset": 150,
+  "cublas -> triton_megafold": 123,
+  "aten -> memcpy": 32,
+  "memcpy -> triton_inductor": 16,
+  "memcpy -> aten": 15
+ },
+ "launch_api_by_family": {
+  "triton_inductor": {
+   "cuLaunchKernel": 45161
+  },
+  "cublas": {
+   "cuLaunchKernel": 13443,
+   "cuLaunchKernelEx": 6663,
+   "cudaLaunchKernel": 7342,
+   "cudaLaunchKernelExC": 7619
+  },
+  "triton_megafold": {
+   "cuLaunchKernelEx": 11490,
+   "cuLaunchKernel": 558
+  },
+  "aten": {
+   "cudaLaunchKernel": 33528
+  },
+  "other": {
+   "cudaLaunchKernel": 5,
+   "cuLaunchKernel": 1
+  },
+  "memset": {
+   "cudaMemsetAsync": 6170
+  },
+  "memcpy": {
+   "cudaMemcpyAsync": 802
+  }
+ }
+}

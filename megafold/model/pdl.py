@@ -77,9 +77,26 @@ USE_PDL_ROWWISE = tl.constexpr(_rowwise_on)
 EARLY_TRIGGER = tl.constexpr(PDL_TRIGGER == "early")
 
 
+# MEGAFOLD_OPAQUE_KERNELS = 1 : route MegaFold's Triton kernels through torch.library.custom_op wrappers
+# (megafold::evo_attn_fwd/bwd, layernorm_linear_fwd/bwd, swiglu_fwd/bwd) with declared (empty) mutation
+# sets and fake implementations. torch.compile then treats them as opaque extern calls instead of parsing
+# their TTIR for mutations (which fails under autocast and falls back to "every input is mutated").
+# Independent of MEGAFOLD_PDL; required to compile the activation-checkpointed layers (Report 4).
+OPAQUE_KERNELS: bool = os.environ.get("MEGAFOLD_OPAQUE_KERNELS", "0") == "1"
+
+
+class SavedCtx:
+    """Minimal stand-in for an autograd ctx, so an autograd.Function's forward/backward bodies can be
+    reused inside a custom op."""
+
+    def save_for_backward(self, *tensors):
+        self.saved_tensors = tensors
+
+
 def describe() -> dict:
     return dict(enabled=PDL_ENABLED, kernels=PDL_KERNELS if PDL_ENABLED else None,
-                launch=_LAUNCH if PDL_ENABLED else None, trigger=PDL_TRIGGER if PDL_ENABLED else None)
+                launch=_LAUNCH if PDL_ENABLED else None, trigger=PDL_TRIGGER if PDL_ENABLED else None,
+                opaque_kernels=OPAQUE_KERNELS)
 
 
 @triton.jit

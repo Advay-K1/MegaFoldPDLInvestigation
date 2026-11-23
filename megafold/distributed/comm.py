@@ -26,6 +26,7 @@
 
 from typing import Tuple
 import torch
+from megafold.model.pdl import OPAQUE_KERNELS
 import torch.distributed as dist
 from torch import Tensor
 from megafold.distributed.parallel_info import get_parallel_info
@@ -262,11 +263,16 @@ class All_to_All(torch.autograd.Function):
 
     @staticmethod
     def forward(ctx: "All_to_All", input_: Tensor, in_dim: int = -1, out_dim: int = -1) -> Tensor:
-        ctx.save_for_backward(torch.tensor([in_dim, out_dim]))
+        if OPAQUE_KERNELS:  # plain ints; the saved tensor needs .item() in backward (a graph break)
+            ctx.in_dim, ctx.out_dim = in_dim, out_dim
+        else:               # original behaviour (its graph break keeps checkpointed layers eager)
+            ctx.save_for_backward(torch.tensor([in_dim, out_dim]))
         return _all_to_all(input_, in_dim=in_dim, out_dim=out_dim)
 
     @staticmethod
     def backward(ctx: "All_to_All", grad_output: Tensor) -> Tuple[Tensor]:
+        if OPAQUE_KERNELS:
+            return _all_to_all(grad_output, in_dim=ctx.out_dim, out_dim=ctx.in_dim), None, None
         saved_tensors = ctx.saved_tensors[0]
         return _all_to_all(grad_output, in_dim=int(saved_tensors[1]),
                            out_dim=int(saved_tensors[0])), None, None
